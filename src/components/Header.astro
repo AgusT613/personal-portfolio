@@ -1,0 +1,23 @@
+---
+import Section from "./Section.astro";
+---
+
+<header class="px-8 py-4 flex justify-between items-center w-full fixed">
+  <div class="flex gap-4 items-center justify-center">
+    <img
+      src="/profile_image.png"
+      alt="Mi foto de perfil, vistiendo una camisa azul con formas cuadradas y un fondo azulado"
+      class="w-16 h-16 object-cover rounded-full"
+    />
+    <h1
+      class="text-xl font-medium hover:text-orange-500 cursor-pointer transition-colors"
+    >
+      Torres Agustin
+    </h1>
+  </div>
+  <nav class="flex gap-6">
+    <Section link="" title="Sobre Mi" />
+    <Section link="" title="Proyectos" />
+    <Section link="" title="Contacto" />
+  </nav>
+</header>
