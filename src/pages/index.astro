@@ -1,13 +1,14 @@
 ---
-import ActionBtn from "../components/ActionBtn.astro";
 import Layout from "../layouts/Layout.astro";
+import CopyEmailBtn from "../components/CopyEmailBtn.astro";
+import DownloadCVBtn from "../components/DownloadCVBtn.astro";
 ---
 
 <Layout title="Torres Agustin - Portafolio">
   <main>
     <section class="h-screen flex flex-col justify-center mx-28">
-      <span class="text-3xl text-orange-500 font-light">
-        UN GUSTO, SOY AGUS
+      <span class="text-3xl text-orange-500 font-light uppercase">
+        Un gusto, soy Agus
       </span>
       <span class="text-7xl pt-3">Desarrollador Web</span>
       <span class="text-blue-400 text-lg pb-8 font-light">
@@ -18,8 +19,8 @@ import Layout from "../layouts/Layout.astro";
         proyecto.
       </p>
       <div class="flex gap-2">
-        <ActionBtn href="" title="Mensaje" />
-        <ActionBtn href="" title="Descargar CV" />
+        <CopyEmailBtn />
+        <DownloadCVBtn />
       </div>
     </section>
   </main>

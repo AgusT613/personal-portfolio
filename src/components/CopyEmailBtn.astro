@@ -1,0 +1,34 @@
+---
+import IconCopy from "./IconCopy.astro";
+---
+
+<div class="flex items-center justify-center">
+  <input
+    id="emailText"
+    type="text"
+    readonly
+    value="torresagustin613@gmail.com"
+    class="rounded-l px-2 w-[240px] outline-none text-black h-full"
+  />
+  <span
+    id="copyBtn"
+    class="cursor-pointer bg-blue-600 rounded-r flex items-center justify-center gap-1 px-2 py-1 hover:bg-blue-900 transition-colors"
+  >
+    <IconCopy />
+  </span>
+</div>
+
+<script>
+  const copyBtn = document.getElementById("copyBtn");
+
+  function copyEmailToClipboard() {
+    const email = (document.getElementById("emailText") as HTMLInputElement)
+      .value;
+    navigator.clipboard
+      .writeText(email)
+      .then(() => alert("Email copiado!"))
+      .catch((error) => console.log(error));
+  }
+
+  copyBtn.addEventListener("click", copyEmailToClipboard);
+</script>
