@@ -30,5 +30,12 @@ const { title } = Astro.props;
     font-family: "Roboto Slab Variable", system-ui, sans-serif;
     background: #13151a;
     color: #efeded;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 </style>

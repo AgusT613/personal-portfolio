@@ -6,7 +6,8 @@ import DownloadCVBtn from "../components/DownloadCVBtn.astro";
 
 <Layout title="Torres Agustin - Portafolio">
   <main>
-    <section class="h-screen flex flex-col justify-center mx-28">
+    <!-- Welcome Section -->
+    <section id="top" class="h-screen flex flex-col justify-center mx-28">
       <span class="text-3xl text-orange-500 font-light uppercase">
         Un gusto, soy Agus
       </span>
@@ -14,7 +15,7 @@ import DownloadCVBtn from "../components/DownloadCVBtn.astro";
       <span class="text-blue-400 text-lg pb-8 font-light">
         +1 AÑO DE EXPERIENCIA
       </span>
-      <p class="text-lg opacity-80 pb-2">
+      <p class="text-lg text-gray-400 pb-2">
         Cuento con amplios conocimientos para la construcción de tu próximo
         proyecto.
       </p>
@@ -22,6 +23,46 @@ import DownloadCVBtn from "../components/DownloadCVBtn.astro";
         <CopyEmailBtn />
         <DownloadCVBtn />
       </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section
+      id="about-me"
+      class="h-screen flex flex-col justify-center mx-28 gap-y-8"
+    >
+      <h2 class="text-5xl text-center tracking-wider">Sobre Mí</h2>
+      <article
+        class="w-3/4 self-center flex flex-col items-center justify-center gap-y-6"
+      >
+        <p class="text-pretty font-light tracking-wide">
+          El mundo del desarrollo de software fue un área que descubrí cuando me
+          encontraba cursando mis estudios secundarios. Desde ese momento
+          emprendí mi camino como programador, adentrandome en el maravilloso
+          mundo de la tecnología. Me encantan y me motivan las novedades
+          tecnológicas, y considero que es un excelente medio para mejorar la
+          calidad de vida de las personas.
+        </p>
+        <p class="text-pretty font-light tracking-wide">
+          Estudio programación hace <span class="text-blue-500"
+            >más de 1 año</span
+          >, he colaborado en
+          <span class="text-blue-500">proyectos de software</span>, y me estoy
+          formando academicamente para <span class="text-blue-500"
+            >Ingenieria en Informática</span
+          > . Me considero una persona <span class="text-orange-500"
+            >curiosa, responsable y centrada</span
+          >. Considero firmemente que los detalles en un proyecto marcan la
+          diferencia, de esa forma destacamos el sello personal de nuestro
+          producto y/o servicio.
+        </p>
+        <p class="text-pretty font-light tracking-wide">
+          Por último, te invito a que sigas recorriendo mis trabajos realizados
+          y puedas pasarte por alguna de mis redes sociales para <span
+            class="text-blue-500">descubrir más acerca de mi persona</span
+          >. No solo la programación forma parte de mi vida, sino también otras
+          actividades que me impulsan día a día a superarme.
+        </p>
+      </article>
     </section>
   </main>
 </Layout>
