@@ -7,6 +7,10 @@ import TailwindCSS from "../components/icons/TailwindCSS.astro";
 import Redirect from "../components/icons/Redirect.astro";
 import GitHub from "../components/icons/GitHub.astro";
 import PostgreSQL from "../components/icons/PostgreSQL.astro";
+import Gmail from "../components/icons/Gmail.astro";
+import Linkedin from "../components/icons/Linkedin.astro";
+import Instagram from "../components/icons/Instagram.astro";
+import AstroIcon from "../components/icons/AstroIcon.astro";
 
 const ICONS = {
   NextJS: {
@@ -39,6 +43,10 @@ const ICONS = {
   },
   Redirect,
   GitHub,
+  Gmail,
+  Linkedin,
+  Instagram,
+  AstroIcon
 };
 
 export default ICONS
