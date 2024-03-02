@@ -21,7 +21,9 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header />
-    <slot />
+    <div class="flex justify-center">
+      <slot />
+    </div>
   </body>
 </html>
 
@@ -31,6 +33,10 @@ const { title } = Astro.props;
     background: #13151a;
     color: #efeded;
     scroll-behavior: smooth;
+  }
+
+  #nav_header {
+    background: #002864d1;
   }
 
   @media (prefers-reduced-motion) {

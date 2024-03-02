@@ -3,7 +3,8 @@ import Section from "./Section.astro";
 ---
 
 <header
-  class="px-8 py-4 flex justify-between items-center w-full fixed backdrop-blur-md"
+  id="nav_header"
+  class="px-8 py-3 flex justify-between items-center w-full fixed backdrop-blur-md"
 >
   <div class="flex gap-4 items-center justify-center">
     <img
@@ -20,7 +21,7 @@ import Section from "./Section.astro";
   <nav class="flex gap-6">
     <Section link="#top" title="Inicio" />
     <Section link="#about-me" title="Sobre Mi" />
-    <Section link="" title="Proyectos" />
-    <Section link="" title="Contacto" />
+    <Section link="#projects" title="Proyectos" />
+    <Section link="#contact" title="Contacto" />
   </nav>
 </header>

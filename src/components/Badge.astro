@@ -1,0 +1,14 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<span
+  class="flex items-center justify-center bg-[rgba(0,0,0,.5)] rounded-xl px-2 py-1 gap-1"
+>
+  <slot />
+  {label}
+</span>
