@@ -1,0 +1,39 @@
+---
+import Tag from "../components/Tag.astro";
+import CopyEmailBtn from "../components/CopyEmailBtn.astro";
+import DownloadCVBtn from "../components/DownloadCVBtn.astro";
+---
+
+<section id="top" class="flex flex-col justify-center py-28">
+  <div class="flex gap-5 items-center">
+    <img
+      src="/profile_image.png"
+      alt="A picture of me, Torres Agustin"
+      class="size-20 object-cover rounded-full"
+    />
+    <div class="flex gap-3">
+      <Tag>páginas web</Tag>
+      <Tag>aplicaciones</Tag>
+      <Tag>bases de datos</Tag>
+      <Tag>diseño</Tag>
+    </div>
+  </div>
+
+  <span class="text-6xl my-6 text-purple-300 font-medium"
+    >Un gusto! Soy Agus</span
+  >
+
+  <article class="max-w-2xl">
+    <p class="text-xl text-gray-400">
+      <span class="text-blue-400 pb-8"> +1 año de experiencia.</span>
+      Estudiando desarrollo de software y colaborando en proyectos de terceros. Cuento
+      con amplios conocimientos para la construcción de tu próximo proyecto web o
+      aplicación.
+    </p>
+  </article>
+
+  <div class="flex gap-2 mt-6">
+    <CopyEmailBtn />
+    <DownloadCVBtn />
+  </div>
+</section>
