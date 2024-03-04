@@ -4,7 +4,6 @@ import CopyEmailBtn from "../components/CopyEmailBtn.astro";
 import DownloadCVBtn from "../components/DownloadCVBtn.astro";
 import Badge from "../components/Badge.astro";
 import PROJECTS from "../utils/projects.js";
-import ICONS from "../utils/icons";
 ---
 
 <Layout title="Torres Agustin - Portafolio">
@@ -108,3 +107,45 @@ import ICONS from "../utils/icons";
     </section>
   </main>
 </Layout>
+
+<!-- Identifies the current section that is being targeted by changing the text´s color on header-nav -->
+<script>
+  const sections = document.querySelectorAll("section");
+  const navItems = document.querySelectorAll("header nav a");
+
+  const currentSectionCallback = (entries: any[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navItems.forEach((item) => {
+          if (item.getAttribute("aria-label") === entry.target.id) {
+            item.classList.add("text-blue-500");
+            item.classList.add("scale-110");
+          } else {
+            item.classList.remove("text-blue-500");
+            item.classList.remove("scale-110");
+          }
+        });
+      }
+    });
+  };
+
+  const options = {
+    root: null,
+    rootMargin: "20px",
+    threshold: 0.2,
+  };
+
+  const observer = new IntersectionObserver(currentSectionCallback, options);
+
+  sections.forEach((section) => observer.observe(section));
+
+  document.onvisibilitychange = () => {
+    if (document.visibilityState === "hidden") {
+      observer.disconnect();
+    } else {
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    }
+  };
+</script>

@@ -1,27 +1,40 @@
 ---
-import Section from "./Section.astro";
+const navItems = [
+  {
+    id: "#top",
+    label: "top",
+    title: "Inicio",
+  },
+  {
+    id: "#about-me",
+    label: "about-me",
+    title: "Sobre Mi",
+  },
+  {
+    id: "#projects",
+    label: "projects",
+    title: "Proyectos",
+  },
+  {
+    id: "#contact",
+    label: "contact",
+    title: "Contacto",
+  },
+];
 ---
 
-<header
-  id="nav_header"
-  class="px-8 py-3 flex justify-between items-center w-full fixed backdrop-blur-md"
->
-  <div class="flex gap-4 items-center justify-center">
-    <img
-      src="/profile_image.png"
-      alt="Mi foto de perfil, vistiendo una camisa azul con formas cuadradas y un fondo azulado"
-      class="w-16 h-16 object-cover rounded-full"
-    />
-    <h1
-      class="text-xl font-medium hover:text-orange-500 cursor-pointer transition-colors"
-    >
-      Torres Agustin
-    </h1>
-  </div>
-  <nav class="flex gap-6">
-    <Section link="#top" title="Inicio" />
-    <Section link="#about-me" title="Sobre Mi" />
-    <Section link="#projects" title="Proyectos" />
-    <Section link="#contact" title="Contacto" />
+<header id="nav_header" class="flex justify-center items-center w-full fixed">
+  <nav class="flex gap-8 py-2 px-6 rounded-full mt-2 backdrop-blur-md">
+    {
+      navItems.map((item) => (
+        <a
+          href={item.id}
+          class="transition-colors text-sm tracking-wide hover:text-blue-400 hover:scale-110"
+          aria-label={item.label}
+        >
+          {item.title}
+        </a>
+      ))
+    }
   </nav>
 </header>
