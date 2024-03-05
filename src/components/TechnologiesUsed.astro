@@ -1,0 +1,20 @@
+---
+import type { ITechnologiesUsed } from "../utils/types.ts";
+import Badge from "./Badge.astro";
+
+interface Props {
+  technologies: ITechnologiesUsed[];
+}
+
+const { technologies } = Astro.props;
+---
+
+<div class="flex gap-4">
+  {
+    technologies.map((technology) => (
+      <Badge label={technology.label}>
+        <technology.icon class="size-6" />
+      </Badge>
+    ))
+  }
+</div>

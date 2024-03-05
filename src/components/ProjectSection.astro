@@ -1,0 +1,12 @@
+---
+import PROJECTS from "../utils/projects";
+import TitleSection from "./TitleSection.astro";
+import ProjectContainer from "../components/ProjectContainer.astro";
+---
+
+<section id="projects" class="flex flex-col pt-28">
+  <TitleSection>Proyectos Desarrollados</TitleSection>
+  <div class="flex flex-col gap-8">
+    {PROJECTS.map((project) => <ProjectContainer project={project} />)}
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+import TechnologiesUsed from "../components/TechnologiesUsed.astro";
+import ProjectLinks from "../components/ProjectLinks.astro";
+import type { IProject } from "../utils/types.ts";
+
+interface Props {
+  project: IProject;
+}
+const { project } = Astro.props;
+const { description, image, links, name, technologies } = project;
+---
+
+<article class="flex flex-col gap-4">
+  <h3 class="text-2xl text-yellow-500">{name}</h3>
+  <p class="text-gray-300">{description}</p>
+  <TechnologiesUsed technologies={technologies} />
+  <picture class="rounded-xl border-2 border-purple-400 p-1">
+    <img
+      class="rounded-lg border-2 border-purple-400 p-4"
+      src={image.src}
+      alt={image.alt}
+    />
+  </picture>
+  <ProjectLinks links={links} />
+</article>
