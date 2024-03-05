@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import AboutMe from "../components/AboutMe.astro";
 import Badge from "../components/Badge.astro";
 import PROJECTS from "../utils/projects.js";
 ---
@@ -48,44 +49,7 @@ import PROJECTS from "../utils/projects.js";
       </div>
     </section>
 
-    <section id="about-me" class="flex flex-col justify-center gap-y-8 py-28">
-      <h2 class="text-5xl text-center tracking-wider">Sobre Mí</h2>
-      <article class="flex gap-6 items-center">
-        <div class="flex flex-col gap-4">
-          <p class="text-pretty text-gray-300">
-            Mi nombre es Agus y tengo 20 años. Me gradué como <span
-              class="text-blue-500">técnico electromecánico</span
-            > en la secundaria y actualmente estoy cursando mis estudios universitarios
-            para <span class="text-blue-500">Ingenieria Informática</span> en la
-            Univerdad de Buenos Aires (UBA).
-          </p>
-          <p class="text-pretty text-gray-300">
-            Estudio programación desde 2022, empezando por el <span
-              class="text-blue-500">desarrollo de páginas web</span
-            >. Durante mi último año de secundaria tuve la oportunidad de
-            complementar mis conocimientos en un proyecto de <span
-              class="text-blue-500"
-              >electrónica, automatización, y programación</span
-            >. Tambien he colaborado en la construcción de proyectos de software
-            de terceros.
-          </p>
-          <p class="text-pretty text-gray-300">
-            Me considero <span class="text-blue-500"
-              >una persona curiosa, responsable y centrada</span
-            >. Considero firmemente que los detalles en un proyecto marcan la
-            diferencia, de esa forma destacamos el sello personal de nuestro
-            producto y/o servicio.
-          </p>
-        </div>
-        <picture>
-          <img
-            src="/portrait.jpg"
-            alt="A picture of me, Torres Agustin"
-            class="rounded-3xl"
-          />
-        </picture>
-      </article>
-    </section>
+    <AboutMe />
   </main>
 </Layout>
 
