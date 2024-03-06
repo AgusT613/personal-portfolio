@@ -1,0 +1,48 @@
+---
+import TitleSection from "./TitleSection.astro";
+import EXPERIENCES from "../utils/experience.js";
+import Badge from "../components/Badge.astro";
+import Redirect from "../components/icons/Redirect.astro";
+---
+
+<section class="pt-28" id="experience">
+  <TitleSection>Experiencia</TitleSection>
+  <div class="flex flex-col gap-4">
+    {
+      EXPERIENCES.map((experience) => (
+        <article
+          class={`grid grid-cols-[17rem,1fr] p-4 rounded-lg ${experience.settings.hasProjectUrls && "relative hover:bg-slate-500 hover:bg-opacity-15 cursor-pointer"}`}
+        >
+          <span class="row-span-3 text-sm pt-1 text-gray-500 uppercase">
+            {experience.date}
+          </span>
+          <div class="flex flex-col gap-y-4">
+            <h3 class="text-xl text-purple-300 text-pretty">
+              {experience.settings.hasProjectUrls ? (
+                <a href={experience.settings.projectUrl} target="_blank">
+                  <span class="flex justify-between items-center gap-2">
+                    {experience.title}
+                    <span>
+                      <Redirect />
+                    </span>
+                  </span>
+                  <span class="absolute inset-0 rounded-lg" />
+                </a>
+              ) : (
+                <span>{experience.title}</span>
+              )}
+            </h3>
+            <p class="text-gray-400 font-light tracking-wide">
+              {experience.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {experience.tags.map((tag) => (
+                <Badge label={tag} />
+              ))}
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
