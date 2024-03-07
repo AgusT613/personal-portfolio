@@ -5,13 +5,13 @@ import DownloadCVBtn from "../components/DownloadCVBtn.astro";
 ---
 
 <section id="top" class="flex flex-col justify-center pt-28">
-  <div class="flex gap-5 items-center">
+  <div class="flex gap-5 items-center image-profile">
     <img
       src="/profile_image.png"
       alt="A picture of me, Torres Agustin"
       class="size-20 object-cover rounded-full"
     />
-    <div class="flex gap-3">
+    <div class="flex gap-3 badge-container">
       <Badge label="páginas web" />
       <Badge label="aplicaciones" />
       <Badge label="bases de datos" />
@@ -19,7 +19,7 @@ import DownloadCVBtn from "../components/DownloadCVBtn.astro";
     </div>
   </div>
 
-  <span class="text-6xl my-6 text-purple-300 font-medium"
+  <span class="text-6xl my-6 text-purple-300 font-medium greeting-title"
     >Un gusto! Soy Agus</span
   >
 
@@ -32,8 +32,69 @@ import DownloadCVBtn from "../components/DownloadCVBtn.astro";
     </p>
   </article>
 
-  <div class="flex gap-2 mt-6">
+  <div class="flex gap-2 mt-6 actions-btn-container">
     <CopyEmailBtn />
     <DownloadCVBtn />
   </div>
 </section>
+
+<style>
+  @media (width <= 750px) {
+    .image-profile {
+      flex-direction: column;
+    }
+
+    .image-profile img {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    .greeting-title {
+      font-size: 3rem;
+      line-height: 1.25;
+      text-align: center;
+      margin: 2rem 0 2rem 0;
+    }
+
+    article p {
+      font-size: 1rem;
+    }
+
+    .actions-btn-container {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    @media (width <= 570px) {
+      .badge-container {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .actions-btn-container {
+        flex-direction: column;
+      }
+    }
+
+    @media (width <= 370px) {
+      .greeting-title {
+        font-size: 2.5rem;
+      }
+
+      .image-profile img {
+        width: 12rem;
+        height: 12rem;
+      }
+
+      article p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (width <= 290px) {
+      .greeting-title {
+        font-size: 2.15rem;
+      }
+    }
+  }
+</style>

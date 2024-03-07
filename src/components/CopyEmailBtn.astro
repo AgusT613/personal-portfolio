@@ -2,7 +2,7 @@
 import CopyIcon from "./icons/CopyIcon.astro";
 ---
 
-<div class="flex items-center justify-center">
+<div class="flex items-center justify-center copy-email-btn">
   <input
     id="emailText"
     type="text"
@@ -17,6 +17,25 @@ import CopyIcon from "./icons/CopyIcon.astro";
     <CopyIcon />
   </span>
 </div>
+
+<style>
+  @media (width <= 570px) {
+    .copy-email-btn {
+      align-items: normal;
+    }
+
+    .copy-email-btn input {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  @media (width <= 330px) {
+    .copy-email-btn input {
+      font-size: 0.85rem;
+    }
+  }
+</style>
 
 <script>
   const copyBtn = document.getElementById("copyBtn");
