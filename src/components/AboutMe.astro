@@ -1,42 +1,63 @@
 ---
+import CustomParagraph from "./CustomParagraph.astro";
 import TitleSection from "./TitleSection.astro";
+import KeyWord from "../components/KeyWord.astro";
 ---
 
 <section id="about-me" class="flex flex-col justify-center py-28">
   <TitleSection>Sobre Mí</TitleSection>
-  <article class="flex gap-6 items-center">
-    <div class="flex flex-col gap-4">
-      <p class="text-pretty text-gray-300">
-        Mi nombre es Agustin y tengo 20 años. Me gradué como <span
-          class="text-blue-500">técnico electromecánico</span
-        > en la secundaria y actualmente estoy cursando mis estudios universitarios
-        para <span class="text-blue-500">Ingenieria Informática</span> en la Univerdad
-        de Buenos Aires (UBA).
-      </p>
-      <p class="text-pretty text-gray-300">
-        Estudio programación desde 2022, empezando por el <span
-          class="text-blue-500">desarrollo de páginas web</span
-        >. Durante mi último año de secundaria tuve la oportunidad de
-        complementar mis conocimientos en un proyecto de <span
-          class="text-blue-500"
-          >electrónica, automatización, y programación</span
-        >. Tambien he colaborado en la construcción de proyectos de software de
-        terceros.
-      </p>
-      <p class="text-pretty text-gray-300">
-        Me considero <span class="text-blue-500"
-          >una persona curiosa, responsable y centrada</span
-        >. Considero firmemente que los detalles en un proyecto marcan la
-        diferencia, de esa forma destacamos el sello personal de nuestro
-        producto y/o servicio.
-      </p>
-    </div>
+  <article class="gap-6 grid grid-cols-[11rem,1fr]">
     <picture>
       <img
         src="/portrait.jpg"
         alt="A picture of me, Torres Agustin"
-        class="rounded-3xl"
+        class="rounded-3xl object-cover object-top size-full"
       />
     </picture>
+    <div class="flex flex-col gap-4">
+      <CustomParagraph>
+        Mi nombre es Agustin y tengo 20 años. Me gradué como <KeyWord
+          word="técnico electromecánico"
+        /> en la secundaria y actualmente estoy cursando mis estudios universitarios
+        para <KeyWord word="Ingenieria Informática" /> en la Univerdad de Buenos
+        Aires (UBA).
+      </CustomParagraph>
+      <CustomParagraph>
+        Estudio programación desde 2022, empezando por el <KeyWord
+          word="desarrollo de páginas web"
+        />. Durante mi último año de secundaria tuve la oportunidad de
+        complementar mis conocimientos en un proyecto de <KeyWord
+          word="electrónica, automatización, y programación"
+        />. Tambien he colaborado en la construcción de proyectos de software de
+        terceros.
+      </CustomParagraph>
+      <CustomParagraph>
+        Me considero <KeyWord
+          word="una persona curiosa, responsable y centrada"
+        />. Considero firmemente que los detalles en un proyecto marcan la
+        diferencia, de esa forma destacamos el sello personal de nuestro
+        producto y/o servicio.
+      </CustomParagraph>
+    </div>
   </article>
 </section>
+
+<style>
+  @media (width <= 1070px) {
+    article {
+      grid-template-columns: 1fr;
+      grid-template-rows: 15rem 1fr;
+    }
+
+    article picture {
+      justify-self: center;
+      align-self: center;
+      height: 15rem;
+      width: 15rem;
+    }
+
+    article picture img {
+      border-radius: 100%;
+    }
+  }
+</style>
