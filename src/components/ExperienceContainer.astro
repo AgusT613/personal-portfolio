@@ -13,9 +13,11 @@ const { hasProjectUrls, projectUrl } = settings;
 ---
 
 <article class="grid grid-cols-[17rem,1fr] p-4 rounded-lg relative">
-  <span class="row-span-3 text-sm pt-1 text-gray-500 uppercase">{date}</span>
+  <span class="row-span-3 text-sm py-1 text-gray-500 uppercase job-date"
+    >{date}</span
+  >
   <div class="flex flex-col gap-y-4">
-    <h3 class="text-xl text-purple-300 text-pretty">
+    <h3 class="text-xl text-purple-300 text-pretty experience-title">
       {
         hasProjectUrls ? (
           // Make the article tag a clickable link to the project web-page using relative-absolute elements
@@ -33,9 +35,57 @@ const { hasProjectUrls, projectUrl } = settings;
         )
       }
     </h3>
-    <p class="text-gray-400 font-light tracking-wide">{description}</p>
+    <p class="text-gray-400 font-light tracking-wide experience-description">
+      {description}
+    </p>
     <div class="flex flex-wrap gap-2">
       {tags.map((tag) => <Badge label={tag} />)}
     </div>
   </div>
 </article>
+
+<style>
+  @media (930px <= width <= 1070px) {
+    article {
+      grid-template-columns: 14rem 1fr;
+    }
+
+    .job-date {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (width <= 850px) {
+    article {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (width <= 570px) {
+    .job-date {
+      font-size: 0.75rem;
+    }
+
+    .experience-title {
+      font-size: 1.15rem;
+    }
+
+    .experience-description {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (width <= 400px) {
+    .job-date {
+      font-size: 0.65rem;
+    }
+
+    .experience-title {
+      font-size: 1rem;
+    }
+
+    .experience-description {
+      font-size: 0.8rem;
+    }
+  }
+</style>

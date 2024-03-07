@@ -12,3 +12,17 @@ const { label } = Astro.props;
   <slot />
   {label}
 </span>
+
+<style>
+  @media (width <= 570px) {
+    span {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (width <= 400px) {
+    span {
+      font-size: 0.65rem;
+    }
+  }
+</style>

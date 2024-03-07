@@ -1,3 +1,17 @@
 <h2 class="text-5xl text-center tracking-wider pb-10">
   <slot />
 </h2>
+
+<style>
+  @media (width <= 850px) {
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (width <= 370px) {
+    h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
