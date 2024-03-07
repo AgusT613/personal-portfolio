@@ -1,0 +1,41 @@
+---
+import type { IExperience } from "../utils/types";
+import Badge from "./Badge.astro";
+import RedirectIcon from "./icons/RedirectIcon.astro";
+
+interface Props {
+  experience: IExperience;
+}
+
+const { experience } = Astro.props;
+const { date, description, settings, tags, title } = experience;
+const { hasProjectUrls, projectUrl } = settings;
+---
+
+<article class="grid grid-cols-[17rem,1fr] p-4 rounded-lg relative">
+  <span class="row-span-3 text-sm pt-1 text-gray-500 uppercase">{date}</span>
+  <div class="flex flex-col gap-y-4">
+    <h3 class="text-xl text-purple-300 text-pretty">
+      {
+        hasProjectUrls ? (
+          // Make the article tag a clickable link to the project web-page using relative-absolute elements
+          <a href={projectUrl} target="_blank">
+            <span class="flex justify-between items-center gap-2">
+              {title}
+              <span>
+                <RedirectIcon />
+              </span>
+            </span>
+            <span class="absolute inset-0 rounded-lg hover:bg-slate-500 hover:bg-opacity-15 cursor-pointer" />
+          </a>
+        ) : (
+          <span>{title}</span>
+        )
+      }
+    </h3>
+    <p class="text-gray-400 font-light tracking-wide">{description}</p>
+    <div class="flex flex-wrap gap-2">
+      {tags.map((tag) => <Badge label={tag} />)}
+    </div>
+  </div>
+</article>

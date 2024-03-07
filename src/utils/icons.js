@@ -4,7 +4,7 @@ import SQLite3 from "../components/icons/SQLite3.astro";
 import CSS from "../components/icons/CSS.astro";
 import React from "../components/icons/React.astro";
 import TailwindCSS from "../components/icons/TailwindCSS.astro";
-import Redirect from "../components/icons/Redirect.astro";
+import RedirectIcon from "../components/icons/RedirectIcon.astro";
 import GitHub from "../components/icons/GitHub.astro";
 import PostgreSQL from "../components/icons/PostgreSQL.astro";
 import Gmail from "../components/icons/Gmail.astro";
@@ -41,7 +41,7 @@ const ICONS = {
     icon: PostgreSQL,
     label: "PostgreSQL"
   },
-  Redirect,
+  RedirectIcon,
   GitHub,
   Gmail,
   Linkedin,

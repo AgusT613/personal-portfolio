@@ -30,7 +30,7 @@ const PROJECTS = [
       {
         href: "https://itba-full-stack-proyecto.vercel.app/",
         label: "Página Web",
-        icon: ICONS.Redirect,
+        icon: ICONS.RedirectIcon,
       },
     ],
   },
@@ -52,7 +52,7 @@ const PROJECTS = [
       {
         href: "https://kaleidoscopic-dieffenbachia-5d550d.netlify.app/",
         label: "Página Web",
-        icon: ICONS.Redirect,
+        icon: ICONS.RedirectIcon,
       },
     ],
   },
@@ -80,7 +80,7 @@ const PROJECTS = [
       {
         href: "https://liftun-entrevista-front.vercel.app/",
         label: "Página Web",
-        icon: ICONS.Redirect,
+        icon: ICONS.RedirectIcon,
       },
     ],
   },
