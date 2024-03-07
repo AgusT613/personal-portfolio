@@ -22,13 +22,15 @@ export interface IProject {
     links: IProjectLinks[]
 };
 
+export interface IExperienceSettings {
+    hasProjectUrls: boolean
+    projectUrl: string
+}
+
 export interface IExperience {
     title: string
     date: string
     description: string
     tags: string[]
-    settings: {
-        hasProjectUrls: boolean
-        projectUrl: string
-    }
+    settings: IExperienceSettings
 }

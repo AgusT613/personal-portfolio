@@ -1,5 +1,6 @@
 ---
 import CopyIcon from "./icons/CopyIcon.astro";
+import CustomActionBtn from "../components/CustomActionBtn.astro";
 ---
 
 <div class="flex items-center justify-center copy-email-btn">
@@ -10,12 +11,9 @@ import CopyIcon from "./icons/CopyIcon.astro";
     value="torresagustin613@gmail.com"
     class="rounded-l px-2 w-[240px] outline-none text-black h-full"
   />
-  <span
-    id="copyBtn"
-    class="cursor-pointer bg-blue-600 rounded-r flex items-center justify-center gap-1 px-2 py-1 hover:bg-blue-900 transition-colors"
-  >
+  <CustomActionBtn id="copyBtn" className="rounded-r">
     <CopyIcon />
-  </span>
+  </CustomActionBtn>
 </div>
 
 <style>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  className: string;
+}
+
+const { className } = Astro.props;
+---
+
+<h3 class={`text-xl text-pretty ${className}`}>
+  <slot />
+</h3>
+
+<style>
+  @media (width <= 570px) {
+    .h3 {
+      font-size: 1.15rem;
+    }
+  }
+
+  @media (width <= 400px) {
+    .h3 {
+      font-size: 1rem;
+    }
+  }
+</style>

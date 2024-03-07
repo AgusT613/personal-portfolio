@@ -1,0 +1,15 @@
+---
+interface Props {
+  id?: string;
+  className?: string;
+}
+
+const { id, className } = Astro.props;
+---
+
+<span
+  id={id}
+  class={`cursor-pointer bg-blue-600 flex items-center justify-center gap-1 px-2 py-1 hover:bg-blue-900 transition-colors ${className}`}
+>
+  <slot />
+</span>

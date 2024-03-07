@@ -1,5 +1,6 @@
 ---
 import type { IProjectLinks } from "../utils/types";
+import CustomActionBtn from "./CustomActionBtn.astro";
 
 interface Props {
   links: IProjectLinks[];
@@ -8,16 +9,14 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<div class="flex gap-6 items-center justify-center">
+<div class="flex gap-6 items-center justify-center flex-wrap">
   {
     links.map((link) => (
-      <a
-        class="bg-blue-600 rounded hover:bg-blue-900 cursor-pointer px-2 py-1 flex items-center justify-center gap-1"
-        href={link.href}
-        target="_blank"
-      >
-        {link.label}
-        <link.icon class="size-4" />
+      <a href={link.href} target="_blank">
+        <CustomActionBtn className="rounded">
+          {link.label}
+          <link.icon class="size-4" />
+        </CustomActionBtn>
       </a>
     ))
   }

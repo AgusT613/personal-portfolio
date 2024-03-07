@@ -2,6 +2,8 @@
 import TechnologiesUsed from "../components/TechnologiesUsed.astro";
 import ProjectLinks from "../components/ProjectLinks.astro";
 import type { IProject } from "../utils/types.ts";
+import CustomParagraph from "./CustomParagraph.astro";
+import CustomH3 from "./CustomH3.astro";
 
 interface Props {
   project: IProject;
@@ -11,8 +13,12 @@ const { description, image, links, name, technologies } = project;
 ---
 
 <article class="flex flex-col gap-6">
-  <h3 class="text-2xl text-yellow-500">{name}</h3>
-  <p class="text-gray-300">{description}</p>
+  <CustomH3 className="text-yellow-500">
+    <span class="project-title block">
+      {name}
+    </span>
+  </CustomH3>
+  <CustomParagraph>{description}</CustomParagraph>
   <TechnologiesUsed technologies={technologies} />
   <picture class="relative">
     <span class="absolute -z-10 inset-0 rounded-xl blur-sm opacity-40 bg-white"
@@ -21,3 +27,11 @@ const { description, image, links, name, technologies } = project;
   </picture>
   <ProjectLinks links={links} />
 </article>
+
+<style>
+  @media (width <= 400px) {
+    .project-title {
+      text-align: center;
+    }
+  }
+</style>
