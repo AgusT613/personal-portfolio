@@ -1,0 +1,17 @@
+---
+import ActionDoneIcon from "../components/icons/ActionDoneIcon.astro";
+---
+
+<div
+  id="copy-to-clipboard-msg-container"
+  class="fixed z-[40] w-full top-14 -right-full px-4 flex items-center justify-center"
+>
+  <span
+    class="border border-green-500 px-3 rounded flex gap-1 items-center justify-center tracking-wider text-green-500 relative"
+    >Email copiado
+    <span>
+      <ActionDoneIcon class="size-8" />
+    </span>
+    <span class="absolute inset-0 drop-shadow-xl bg-green-900 -z-20"></span>
+  </span>
+</div>

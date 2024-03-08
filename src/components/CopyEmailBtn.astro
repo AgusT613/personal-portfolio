@@ -11,7 +11,7 @@ import CustomActionBtn from "../components/CustomActionBtn.astro";
     value="torresagustin613@gmail.com"
     class="rounded-l px-2 w-[240px] outline-none text-black h-full"
   />
-  <CustomActionBtn id="copyBtn" className="rounded-r">
+  <CustomActionBtn id="copy-btn" className="rounded-r">
     <CopyIcon />
   </CustomActionBtn>
 </div>
@@ -36,14 +36,26 @@ import CustomActionBtn from "../components/CustomActionBtn.astro";
 </style>
 
 <script>
-  const copyBtn = document.getElementById("copyBtn");
+  const copyBtn = document.getElementById("copy-btn");
+  const messageContainer = document.getElementById(
+    "copy-to-clipboard-msg-container"
+  );
 
   function copyEmailToClipboard() {
     const email = (document.getElementById("emailText") as HTMLInputElement)
       .value;
     navigator.clipboard
       .writeText(email)
-      .then(() => alert("Email copiado!"))
+      .then(() => {
+        messageContainer.classList.remove("animate-message-disappear");
+        messageContainer.classList.remove("-right-full");
+        messageContainer.classList.add("right-0");
+        setTimeout(() => {
+          messageContainer.classList.add("animate-message-disappear");
+          messageContainer.classList.add("-right-full");
+          messageContainer.classList.remove("right-0");
+        }, 2750);
+      })
       .catch((error) => console.log(error));
   }
 
