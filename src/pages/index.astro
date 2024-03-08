@@ -7,7 +7,7 @@ import AboutMe from "../components/AboutMe.astro";
 ---
 
 <Layout title="Torres Agustin - Portafolio">
-  <main class="w-3/5">
+  <main class="w-3/5 relative">
     <Hero />
     <ExperienceSection />
     <ProjectSection />
@@ -29,8 +29,8 @@ import AboutMe from "../components/AboutMe.astro";
   }
 </style>
 
-<!-- Identifies the current section that is being targeted by changing the text´s color on header-nav -->
 <script>
+  // Identifies the current section that is being targeted by changing the text´s color on header-nav
   const sections = document.querySelectorAll("section");
   const navItems = document.querySelectorAll("header nav a");
 
@@ -38,10 +38,14 @@ import AboutMe from "../components/AboutMe.astro";
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         navItems.forEach((item) => {
-          if (item.getAttribute("aria-label") === entry.target.id) {
+          const hasSameAttributeAndId =
+            item.getAttribute("aria-label") === entry.target.id;
+          if (hasSameAttributeAndId) {
+            item.classList.add("current-section-focused");
             item.classList.add("text-blue-500");
             item.classList.add("scale-110");
           } else {
+            item.classList.remove("current-section-focused");
             item.classList.remove("text-blue-500");
             item.classList.remove("scale-110");
           }
