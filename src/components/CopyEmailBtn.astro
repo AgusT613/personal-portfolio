@@ -1,6 +1,7 @@
 ---
 import CopyIcon from "./icons/CopyIcon.astro";
 import CustomActionBtn from "../components/CustomActionBtn.astro";
+import SendEmailIcon from "../components/icons/SendEmailIcon.astro";
 ---
 
 <div class="flex items-center justify-center copy-email-btn">
@@ -11,8 +12,13 @@ import CustomActionBtn from "../components/CustomActionBtn.astro";
     value="torresagustin613@gmail.com"
     class="rounded-l px-2 w-[240px] outline-none text-black h-full"
   />
-  <CustomActionBtn id="copy-btn" className="rounded-r">
+  <CustomActionBtn id="copy-btn">
     <CopyIcon />
+  </CustomActionBtn>
+  <CustomActionBtn className="rounded-r">
+    <a href="mailto:torresagustin613@gmail.com">
+      <SendEmailIcon />
+    </a>
   </CustomActionBtn>
 </div>
 
