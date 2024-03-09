@@ -12,7 +12,7 @@ const EXPERIENCES = [
     {
         title: "Escuela de Innovación ITBA - Programa de Capacitación Fullstack Developer",
         date: "agosto 2023 - noviembre 2023",
-        description: "Diseño, maquetación, y desarrollo de un homebanking ficticio junto a un equipo de 3 compañeros. Proceso completo de construcción de la app desde la la creación de la vista web hasta la implementación de una REST-API para la creación, modificación, y actualización de datos. A cargo del diseño, desarrollo de los endpoints de la API, y la conexión frontend-backend.",
+        description: "Diseño, maquetación, y desarrollo de un homebanking ficticio junto a un equipo de 3 compañeros. Proceso completo de construcción de la app desde la creación de la vista web hasta la implementación de una REST-API para la creación, modificación, y actualización de datos. A cargo del diseño, desarrollo de los endpoints de la API, y la conexión frontend-backend.",
         tags: ["HTML - CSS", "TailwindCSS", "JavaScript", "NextJS", "Vercel", "Python", "Django", "SQLite3", "Slack", "Scrum", "Excalidraw"],
         settings: {
             hasProjectUrls: true,
