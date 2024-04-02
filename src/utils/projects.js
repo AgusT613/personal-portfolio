@@ -45,8 +45,13 @@ const PROJECTS = [
     },
     links: [
       {
-        href: "https://github.com/AgusT613/don_bosco_labs",
+        href: "https://github.com/AgusT613/don_bosco_labs_front",
         label: "GitHub Frontend",
+        icon: ICONS.GitHub,
+      },
+      {
+        href: "https://github.com/AgusT613/don_bosco_labs_back",
+        label: "GitHub Backend",
         icon: ICONS.GitHub,
       },
       {
