@@ -3,16 +3,18 @@ import "@fontsource-variable/roboto-slab";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import MessageContainer from "../components/MessageContainer.astro";
+import { getLangFromUrl } from "../i18n/utils";
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />

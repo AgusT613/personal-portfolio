@@ -1,7 +1,38 @@
 ---
-import navItems from "../utils/navItems";
 import DropDownIcon from "../components/icons/DropDownIcon.astro";
 import CloseIcon from "../components/icons/CloseIcon.astro";
+import LanguagePicker from "./LanguagePicker.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+const navItems = [
+  {
+    id: t("header.nav.items.top.id"),
+    label: t("header.nav.items.top.label"),
+    title: t("header.nav.items.top.title"),
+  },
+  {
+    id: t("header.nav.items.experience.id"),
+    label: t("header.nav.items.experience.label"),
+    title: t("header.nav.items.experience.title"),
+  },
+  {
+    id: t("header.nav.items.projects.id"),
+    label: t("header.nav.items.projects.label"),
+    title: t("header.nav.items.projects.title"),
+  },
+  {
+    id: t("header.nav.items.about.me.id"),
+    label: t("header.nav.items.about.me.label"),
+    title: t("header.nav.items.about.me.title"),
+  },
+  {
+    id: t("header.nav.items.contact.id"),
+    label: t("header.nav.items.contact.label"),
+    title: t("header.nav.items.contact.title"),
+  },
+];
 ---
 
 <header
@@ -21,7 +52,10 @@ import CloseIcon from "../components/icons/CloseIcon.astro";
       ))
     }
   </nav>
-  <span class="absolute inset-0 w-full flex items-center justify-end px-6">
+  <span class="absolute inset-0 w-full flex items-center justify-between px-6">
+    <span>
+      <LanguagePicker />
+    </span>
     <span
       id="drop-drown-btn"
       class="hidden bg-blue-600 rounded-full hover:scale-110 cursor-pointer hover:bg-blue-400 z-50"

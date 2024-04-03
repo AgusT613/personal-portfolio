@@ -1,12 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import ExperienceSection from "../components/ExperienceSection.astro";
-import ProjectSection from "../components/ProjectSection.astro";
-import AboutMe from "../components/AboutMe.astro";
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import ExperienceSection from "../../components/ExperienceSection.astro";
+import ProjectSection from "../../components/ProjectSection.astro";
+import AboutMe from "../../components/AboutMe.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+}
+
+const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
-<Layout title="Torres Agustin - Portafolio">
+<Layout title={t("head.title")}>
   <main class="w-3/5 relative">
     <Hero />
     <ExperienceSection />
