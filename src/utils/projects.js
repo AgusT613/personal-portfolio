@@ -81,7 +81,6 @@ const PROJECTS = [
         label: "GitHub Backend",
         icon: ICONS.GitHub,
       },
-      // TODO: Publicar página web y desplegar el backend
       {
         href: "https://liftun-entrevista-front.vercel.app/",
         label: "Página Web",
