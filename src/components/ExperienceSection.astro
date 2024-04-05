@@ -1,11 +1,76 @@
 ---
 import TitleSection from "./TitleSection.astro";
-import EXPERIENCES from "../utils/experience.js";
 import ExperienceContainer from "../components/ExperienceContainer.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+const EXPERIENCES = [
+  {
+    title: t("experience.red.mascotera.title"),
+    date: t("experience.red.mascotera.date"),
+    description: t("experience.red.mascotera.description"),
+    tags: [
+      "HTML - CSS",
+      "TailwindCSS",
+      "TypeScript",
+      "NextJS",
+      "Docker",
+      "Trello",
+      "Git - GitHub",
+    ],
+    settings: {
+      hasProjectUrls: true,
+      projectUrl: "https://github.com/redmascotera/redmascotera-front",
+    },
+  },
+  {
+    title: t("experience.itba.title"),
+    date: t("experience.itba.date"),
+    description: t("experience.itba.description"),
+    tags: [
+      "HTML - CSS",
+      "TailwindCSS",
+      "JavaScript",
+      "NextJS",
+      "Vercel",
+      "Python",
+      "Django",
+      "SQLite3",
+      "Slack",
+      "Scrum",
+      "Excalidraw",
+    ],
+    settings: {
+      hasProjectUrls: true,
+      projectUrl: "https://itba-full-stack-proyecto.vercel.app/",
+    },
+  },
+  {
+    title: t("experience.don.bosco.labs.title"),
+    date: t("experience.don.bosco.labs.date"),
+    description: t("experience.don.bosco.labs.description"),
+    tags: ["HTML - CSS", "JavaScript", "ReactJS", "Netlify", "Slack", "Trello"],
+    settings: {
+      hasProjectUrls: true,
+      projectUrl: "https://kaleidoscopic-dieffenbachia-5d550d.netlify.app/",
+    },
+  },
+  {
+    title: t("experience.femyp.title"),
+    date: t("experience.femyp.date"),
+    description: t("experience.femyp.description"),
+    tags: ["Autodesk Inventor", "Autodesk AutoCAD", "Excel", "Word"],
+    settings: {
+      hasProjectUrls: false,
+      projectUrl: null,
+    },
+  },
+];
 ---
 
 <section class="pt-28" id="experience">
-  <TitleSection>Experiencia</TitleSection>
+  <TitleSection>{t("experience.section.title")}</TitleSection>
   <div class="flex flex-col gap-4">
     {
       EXPERIENCES.map((experience) => (
