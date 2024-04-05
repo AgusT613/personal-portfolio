@@ -1,19 +1,48 @@
 ---
 import { languages } from "../i18n/ui";
+import LanguageIcon from "./icons/LanguageIcon.astro";
+import ESIcon from "./icons/languages/ESIcon.astro";
+import ENIcon from "./icons/languages/ENIcon.astro";
 ---
 
-<ul>
-  {
-    Object.entries(languages).map(([lang, label]) =>
-      lang === "es" ? (
-        <li>
-          <a href={`/`}>{label}</a>
-        </li>
-      ) : (
-        <li>
-          <a href={`/${lang}`}>{label}</a>
-        </li>
+<span class="flex gap-3 items-center relative">
+  <LanguageIcon
+    class="size-8 absolute z-50 bg-slate-800 p-1 rounded-full cursor-pointer hover:scale-110 hover:bg-slate-700"
+    id="language-icon"
+  />
+  <div
+    class="hidden flex-col absolute top-6 inset-1 gap-2"
+    id="languages-container"
+  >
+    {
+      Object.entries(languages).map(([lang, label]) =>
+        lang === "es" ? (
+          <a href={`/`} class="hover:scale-110">
+            <ESIcon class="w-6" />
+          </a>
+        ) : (
+          <a href={`/${lang}`} class="hover:scale-110">
+            <ENIcon class="w-6" />
+          </a>
+        )
       )
-    )
-  }
-</ul>
+    }
+  </div>
+</span>
+
+<script>
+  const languageIcon = document.getElementById("language-icon");
+  const languagesContainer = document.getElementById("languages-container");
+
+  const displayLanguages = (e) => {
+    if (languagesContainer.classList.contains("hidden")) {
+      languagesContainer.classList.remove("hidden");
+      languagesContainer.classList.add("flex");
+    } else {
+      languagesContainer.classList.remove("flex");
+      languagesContainer.classList.add("hidden");
+    }
+  };
+
+  languageIcon.addEventListener("click", displayLanguages);
+</script>
