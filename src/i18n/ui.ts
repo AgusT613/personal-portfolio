@@ -79,7 +79,33 @@ export const ui = {
             // Entrevista Tecnica Liftun
         "project.tech.interview.title": "Entrevista Técnica - Liftun",
         "project.tech.interview.description": "Interfaz que permite a los usuarios configurar distintos elementos fundamentales para crear una acción sostenible para el medio ambiente. API REST y base de datos para almacenar las acciones.",
-        "project.tech.interview.img.alt": "Prevista de un formulario para la creación de tarjetas que indican una acción sostenible para el planeta."
+        "project.tech.interview.img.alt": "Prevista de un formulario para la creación de tarjetas que indican una acción sostenible para el planeta.",
+            // About Me Section
+        "about.me.section.title": "Sobre Mí",
+        "about.me.section.img.profile.alt": "Una foto de mí, Torres Agustin",
+        /*
+            Mi nombre es Agustin y tengo 20 años. Me gradué como [técnico electromecánico] en la secundaria y actualmente estoy cursando mis estudios universitarios para [Ingenieria Informática] en la Universidad de Buenos Aires (UBA).
+            
+            Estudio programación desde 2022, empezando por el [desarrollo de páginas web.] Durante mi último año de secundaria tuve la oportunidad de complementar mis conocimientos en un proyecto de [electrónica, automatización, y programación.] Tambien he colaborado en la construcción de proyectos de software de terceros.
+            
+            Me considero una persona [curiosa, responsable y centrada.] Considero firmemente que los detalles en un proyecto marcan la diferencia, de esa forma destacamos el sello personal de nuestro producto y/o servicio.
+        */
+            // First Paragraph
+        "about.me.fp.s1": "Mi nombre es Agustin y tengo 20 años. Me gradué como",
+        "about.me.fp.kw1": "técnico electromecánico",
+        "about.me.fp.s2": "en la secundaria y actualmente estoy cursando mis estudios universitarios para",
+        "about.me.fp.kw2": "Ingenieria Informática",
+        "about.me.fp.s3": "en la Universidad de Buenos Aires (UBA).",
+            // Second Paragraph
+        "about.me.sp.s1": "Estudio programación desde 2022, empezando por el",
+        "about.me.sp.kw1": "desarrollo de páginas web.",
+        "about.me.sp.s2": "Durante mi último año de secundaria tuve la oportunidad de complementar mis conocimientos en un proyecto de",
+        "about.me.sp.kw2": "electrónica, automatización, y programación.",
+        "about.me.sp.s3": "Tambien he colaborado en la construcción de proyectos de software de terceros.",
+            // Third Paragraph
+        "about.me.tp.s1": "Me considero una persona",
+        "about.me.tp.kw1": "curiosa, responsable y centrada.",
+        "about.me.tp.s2": "Considero firmemente que los detalles en un proyecto marcan la diferencia, de esa forma destacamos el sello personal de nuestro producto y/o servicio."
     },
     en: {
         // Head
@@ -154,6 +180,32 @@ export const ui = {
             // Entrevista Tecnica Liftun
         "project.tech.interview.title": "Technical Interview - Liftun",
         "project.tech.interview.description": "Interface that enables users to configure various fundamental elements to create a sustainable action for the environment. REST API and database for storing the actions.",
-        "project.tech.interview.img.alt": "Preview of a form for creating cards that indicate a sustainable action for the planet."
+        "project.tech.interview.img.alt": "Preview of a form for creating cards that indicate a sustainable action for the planet.",
+            // About Me Section
+        "about.me.section.title": "About Me",
+        "about.me.section.img.profile.alt": "A picture of me, Torres Agustin",
+        /* 
+            My name is Agustin and I am 20 years old. I graduated as an [electromechanical technician] in high school, and I am currently studying [Computer Engineering] at the University of Buenos Aires (UBA).
+
+            I have been studying programming since 2022, starting with [web development.] During my last year of high school, I had the opportunity to complement my knowledge in a project involving [electronics, automation, and programming.] I have also collaborated in the construction of third-party software projects.
+
+            I consider myself a [curious, responsible, and focused individual.] I firmly believe that the details in a project make a difference; in this way, we highlight the personal touch of our product and/or service.
+        */
+            // First Paragraph
+        "about.me.fp.s1": "My name is Agustin and I am 20 years old. I graduated as an",
+        "about.me.fp.kw1": "electromechanical technician",
+        "about.me.fp.s2": "in high school, and I am currently studying",
+        "about.me.fp.kw2": "Computer Engineering",
+        "about.me.fp.s3": "at the University of Buenos Aires (UBA).",
+            // Second Paragraph
+        "about.me.sp.s1": "I have been studying programming since 2022, starting with",
+        "about.me.sp.kw1": "web development.",
+        "about.me.sp.s2": "During my last year of high school, I had the opportunity to complement my knowledge in a project involving",
+        "about.me.sp.kw2": "electronics, automation, and programming.",
+        "about.me.sp.s3": "I have also collaborated in the construction of third-party software projects.",
+            // Third Paragraph
+        "about.me.tp.s1": "I consider myself a",
+        "about.me.tp.kw1": "curious, responsible, and focused individual.",
+        "about.me.tp.s2": "I firmly believe that the details in a project make a difference; in this way, we highlight the personal touch of our product and/or service."
     }
 } as const;
