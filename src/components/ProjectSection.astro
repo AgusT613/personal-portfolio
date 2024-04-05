@@ -1,11 +1,107 @@
 ---
-import PROJECTS from "../utils/projects";
 import TitleSection from "./TitleSection.astro";
 import ProjectContainer from "../components/ProjectContainer.astro";
+import ICONS from "../utils/icons.js";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+const PROJECTS = [
+  {
+    name: "ITBANK Homebanking",
+    description: t("project.homebanking.description"),
+    technologies: [
+      ICONS.NextJS,
+      ICONS.Django,
+      ICONS.SQLite,
+      ICONS.CSS,
+      ICONS.Tailwind,
+    ],
+    image: {
+      src: "projects/itbank_homebanking/preview.png",
+      alt: t("project.homebanking.img.alt"),
+    },
+    links: [
+      {
+        href: "https://github.com/AgusT613/itba_full_stack_front/tree/develop",
+        label: "GitHub Frontend",
+        icon: ICONS.GitHub,
+      },
+      {
+        href: "https://github.com/AgusT613/itba_full_stack_back/tree/develop",
+        label: "Github Backend",
+        icon: ICONS.GitHub,
+      },
+      {
+        href: "https://itba-full-stack-proyecto.vercel.app/",
+        label: t("project.section.webpage.btn.label"),
+        icon: ICONS.RedirectIcon,
+      },
+    ],
+  },
+  {
+    name: "Don Bosco Labs",
+    description: t("project.don.bosco.description"),
+    technologies: [ICONS.React, ICONS.CSS, ICONS.Tailwind],
+    image: {
+      src: "projects/don_bosco_labs/preview.png",
+      alt: t("project.don.bosco.img.alt"),
+    },
+    links: [
+      {
+        href: "https://github.com/AgusT613/don_bosco_labs_front",
+        label: "GitHub Frontend",
+        icon: ICONS.GitHub,
+      },
+      {
+        href: "https://github.com/AgusT613/don_bosco_labs_back",
+        label: "GitHub Backend",
+        icon: ICONS.GitHub,
+      },
+      {
+        href: "https://kaleidoscopic-dieffenbachia-5d550d.netlify.app/",
+        label: t("project.section.webpage.btn.label"),
+        icon: ICONS.RedirectIcon,
+      },
+    ],
+  },
+  {
+    name: t("project.tech.interview.title"),
+    description: t("project.tech.interview.description"),
+    technologies: [
+      ICONS.NextJS,
+      ICONS.Django,
+      ICONS.SQLite,
+      ICONS.PostgreSQL,
+      ICONS.Tailwind,
+    ],
+    image: {
+      src: "projects/entrevista_tecnica_uno/preview.png",
+      alt: t("project.tech.interview.img.alt"),
+    },
+    links: [
+      {
+        href: "https://github.com/AgusT613/liftun_entrevista_front",
+        label: "GitHub Frontend",
+        icon: ICONS.GitHub,
+      },
+      {
+        href: "https://github.com/AgusT613/liftun_entrevista_back",
+        label: "GitHub Backend",
+        icon: ICONS.GitHub,
+      },
+      {
+        href: "https://liftun-entrevista-front.vercel.app/",
+        label: t("project.section.webpage.btn.label"),
+        icon: ICONS.RedirectIcon,
+      },
+    ],
+  },
+];
 ---
 
 <section id="projects" class="flex flex-col pt-28">
-  <TitleSection>Proyectos</TitleSection>
+  <TitleSection>{t("project.section.title")}</TitleSection>
   <div class="flex flex-col gap-8">
     {PROJECTS.map((project) => <ProjectContainer project={project} />)}
   </div>

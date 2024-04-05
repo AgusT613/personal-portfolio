@@ -67,6 +67,19 @@ export const ui = {
         "experience.femyp.title": "Femyp SRL - Pasantia en Empresa de Ascensores",
         "experience.femyp.date": "octubre 2022 - noviembre 2022",
         "experience.femyp.description": "A cargo del diseño de piezas de ascensores, y de muebleria para la propuesta de la nueva oficina técnica de la empresa.",
+            // Project Section
+        "project.section.title": "Proyectos",
+        "project.section.webpage.btn.label": "Página Web",
+            // Homebanking
+        "project.homebanking.description": "Proyecto para un programa de capacitación en FullStack Developer, junto a un equipo de desarrollo. Aplicación web de homebanking, amigable al usuario y de facil navegación. API REST y autenticación desarrollada con django-rest-framework.",
+        "project.homebanking.img.alt": "Prevista de la aplicación de homebanking desarrollada para la web. La plataforma se llama ITBANK y allí se pueden realizar operaciones bancarias desde a comodidad de un celular.",
+            // Don Bosco Labs
+        "project.don.bosco.description": "Sistema de laboratorio de análisis clínicos desarrollada para una practica. Marco de trabajo Scrum. Encargado de desarrollar la página web del laboratorio.",
+        "project.don.bosco.img.alt": "Prevista del sistema de laboratorio de análisis clínicos en donde lo primero que se muestra es la sección de inicio con una imagen de una mujer con vestimenta de laboratorio en brazos cruzados.",
+            // Entrevista Tecnica Liftun
+        "project.tech.interview.title": "Entrevista Técnica - Liftun",
+        "project.tech.interview.description": "Interfaz que permite a los usuarios configurar distintos elementos fundamentales para crear una acción sostenible para el medio ambiente. API REST y base de datos para almacenar las acciones.",
+        "project.tech.interview.img.alt": "Prevista de un formulario para la creación de tarjetas que indican una acción sostenible para el planeta."
     },
     en: {
         // Head
@@ -129,5 +142,18 @@ export const ui = {
         "experience.femyp.title": "Femyp SRL - Internship in Elevator Company",
         "experience.femyp.date": "october 2022 - november 2022",
         "experience.femyp.description": "In charge of designing elevator components and furniture for the proposal of the company's new technical office.",
+            // Project Section
+        "project.section.title": "Projects",
+        "project.section.webpage.btn.label": "Web Page",
+            // Homebanking
+        "project.homebanking.description": "Project for a FullStack Developer training program, alongside a development team. User-friendly and easily navigable home banking web application. REST API and authentication developed using Django REST Framework.",
+        "project.homebanking.img.alt": "Preview of the web-developed home banking application. The platform is called ITBANK, where banking operations can be carried out conveniently from a mobile device.",
+            // Don Bosco Labs
+        "project.don.bosco.description": "Clinical analysis laboratory system developed for a practical project. Implemented within a Scrum framework. Responsible for developing the laboratory's website.",
+        "project.don.bosco.img.alt": "Preview of the clinical analysis laboratory system, where the initial section features an image of a woman wearing laboratory attire with arms crossed.",
+            // Entrevista Tecnica Liftun
+        "project.tech.interview.title": "Technical Interview - Liftun",
+        "project.tech.interview.description": "Interface that enables users to configure various fundamental elements to create a sustainable action for the environment. REST API and database for storing the actions.",
+        "project.tech.interview.img.alt": "Preview of a form for creating cards that indicate a sustainable action for the planet."
     }
 } as const;
