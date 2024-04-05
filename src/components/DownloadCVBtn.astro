@@ -1,11 +1,14 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import CustomActionBtn from "./CustomActionBtn.astro";
 import DownloadIcon from "./icons/DownloadIcon.astro";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
-<a href="/torres_facundo_cv.pdf" download="Torres Agustin CV">
+<a href="/torres_facundo_cv.pdf" download={t("hero.download.cv.file.name")}>
   <CustomActionBtn className="rounded">
-    Descargar CV
+    {t("hero.download.cv")}
     <DownloadIcon />
   </CustomActionBtn>
 </a>

@@ -12,7 +12,7 @@ export const ui = {
         // Body
             // Message Container
         "message.container": "Email Copiado",
-            // Header
+            // Header Section
         "header.top": "Inicio",
         "header.experience": "Experiencia",
         "header.projects": "Proyectos",
@@ -38,6 +38,17 @@ export const ui = {
         "header.nav.items.contact.id": "#contact",
         "header.nav.items.contact.label": "contact",
         "header.nav.items.contact.title": "Contacto",
+            // Hero Section
+        "hero.image.profile.alt": "Una foto mia, Agustin Torres, vestido con una camisa azul.",
+        "hero.badge.webpages": "páginas web",
+        "hero.badge.apps": "aplicaciones",
+        "hero.badge.database": "bases de datos",
+        "hero.badge.design": "diseño",
+        "hero.greeting": "Un gusto! Soy Agus",
+        "hero.years.of.experience": "+1 año de experiencia.",
+        "hero.description": "Estudiando desarrollo de software y colaborando en proyectos de terceros. Cuento con amplios conocimientos para la construcción de tu próximo proyecto web o aplicación.",
+        "hero.download.cv": "Descargar CV",
+        "hero.download.cv.file.name": "torres-agustin-cv"
     },
     en: {
         // Head
@@ -71,5 +82,16 @@ export const ui = {
         "header.nav.items.contact.id": "#contact",
         "header.nav.items.contact.label": "contact",
         "header.nav.items.contact.title": "Contact",
+            // Hero Section
+        "hero.image.profile.alt": "A picture of me, Agustin Torres, wearing a blue shirt.",
+        "hero.badge.webpages": "web pages",
+        "hero.badge.apps": "applications",
+        "hero.badge.database": "databases",
+        "hero.badge.design": "design",
+        "hero.greeting": "Hey! I´m Agus",
+        "hero.years.of.experience": "+1 year of experience.",
+        "hero.description": "Studying software development and collaborating on third-party projects. I have extensive knowledge for building your next web project or application.",
+        "hero.download.cv": "Resume",
+        "hero.download.cv.file.name": "torres-agustin-resume"
     }
 } as const;
