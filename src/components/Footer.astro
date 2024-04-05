@@ -1,12 +1,17 @@
 ---
 import ICONS from "../utils/icons";
 import FOOTER_LINKS from "../utils/footerLinks";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
 <footer class="px-3 py-6 flex justify-center items-center gap-10">
   <!-- Contact Me Section -->
   <section id="contact" class="flex items-center justify-center gap-6">
-    <h2 class="text-lg text-center tracking-wider contact-title">Contacto</h2>
+    <h2 class="text-lg text-center tracking-wider contact-title">
+      {t("header.contact")}
+    </h2>
     {
       FOOTER_LINKS.map((link) => (
         <a href={link.href} class="hover:scale-110" target="_blank">
@@ -19,7 +24,7 @@ import FOOTER_LINKS from "../utils/footerLinks";
   <span
     class="text-lg flex items-center justify-center gap-5 tracking-wider text-purple-300 developed-with-title"
   >
-    Desarrollado con Astro
+    {t("footer.portfolio.develop.with.title")}
     <a href="https://astro.build/" class="hover:scale-110" target="_blank">
       <ICONS.AstroIcon class="size-6 footer-icon-url" />
     </a>

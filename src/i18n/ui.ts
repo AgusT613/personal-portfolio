@@ -105,7 +105,9 @@ export const ui = {
             // Third Paragraph
         "about.me.tp.s1": "Me considero una persona",
         "about.me.tp.kw1": "curiosa, responsable y centrada.",
-        "about.me.tp.s2": "Considero firmemente que los detalles en un proyecto marcan la diferencia, de esa forma destacamos el sello personal de nuestro producto y/o servicio."
+        "about.me.tp.s2": "Considero firmemente que los detalles en un proyecto marcan la diferencia, de esa forma destacamos el sello personal de nuestro producto y/o servicio.",
+            // Footer Section
+        "footer.portfolio.develop.with.title": "Desarrollado con Astro"
     },
     en: {
         // Head
@@ -206,6 +208,8 @@ export const ui = {
             // Third Paragraph
         "about.me.tp.s1": "I consider myself a",
         "about.me.tp.kw1": "curious, responsible, and focused individual.",
-        "about.me.tp.s2": "I firmly believe that the details in a project make a difference; in this way, we highlight the personal touch of our product and/or service."
+        "about.me.tp.s2": "I firmly believe that the details in a project make a difference; in this way, we highlight the personal touch of our product and/or service.",
+            // Footer Section
+        "footer.portfolio.develop.with.title": "Developed with Astro"
     }
 } as const;
