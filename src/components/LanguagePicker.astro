@@ -17,7 +17,7 @@ import ENIcon from "./icons/languages/ENIcon.astro";
     {
       Object.entries(languages).map(([lang, label]) =>
         lang === "es" ? (
-          <a href={`/`} class="hover:scale-110">
+          <a href={`/${lang}`} class="hover:scale-110">
             <ESIcon class="w-6" />
           </a>
         ) : (
