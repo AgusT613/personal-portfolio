@@ -9,6 +9,7 @@ export const ui = {
     es: {
         // Head
         "head.title": "Torres Agustin - Portafolio",
+        "head.description": "Mi portafolio personal de desarrollador web",
         // Body
             // Message Container
         "message.container": "Email Copiado",
@@ -112,6 +113,7 @@ export const ui = {
     en: {
         // Head
         "head.title": "Torres Agustin - Portfolio",
+        "head.description": "My personal web developer portfolio",
         // Body
             // Message Container
         "message.container": "Email Copied",
