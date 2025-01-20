@@ -10,13 +10,7 @@ const PROJECTS = [
   {
     name: "ITBANK Homebanking",
     description: t("project.homebanking.description"),
-    technologies: [
-      ICONS.NextJS,
-      ICONS.Django,
-      ICONS.SQLite,
-      ICONS.CSS,
-      ICONS.Tailwind,
-    ],
+    technologies: [ICONS.NextJS, ICONS.Django, ICONS.SQLite, ICONS.CSS],
     image: {
       src: "../projects/itbank_homebanking/preview.png",
       alt: t("project.homebanking.img.alt"),
@@ -34,6 +28,27 @@ const PROJECTS = [
       },
       {
         href: "https://itba-full-stack-proyecto.vercel.app/",
+        label: t("project.section.webpage.btn.label"),
+        icon: ICONS.RedirectIcon,
+      },
+    ],
+  },
+  {
+    name: "ECommy",
+    description: t("project.ecommerce.description"),
+    technologies: [ICONS.React, ICONS.CSS],
+    image: {
+      src: "../projects/ecommerce/preview.png",
+      alt: t("project.ecommerce.img.alt"),
+    },
+    links: [
+      {
+        href: "https://github.com/AgusT613/ecommerce-react",
+        label: "GitHub Frontend",
+        icon: ICONS.GitHub,
+      },
+      {
+        href: "https://eccomy-ecommerce-react.netlify.app/",
         label: t("project.section.webpage.btn.label"),
         icon: ICONS.RedirectIcon,
       },
