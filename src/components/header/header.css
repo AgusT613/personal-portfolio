@@ -1,0 +1,35 @@
+.current-section-focused {
+  text-align: center;
+}
+
+@media (width > 600px) {
+  #drop-down-nav-bar-container {
+    display: none;
+  }
+}
+
+@media (width <= 600px) {
+  #desktop-nav-bar-container {
+    display: grid;
+    grid-template-columns: repeat(5, 100%);
+    grid-template-rows: 1fr;
+  }
+
+  .current-section-focused {
+    grid-column: 1 / 2;
+  }
+
+  .responsive-nav-item {
+    color: #d8b4fe;
+    text-transform: uppercase;
+    transform: scale(1);
+  }
+
+  #desktop-nav-bar-container > :not(.current-section-focused) {
+    display: none;
+  }
+
+  #drop-drown-btn {
+    display: block;
+  }
+}
