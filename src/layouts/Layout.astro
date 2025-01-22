@@ -26,13 +26,39 @@ const t = useTranslations(lang);
   </head>
   <body class="relative">
     <MessageContainer />
-    <Header />
-    <div class="flex justify-center">
-      <slot />
+    <div class="grid-wrapper">
+      <Header />
+      <div class="main-wrapper">
+        <slot />
+      </div>
+      <Footer />
     </div>
-    <Footer />
   </body>
 </html>
+
+<style>
+  .grid-wrapper {
+    display: grid;
+    grid-template-areas:
+      "header main"
+      "header footer";
+  }
+
+  .main-wrapper {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (width < 800px) {
+    .grid-wrapper {
+      grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    }
+  }
+</style>
 
 <style is:global>
   html {

@@ -1,5 +1,42 @@
-.current-section-focused {
-  text-align: center;
+.header {
+  background: #222b3c;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  top: 0;
+  z-index: 50;
+  position: sticky;
+  grid-area: header;
+}
+
+@media (width < 900px) {
+  .header {
+    background: none;
+    backdrop-filter: blur(24px);
+    position: fixed;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  #desktop-nav-bar-container {
+    display: flex;
+  }
+
+  .nav-icons-container {
+    display: none;
+  }
+
+  .nav-links-container {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .toggle-menu-container {
+    display: none;
+  }
 }
 
 @media (width > 600px) {
@@ -9,9 +46,13 @@
 }
 
 @media (width <= 600px) {
-  #desktop-nav-bar-container {
+  .header {
+    backdrop-filter: none;
+    background-color: #222b3c;
+  }
+
+  .nav-links-container {
     display: grid;
-    grid-template-columns: repeat(5, 100%);
     grid-template-rows: 1fr;
   }
 

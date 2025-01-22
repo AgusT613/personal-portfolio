@@ -4,6 +4,12 @@ import DropDownIcon from "../../components/icons/DropDownIcon.astro";
 import CloseIcon from "../../components/icons/CloseIcon.astro";
 import LanguagePicker from "../LanguagePicker.astro";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import HomeIcon from "../icons/HomeIcon.astro";
+import ExperienceIcon from "../icons/ExperienceIcon.astro";
+import ProjectIcon from "../icons/ProjectIcon.astro";
+import AboutMeIcon from "../icons/AboutMeIcon.astro";
+import ContactMeIcon from "../icons/ContactMeIcon.astro";
+import ToggleMenu from "../ToggleMenu.astro";
 
 const t = useTranslations(getLangFromUrl(Astro.url));
 
@@ -34,38 +40,75 @@ const navItems = [
     title: t("header.nav.items.contact.title"),
   },
 ];
+
+const iconClassName =
+  "w-8 h-8 bg-blue-200 rounded p-1 hover:bg-blue-400 hover:scale-110";
 ---
 
-<header
-  id="nav-header"
-  class="flex justify-center items-center w-full fixed z-50 backdrop-blur-xl p-3"
->
-  <nav class="flex gap-8 z-50" id="desktop-nav-bar-container">
-    {
-      navItems.map((item) => (
-        <a
-          href={item.id}
-          class="transition-colors text-sm tracking-wide hover:text-blue-400 hover:scale-110 responsive-nav-item"
-          aria-label={item.label}
-        >
-          {item.title}
-        </a>
-      ))
-    }
-  </nav>
-  <span class="absolute inset-0 w-full flex items-center justify-between px-6">
-    <LanguagePicker />
-    <span
-      id="drop-drown-btn"
-      class="hidden bg-blue-600 rounded-full hover:scale-110 cursor-pointer hover:bg-blue-400 z-50"
+<header id="nav-header" class="header">
+  <nav class="flex gap-5 h-full items-center justify-center">
+    <div class="flex gap-2 flex-col h-3/4 justify-around nav-icons-container">
+      <HomeIcon
+        class={iconClassName}
+        href={navItems[0].id}
+        aria-label={t("header.nav.items.top.label")}
+      />
+      <ExperienceIcon
+        class={iconClassName}
+        href={navItems[1].id}
+        aria-label={t("header.nav.items.experience.label")}
+      />
+      <ProjectIcon
+        class={iconClassName}
+        href={navItems[2].id}
+        aria-label={t("header.nav.items.projects.label")}
+      />
+      <AboutMeIcon
+        class={iconClassName}
+        href={navItems[3].id}
+        aria-label={t("header.nav.items.about.me.label")}
+      />
+      <ContactMeIcon
+        class={iconClassName}
+        href={navItems[4].id}
+        aria-label={t("header.nav.items.contact.label")}
+      />
+    </div>
+    <div
+      class="flex gap-2 flex-col h-3/4 justify-around nav-links-container"
+      id="desktop-nav-bar-container"
     >
-      <DropDownIcon class="size-8" id="drop-down-icon" />
-      <CloseIcon class="size-8 hidden" id="close-icon" />
-    </span>
+      {
+        navItems.map((item) => (
+          <a
+            href={item.id}
+            class="transition-colors text-sm tracking-wide hover:text-blue-400 hover:scale-110 responsive-nav-item"
+            aria-label={item.label}
+          >
+            {item.title}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+
+  <span class="absolute left-4 top-7">
+    <LanguagePicker />
   </span>
+  <span class="absolute bottom-4 left-4 flex toggle-menu-container">
+    <ToggleMenu iconClassName={iconClassName} />
+  </span>
+  <span
+    id="drop-drown-btn"
+    class="hidden bg-blue-600 rounded-full hover:scale-110 cursor-pointer hover:bg-blue-400 z-50 absolute right-5"
+  >
+    <DropDownIcon class="size-8" id="drop-down-icon" />
+    <CloseIcon class="size-8 hidden" id="close-icon" />
+  </span>
+
   <nav
     id="drop-down-nav-bar-container"
-    class="hidden fixed bg-[rgba(0,0,0,.85)] h-screen w-screen top-11 left-0 z-40"
+    class="hidden fixed bg-[rgba(0,0,0,.85)] h-screen w-screen top-[3.25rem] left-0 z-40"
   >
     <div class="flex items-center justify-center h-full w-full">
       <div class="flex flex-col gap-y-10">

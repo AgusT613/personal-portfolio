@@ -1,0 +1,51 @@
+---
+import CollapseMenuIcon from "./icons/CollapseMenuIcon.astro";
+import ExpandMenuIcon from "./icons/ExpandMenuIcon.astro";
+
+const { iconClassName } = Astro.props;
+const className2 = "rounded-full bg-white hover:bg-white";
+---
+
+<ExpandMenuIcon
+  class={`${iconClassName} ${className2} hidden`}
+  id="expand-menu-btn"
+/>
+<CollapseMenuIcon
+  class={`${iconClassName} ${className2}`}
+  id="collapse-menu-btn"
+/>
+
+<style>
+  :is(#expand-menu-btn, #collapse-menu-btn) {
+    cursor: pointer;
+    z-index: 100;
+  }
+</style>
+
+<script>
+  const expandMenuBtn = document.getElementById("expand-menu-btn");
+  const collapseMenuBtn = document.getElementById("collapse-menu-btn");
+
+  const navBarLinksContainer = document.getElementById(
+    "desktop-nav-bar-container"
+  );
+
+  const handleCollapseMenu = () => {
+    navBarLinksContainer.classList.add("hidden");
+    collapseMenuBtn.classList.add("hidden");
+
+    expandMenuBtn.classList.remove("hidden");
+    expandMenuBtn.classList.add("block");
+  };
+
+  const handleExpandMenu = () => {
+    navBarLinksContainer.classList.remove("hidden");
+    collapseMenuBtn.classList.remove("hidden");
+
+    expandMenuBtn.classList.add("hidden");
+    expandMenuBtn.classList.remove("block");
+  };
+
+  collapseMenuBtn.addEventListener("click", handleCollapseMenu);
+  expandMenuBtn.addEventListener("click", handleExpandMenu);
+</script>
