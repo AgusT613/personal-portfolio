@@ -6,7 +6,7 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
-<footer class="px-3 py-6 flex justify-center items-center gap-10">
+<footer class="px-3 py-6 flex justify-center items-center gap-10 footer">
   <!-- Contact Me Section -->
   <section id="contact" class="flex items-center justify-center gap-6">
     <h2 class="text-lg text-center tracking-wider contact-title">
@@ -32,7 +32,8 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 </footer>
 
 <style>
-  footer {
+  .footer {
+    grid-area: footer;
     background: #222b3c;
   }
 
@@ -62,7 +63,7 @@ const t = useTranslations(getLangFromUrl(Astro.url));
   }
 
   @media (width <= 600px) {
-    footer {
+    .footer {
       flex-direction: column;
       gap: 1rem;
     }

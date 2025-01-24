@@ -1,0 +1,76 @@
+.header {
+  background: #222b3c;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  top: 0;
+  z-index: 50;
+  position: sticky;
+  grid-area: header;
+}
+
+@media (width < 900px) {
+  .header {
+    background: none;
+    backdrop-filter: blur(24px);
+    position: fixed;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  #desktop-nav-bar-container {
+    display: flex;
+  }
+
+  .nav-icons-container {
+    display: none;
+  }
+
+  .nav-links-container {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .toggle-menu-container {
+    display: none;
+  }
+}
+
+@media (width > 600px) {
+  #drop-down-nav-bar-container {
+    display: none;
+  }
+}
+
+@media (width <= 600px) {
+  .header {
+    backdrop-filter: none;
+    background-color: #222b3c;
+  }
+
+  .nav-links-container {
+    display: grid;
+    grid-template-rows: 1fr;
+  }
+
+  .current-section-focused {
+    grid-column: 1 / 2;
+  }
+
+  .responsive-nav-item {
+    color: #d8b4fe;
+    text-transform: uppercase;
+    transform: scale(1);
+  }
+
+  #desktop-nav-bar-container > :not(.current-section-focused) {
+    display: none;
+  }
+
+  #drop-drown-btn {
+    display: block;
+  }
+}

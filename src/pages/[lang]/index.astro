@@ -14,7 +14,7 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
 <Layout title={t("head.title")}>
-  <main class="w-3/5 relative">
+  <main class="w-4/5 relative">
     <Hero />
     <ExperienceSection />
     <ProjectSection />
@@ -23,12 +23,6 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 </Layout>
 
 <style>
-  @media (width <= 930px) {
-    main {
-      width: 80%;
-    }
-  }
-
   @media (width <= 370px) {
     main {
       width: 90%;
@@ -39,11 +33,30 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 <script>
   // Identifies the current section that is being targeted by changing the text´s color on header-nav
   const sections = document.querySelectorAll("section");
-  const navItems = document.querySelectorAll("header nav a");
+  const navItems = document.querySelectorAll("header nav div a");
 
-  const currentSectionCallback = (entries: any[]) => {
+  const iconsContainer = document.querySelectorAll(
+    ".nav-icons-container a svg"
+  );
+
+  const currentSectionCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
+        iconsContainer.forEach((item) => {
+          const hasSameAttributeAndId =
+            item.getAttribute("aria-label") === entry.target.id;
+
+          if (hasSameAttributeAndId) {
+            item.classList.add("current-section-focused");
+            item.classList.add("bg-blue-500");
+            item.classList.add("scale-110");
+          } else {
+            item.classList.remove("current-section-focused");
+            item.classList.remove("bg-blue-500");
+            item.classList.remove("scale-110");
+          }
+        });
+
         navItems.forEach((item) => {
           const hasSameAttributeAndId =
             item.getAttribute("aria-label") === entry.target.id;
@@ -63,8 +76,8 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 
   const options = {
     root: null,
-    rootMargin: "20px",
-    threshold: 0.2,
+    rootMargin: "0px",
+    threshold: 0.15,
   };
 
   const observer = new IntersectionObserver(currentSectionCallback, options);
