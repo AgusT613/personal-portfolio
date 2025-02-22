@@ -52,6 +52,7 @@ export const ui = {
       "Estudiando desarrollo de software y colaborando en proyectos de terceros. Cuento con amplios conocimientos para la construcción de tu próximo proyecto web o aplicación.",
     "hero.download.cv": "Descargar CV",
     "hero.download.cv.file.name": "torres-agustin-cv",
+    "hero.download.cv.file.href": "/torres-facundo-cv-es.pdf",
     // Experience Section
     "experience.section.title": "Experiencia",
     // Red Mascotera
@@ -179,6 +180,7 @@ export const ui = {
       "Studying software development and collaborating on third-party projects. I have extensive knowledge for building your next web project or application.",
     "hero.download.cv": "Resume",
     "hero.download.cv.file.name": "torres-agustin-resume",
+    "hero.download.cv.file.href": "/torres-facundo-cv-en.pdf",
     // Experience Section
     "experience.section.title": "Experience",
     // Red Mascotera

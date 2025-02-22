@@ -6,7 +6,10 @@ import DownloadIcon from "./icons/DownloadIcon.astro";
 const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
-<a href="/torres_facundo_cv.pdf" download={t("hero.download.cv.file.name")}>
+<a
+  href={t("hero.download.cv.file.href")}
+  download={t("hero.download.cv.file.name")}
+>
   <CustomActionBtn className="rounded">
     {t("hero.download.cv")}
     <DownloadIcon />
