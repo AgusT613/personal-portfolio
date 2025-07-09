@@ -1,0 +1,31 @@
+---
+import TitleSection from "../TitleSection.astro";
+import ExperienceContainer from "./ExperienceContainer.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { EXPERIENCES } from "./ExperienceList.astro";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+<style>
+  section {
+    padding-top: 7rem;
+
+    .experience-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+      gap: 2rem;
+    }
+  }
+</style>
+
+<section id="experience">
+  <TitleSection>{t("experience.section.title")}</TitleSection>
+  <div class="experience-wrapper">
+    {
+      EXPERIENCES.map((experience) => (
+        <ExperienceContainer experience={experience} />
+      ))
+    }
+  </div>
+</section>

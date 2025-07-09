@@ -1,9 +1,9 @@
 ---
-import type { IExperience } from "../utils/types";
-import Badge from "./Badge.astro";
-import CustomParagraph from "../components/CustomParagraph.astro";
-import CustomH3 from "../components/CustomH3.astro";
-import RedirectIcon from "./icons/RedirectIcon.astro";
+import type { IExperience } from "../../utils/types";
+import Badge from "../Badge.astro";
+import CustomParagraph from "../../components/CustomParagraph.astro";
+import CustomH3 from "../../components/CustomH3.astro";
+import RedirectIcon from "../icons/RedirectIcon.astro";
 
 interface Props {
   experience: IExperience;
@@ -14,10 +14,30 @@ const { date, description, settings, tags, title } = experience;
 const { hasProjectUrls, projectUrl } = settings;
 ---
 
-<article class="grid grid-cols-[17rem,1fr] p-4 rounded-lg relative">
-  <span class="row-span-3 text-sm py-1 text-gray-500 uppercase job-date"
-    >{date}</span
-  >
+<style>
+  @media (930px <= width <= 1070px) {
+    .job-date {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (width <= 570px) {
+    .job-date {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (width <= 400px) {
+    .job-date {
+      font-size: 0.65rem;
+    }
+  }
+</style>
+
+<article class="grid p-4 rounded-lg relative">
+  <span class="row-span-3 text-sm py-1 text-gray-500 uppercase job-date">
+    {date}
+  </span>
   <div class="flex flex-col gap-y-4">
     <CustomH3 className="text-purple-300">
       {
@@ -43,33 +63,3 @@ const { hasProjectUrls, projectUrl } = settings;
     </div>
   </div>
 </article>
-
-<style>
-  @media (930px <= width <= 1070px) {
-    article {
-      grid-template-columns: 14rem 1fr;
-    }
-
-    .job-date {
-      font-size: 0.75rem;
-    }
-  }
-
-  @media (width <= 850px) {
-    article {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (width <= 570px) {
-    .job-date {
-      font-size: 0.75rem;
-    }
-  }
-
-  @media (width <= 400px) {
-    .job-date {
-      font-size: 0.65rem;
-    }
-  }
-</style>

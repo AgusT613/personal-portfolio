@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
 
@@ -10,7 +10,7 @@ export default defineConfig({
     locales: ["es", "en"],
     routing: {
       prefixDefaultLocale: true,
-      redirectToDefaultLocale: true
-    }
-  }
+      redirectToDefaultLocale: true,
+    },
+  },
 });
