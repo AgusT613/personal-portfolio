@@ -1,0 +1,58 @@
+@media (width <= 750px) {
+  .image-profile {
+    flex-direction: column;
+  }
+
+  .image-profile img {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .greeting-title {
+    font-size: 3rem;
+    line-height: 1.25;
+    text-align: center;
+    margin: 2rem 0 2rem 0;
+  }
+
+  article p {
+    font-size: 1rem;
+  }
+
+  .actions-btn-container {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  @media (width <= 570px) {
+    .badge-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .actions-btn-container {
+      flex-direction: column;
+    }
+  }
+
+  @media (width <= 370px) {
+    .greeting-title {
+      font-size: 2.5rem;
+    }
+
+    .image-profile img {
+      width: 12rem;
+      height: 12rem;
+    }
+
+    article p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (width <= 290px) {
+    .greeting-title {
+      font-size: 2.15rem;
+    }
+  }
+}

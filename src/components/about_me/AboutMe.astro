@@ -1,8 +1,9 @@
 ---
-import CustomParagraph from "./CustomParagraph.astro";
-import TitleSection from "./TitleSection.astro";
-import KeyWord from "../components/KeyWord.astro";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import "./about_me.css";
+import CustomParagraph from "../CustomParagraph.astro";
+import TitleSection from "../TitleSection.astro";
+import KeyWord from "../../components/KeyWord.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const t = useTranslations(getLangFromUrl(Astro.url));
 ---
@@ -40,23 +41,3 @@ const t = useTranslations(getLangFromUrl(Astro.url));
     </div>
   </article>
 </section>
-
-<style>
-  @media (width <= 1070px) {
-    article {
-      grid-template-columns: 1fr;
-      grid-template-rows: 15rem 1fr;
-    }
-
-    article picture {
-      justify-self: center;
-      align-self: center;
-      height: 15rem;
-      width: 15rem;
-    }
-
-    article picture img {
-      border-radius: 100%;
-    }
-  }
-</style>
