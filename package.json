@@ -12,7 +12,7 @@
   "dependencies": {
     "@fontsource-variable/roboto-slab": "^5.0.18",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.11.0",
+    "astro": "^5.12.4",
     "tailwindcss": "^4.1.11"
   }
 }
