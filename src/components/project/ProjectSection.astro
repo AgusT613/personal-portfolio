@@ -1,8 +1,8 @@
 ---
-import TitleSection from "./TitleSection.astro";
-import ProjectContainer from "../components/ProjectContainer.astro";
-import ICONS from "../utils/icons.js";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import TitleSection from "../TitleSection.astro";
+import ProjectContainer from "./ProjectContainer.astro";
+import ICONS from "../../utils/icons.js";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const t = useTranslations(getLangFromUrl(Astro.url));
 

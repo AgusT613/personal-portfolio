@@ -1,0 +1,65 @@
+---
+import type { IExperience } from "../../types";
+import Badge from "../Badge.astro";
+import CustomParagraph from "../../components/CustomParagraph.astro";
+import CustomH3 from "../../components/CustomH3.astro";
+import RedirectIcon from "../icons/RedirectIcon.astro";
+
+interface Props {
+  experience: IExperience;
+}
+
+const { experience } = Astro.props;
+const { date, description, settings, tags, title } = experience;
+const { hasProjectUrls, projectUrl } = settings;
+---
+
+<style>
+  @media (930px <= width <= 1070px) {
+    .job-date {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (width <= 570px) {
+    .job-date {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (width <= 400px) {
+    .job-date {
+      font-size: 0.65rem;
+    }
+  }
+</style>
+
+<article class="grid p-4 rounded-lg relative">
+  <span class="row-span-3 text-sm py-1 text-gray-500 uppercase job-date">
+    {date}
+  </span>
+  <div class="flex flex-col gap-y-4">
+    <CustomH3 className="text-purple-300">
+      {
+        hasProjectUrls ? (
+          // Make the article tag a clickable link to the project web-page using relative-absolute elements
+          <a href={projectUrl} target="_blank">
+            <span class="flex justify-between items-center gap-2">
+              {title}
+              <span>
+                <RedirectIcon />
+              </span>
+            </span>
+            <span class="absolute inset-0 rounded-lg hover:bg-slate-500 hover:opacity-15 cursor-pointer" />
+          </a>
+        ) : (
+          <span>{title}</span>
+        )
+      }
+    </CustomH3>
+    <CustomParagraph>{description}</CustomParagraph>
+    <div class="flex flex-wrap gap-2">
+      {tags.map((tag) => <Badge label={tag} />)}
+    </div>
+  </div>
+</article>

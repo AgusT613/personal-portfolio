@@ -1,0 +1,21 @@
+.grid-wrapper {
+  display: grid;
+  grid-template-areas:
+    "header main"
+    "header footer";
+}
+
+.main-wrapper {
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+}
+
+@media (width < 800px) {
+  .grid-wrapper {
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+}

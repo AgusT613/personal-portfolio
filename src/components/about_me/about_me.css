@@ -1,0 +1,17 @@
+@media (width <= 1070px) {
+  article {
+    grid-template-columns: 1fr;
+    grid-template-rows: 15rem 1fr;
+  }
+
+  article picture {
+    justify-self: center;
+    align-self: center;
+    height: 15rem;
+    width: 15rem;
+  }
+
+  article picture img {
+    border-radius: 100%;
+  }
+}

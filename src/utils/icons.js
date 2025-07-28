@@ -9,7 +9,6 @@ import GitHub from "../components/icons/GitHub.astro";
 import PostgreSQL from "../components/icons/PostgreSQL.astro";
 import Gmail from "../components/icons/Gmail.astro";
 import Linkedin from "../components/icons/Linkedin.astro";
-import Instagram from "../components/icons/Instagram.astro";
 import AstroIcon from "../components/icons/AstroIcon.astro";
 
 const ICONS = {
@@ -39,14 +38,13 @@ const ICONS = {
   },
   PostgreSQL: {
     icon: PostgreSQL,
-    label: "PostgreSQL"
+    label: "PostgreSQL",
   },
   RedirectIcon,
   GitHub,
   Gmail,
   Linkedin,
-  Instagram,
-  AstroIcon
+  AstroIcon,
 };
 
-export default ICONS
+export default ICONS;

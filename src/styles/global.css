@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+html {
+  font-family: "Roboto Slab Variable", system-ui, sans-serif;
+  background: #1a202c;
+  color: #efeded;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion) {
+  html {
+    scroll-behavior: auto;
+  }
+}
