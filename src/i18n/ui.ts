@@ -6,6 +6,6 @@ export const languages = {
   en: "en",
 };
 
-export const defaultLang = languages.es;
+export const defaultLang = "es";
 
 export const ui = { es, en } as const;
