@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
+@theme inline {
+  --font-sans: var(--font-roboto-slab);
+}
+
 html {
-  font-family: "Roboto Slab Variable", system-ui, sans-serif;
   background: #1a202c;
   color: #efeded;
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 @media (prefers-reduced-motion) {

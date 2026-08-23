@@ -1,14 +1,15 @@
-@media (width <= 1070px) {
+@media (max-width: 768px) {
   article {
     grid-template-columns: 1fr;
-    grid-template-rows: 15rem 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 1.5rem;
   }
 
   article picture {
     justify-self: center;
     align-self: center;
-    height: 15rem;
-    width: 15rem;
+    height: 14rem;
+    width: 14rem;
   }
 
   article picture img {

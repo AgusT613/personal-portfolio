@@ -105,7 +105,7 @@ const en = {
         */
   // First Paragraph
   "about.me.fp.s1":
-    "My name is Agustin and I am 21 years old. I graduated as an",
+    "My name is Agustin and I am 22 years old. I graduated as an",
   "about.me.fp.kw1": "electromechanical technician",
   "about.me.fp.s2": "in high school, and I am currently studying",
   "about.me.fp.kw2": "Computer Engineering",

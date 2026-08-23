@@ -1,48 +1,208 @@
 ---
 import { languages } from "../i18n/ui";
+import { getLangFromUrl } from "../i18n/utils";
 import LanguageIcon from "./icons/LanguageIcon.astro";
 import ESIcon from "./icons/languages/ESIcon.astro";
 import ENIcon from "./icons/languages/ENIcon.astro";
+
+const currentLang = getLangFromUrl(Astro.url);
+const currentLangName = (languages as Record<string, string>)[currentLang] ?? currentLang;
 ---
 
-<span class="flex gap-3 items-center relative">
-  <LanguageIcon
-    class="size-8 absolute z-50 bg-slate-800 p-1 rounded-full cursor-pointer hover:scale-110 hover:bg-slate-700"
-    id="language-icon"
-  />
-  <div
-    class="hidden flex-col absolute top-6 inset-1 gap-2"
-    id="languages-container"
+<div class="language-picker" id="language-picker">
+  <button
+    class="language-picker-btn"
+    id="language-picker-btn"
+    type="button"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-label="Seleccionar idioma / Select language"
   >
+    <LanguageIcon class="language-picker-icon" />
+    <span class="language-picker-current">{currentLangName}</span>
+    <svg
+      class="language-picker-arrow"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M6 9l6 6 6-6"></path>
+    </svg>
+  </button>
+
+  <div class="language-picker-dropdown" id="languages-container">
     {
-      Object.entries(languages).map(([lang, label]) =>
-        lang === "es" ? (
-          <a href={`/${lang}`} class="hover:scale-110">
-            <ESIcon class="w-6" />
+      Object.entries(languages).map(([lang, name]) => {
+        const isCurrent = lang === currentLang;
+        return (
+          <a
+            href={`/${lang}`}
+            class={`language-picker-item ${isCurrent ? "is-active" : ""}`}
+            aria-label={name}
+          >
+            <span class="language-picker-flag">
+              {lang === "es" ? (
+                <ESIcon class="flag-icon" />
+              ) : (
+                <ENIcon class="flag-icon" />
+              )}
+            </span>
+            <span class="language-picker-name">{name}</span>
           </a>
-        ) : (
-          <a href={`/${lang}`} class="hover:scale-110">
-            <ENIcon class="w-6" />
-          </a>
-        )
-      )
+        );
+      })
     }
   </div>
-</span>
+</div>
+
+<style>
+  .language-picker {
+    position: relative;
+    display: inline-block;
+  }
+
+  .language-picker-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    background-color: rgba(30, 41, 59, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    color: #e2e8f0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .language-picker-btn:hover {
+    background-color: rgba(51, 65, 85, 0.95);
+    border-color: rgba(96, 165, 250, 0.5);
+    transform: translateY(-1px);
+  }
+
+  :global(.language-picker-icon) {
+    width: 1.15rem;
+    height: 1.15rem;
+    color: #60a5fa;
+    flex-shrink: 0;
+  }
+
+  .language-picker-current {
+    letter-spacing: 0.025em;
+    color: #f1f5f9;
+  }
+
+  .language-picker-arrow {
+    transition: transform 0.2s ease;
+    opacity: 0.75;
+    color: #94a3b8;
+  }
+
+  .language-picker:hover .language-picker-arrow,
+  .language-picker.is-open .language-picker-arrow {
+    transform: rotate(180deg);
+  }
+
+  .language-picker-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    background-color: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.75rem;
+    padding: 0.4rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    min-width: 8.5rem;
+    z-index: 60;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+
+  .language-picker:hover .language-picker-dropdown,
+  .language-picker:focus-within .language-picker-dropdown,
+  .language-picker.is-open .language-picker-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .language-picker-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 0.5rem;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+
+  .language-picker-item:hover {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+    transform: translateX(2px);
+  }
+
+  .language-picker-item.is-active {
+    background-color: rgba(59, 130, 246, 0.25);
+    color: #60a5fa;
+    font-weight: 600;
+  }
+
+  .language-picker-flag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  :global(.flag-icon) {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 480px) {
+    .language-picker-btn {
+      padding: 0.35rem 0.65rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>
 
 <script>
-  const languageIcon = document.getElementById("language-icon");
-  const languagesContainer = document.getElementById("languages-container");
+  const languagePicker = document.getElementById("language-picker");
+  const languagePickerBtn = document.getElementById("language-picker-btn");
 
-  const displayLanguages = (e) => {
-    if (languagesContainer.classList.contains("hidden")) {
-      languagesContainer.classList.remove("hidden");
-      languagesContainer.classList.add("flex");
-    } else {
-      languagesContainer.classList.remove("flex");
-      languagesContainer.classList.add("hidden");
+  languagePickerBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    languagePicker?.classList.toggle("is-open");
+    const isExpanded = languagePicker?.classList.contains("is-open");
+    languagePickerBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!languagePicker?.contains(e.target as Node)) {
+      languagePicker?.classList.remove("is-open");
+      languagePickerBtn?.setAttribute("aria-expanded", "false");
     }
-  };
-
-  languageIcon.addEventListener("click", displayLanguages);
+  });
 </script>

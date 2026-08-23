@@ -9,34 +9,40 @@ import KeyWord from "../KeyWord.astro";
 const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
-<section id="top" class="flex flex-col justify-center pt-28">
-  <div class="flex gap-5 items-center image-profile">
-    <img
-      src="/profile_image.png"
-      alt={t("hero.image.profile.alt")}
-      class="size-20 object-cover rounded-full"
-    />
-    <div class="flex gap-3 badge-container">
-      <Badge label={t("hero.badge.webpages")} />
-      <Badge label={t("hero.badge.apps")} />
-      <Badge label={t("hero.badge.database")} />
-      <Badge label={t("hero.badge.design")} />
+<section id="top" class="hero-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badges">
+        <Badge label={t("hero.badge.webpages")} />
+        <Badge label={t("hero.badge.apps")} />
+        <Badge label={t("hero.badge.database")} />
+        <Badge label={t("hero.badge.design")} />
+      </div>
+
+      <h1 class="greeting-title">
+        {t("hero.greeting")}
+      </h1>
+
+      <article class="hero-description">
+        <p>
+          <KeyWord word={t("hero.years.of.experience") + " "} />
+          {t("hero.description")}
+        </p>
+      </article>
+
+      <div class="actions-btn-container">
+        <CopyEmailBtn />
+        <DownloadCVBtn />
+      </div>
     </div>
-  </div>
 
-  <span class="text-6xl my-6 text-purple-300 font-medium greeting-title"
-    >{t("hero.greeting")}</span
-  >
-
-  <article class="max-w-2xl">
-    <p class="text-xl text-gray-400">
-      <KeyWord word={t("hero.years.of.experience")} />
-      {t("hero.description")}
-    </p>
-  </article>
-
-  <div class="flex gap-2 mt-6 actions-btn-container">
-    <CopyEmailBtn />
-    <DownloadCVBtn />
+    <div class="hero-avatar-wrapper">
+      <div class="avatar-glow"></div>
+      <img
+        src="/profile_image.png"
+        alt={t("hero.image.profile.alt")}
+        class="hero-avatar"
+      />
+    </div>
   </div>
 </section>

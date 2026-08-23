@@ -9,11 +9,11 @@ interface Props {
 const { technologies } = Astro.props;
 ---
 
-<div class="flex gap-4 flex-wrap">
+<div class="flex gap-2.5 flex-wrap items-center">
   {
     technologies.map((technology) => (
       <Badge label={technology.label}>
-        <technology.icon class="size-6" />
+        <technology.icon class="size-5" />
       </Badge>
     ))
   }

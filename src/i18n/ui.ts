@@ -2,10 +2,10 @@ import en from "./lang/english";
 import es from "./lang/spanish";
 
 export const languages = {
-  es: "es",
-  en: "en",
+  es: "Español",
+  en: "English",
 };
 
-export const defaultLang = languages.es;
+export const defaultLang = "es";
 
 export const ui = { es, en } as const;

@@ -9,15 +9,48 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<div class="flex gap-6 items-center justify-center flex-wrap">
+<div class="project-links">
   {
     links.map((link) => (
-      <a href={link.href} target="_blank">
-        <CustomActionBtn className="rounded">
-          {link.label}
+      <a href={link.href} target="_blank" rel="noopener noreferrer" class="project-link-item">
+        <CustomActionBtn>
+          <span>{link.label}</span>
           <link.icon class="size-4" />
         </CustomActionBtn>
       </a>
     ))
   }
 </div>
+
+<style>
+  .project-links {
+    display: flex;
+    gap: 0.65rem;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .project-link-item {
+    text-decoration: none;
+    display: inline-flex;
+  }
+
+  @media (max-width: 480px) {
+    .project-links {
+      gap: 0.5rem;
+    }
+
+    .project-link-item {
+      flex: 1 1 calc(50% - 0.5rem);
+      min-width: 8rem;
+    }
+
+    .project-link-item :global(.custom-action-btn) {
+      width: 100%;
+      padding: 0 0.6rem;
+      font-size: 0.8rem;
+      height: 2.35rem;
+    }
+  }
+</style>

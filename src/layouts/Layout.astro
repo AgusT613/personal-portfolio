@@ -1,11 +1,11 @@
 ---
 import "../styles/global.css";
 import "./layout.css";
-import "@fontsource-variable/roboto-slab";
 import Header from "../components/header/Header.astro";
 import Footer from "../components/footer/Footer.astro";
 import MessageContainer from "../components/MessageContainer.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { Font } from "astro:assets";
 
 interface Props {
   title: string;
@@ -25,6 +25,7 @@ const t = useTranslations(lang);
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <Font cssVariable="--font-roboto-slab" />
   </head>
   <body class="relative">
     <MessageContainer />

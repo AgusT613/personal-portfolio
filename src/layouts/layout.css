@@ -1,21 +1,14 @@
 .grid-wrapper {
-  display: grid;
-  grid-template-areas:
-    "header main"
-    "header footer";
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
 }
 
 .main-wrapper {
-  grid-area: main;
   display: flex;
   justify-content: center;
-}
-
-@media (width < 800px) {
-  .grid-wrapper {
-    grid-template-areas:
-      "header"
-      "main"
-      "footer";
-  }
+  width: 100%;
+  flex: 1;
 }
