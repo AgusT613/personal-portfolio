@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
@@ -11,8 +11,14 @@ export default defineConfig({
       redirectToDefaultLocale: true,
     },
   },
-
   vite: {
     plugins: [tailwindcss()],
   },
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Roboto Slab",
+      cssVariable: "--font-roboto-slab",
+    },
+  ],
 });
