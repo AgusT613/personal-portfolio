@@ -4,39 +4,124 @@ import CustomActionBtn from "../components/CustomActionBtn.astro";
 import SendEmailIcon from "../components/icons/SendEmailIcon.astro";
 ---
 
-<div class="flex items-center justify-center copy-email-btn">
+<div class="copy-email-btn">
   <input
     id="emailText"
     type="text"
     readonly
     value="torresagustin613@gmail.com"
-    class="rounded-l px-2 w-[240px] outline-none text-black bg-white h-full"
+    class="email-input"
+    aria-label="Email de contacto"
   />
-  <CustomActionBtn id="copy-btn">
-    <CopyIcon />
+  <CustomActionBtn id="copy-btn" className="copy-btn-action" aria-label="Copiar email">
+    <CopyIcon class="action-svg" />
   </CustomActionBtn>
-  <CustomActionBtn className="rounded-r">
-    <a href="mailto:torresagustin613@gmail.com">
-      <SendEmailIcon />
-    </a>
-  </CustomActionBtn>
+  <a href="mailto:torresagustin613@gmail.com" class="send-mail-link" aria-label="Enviar email" title="Enviar email">
+    <CustomActionBtn className="send-btn-action">
+      <SendEmailIcon class="action-svg" />
+    </CustomActionBtn>
+  </a>
 </div>
 
 <style>
-  @media (width <= 570px) {
+  .copy-email-btn {
+    display: inline-flex;
+    align-items: stretch;
+    height: 2.6rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 0.6rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+
+  .email-input {
+    height: 100%;
+    width: 15rem;
+    padding: 0 0.85rem;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-right: none;
+    border-radius: 0.6rem 0 0 0.6rem;
+    color: #0f172a;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    user-select: all;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .email-input:focus {
+    background-color: #ffffff;
+    border-color: #3b82f6;
+  }
+
+  :global(.copy-btn-action) {
+    height: 100% !important;
+    border-radius: 0 !important;
+    border-top: 1px solid #2563eb !important;
+    border-bottom: 1px solid #2563eb !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 0 0.85rem !important;
+    box-shadow: none !important;
+  }
+
+  :global(.copy-btn-action:hover) {
+    transform: none !important;
+    box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .send-mail-link {
+    display: inline-flex;
+    align-items: stretch;
+    height: 100%;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  :global(.send-btn-action) {
+    height: 100% !important;
+    border-radius: 0 0.6rem 0.6rem 0 !important;
+    border-top: 1px solid #2563eb !important;
+    border-bottom: 1px solid #2563eb !important;
+    border-right: 1px solid #2563eb !important;
+    border-left: none !important;
+    padding: 0 0.85rem !important;
+    box-shadow: none !important;
+  }
+
+  :global(.send-btn-action:hover) {
+    transform: none !important;
+    box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.1) !important;
+  }
+
+  :global(.action-svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 570px) {
     .copy-email-btn {
-      align-items: normal;
+      width: 100%;
     }
 
-    .copy-email-btn input {
+    .email-input {
       width: 100%;
-      height: auto;
+      flex: 1;
+      font-size: 0.825rem;
+      padding: 0 0.6rem;
     }
   }
 
-  @media (width <= 330px) {
-    .copy-email-btn input {
-      font-size: 0.85rem;
+  @media (max-width: 360px) {
+    .email-input {
+      font-size: 0.75rem;
     }
   }
 </style>
@@ -46,6 +131,7 @@ import SendEmailIcon from "../components/icons/SendEmailIcon.astro";
   const messageContainer = document.getElementById(
     "copy-to-clipboard-msg-container"
   );
+  let toastTimeout: number | undefined;
 
   function copyEmailToClipboard() {
     const email = (document.getElementById("emailText") as HTMLInputElement)
@@ -53,17 +139,14 @@ import SendEmailIcon from "../components/icons/SendEmailIcon.astro";
     navigator.clipboard
       .writeText(email)
       .then(() => {
-        messageContainer.classList.remove("animate-message-disappear");
-        messageContainer.classList.remove("-right-full");
-        messageContainer.classList.add("right-0");
-        setTimeout(() => {
-          messageContainer.classList.add("animate-message-disappear");
-          messageContainer.classList.add("-right-full");
-          messageContainer.classList.remove("right-0");
-        }, 2750);
+        if (toastTimeout) clearTimeout(toastTimeout);
+        messageContainer?.classList.add("is-visible");
+        toastTimeout = window.setTimeout(() => {
+          messageContainer?.classList.remove("is-visible");
+        }, 2600);
       })
       .catch((error) => console.log(error));
   }
 
-  copyBtn.addEventListener("click", copyEmailToClipboard);
+  copyBtn?.addEventListener("click", copyEmailToClipboard);
 </script>

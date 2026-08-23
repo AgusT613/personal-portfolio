@@ -2,8 +2,8 @@ import en from "./lang/english";
 import es from "./lang/spanish";
 
 export const languages = {
-  es: "es",
-  en: "en",
+  es: "Español",
+  en: "English",
 };
 
 export const defaultLang = "es";

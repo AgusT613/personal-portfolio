@@ -111,22 +111,19 @@ El proyecto utiliza un sistema de i18n basado en rutas (`/[lang]`):
    <h2>{t("experience.section.title")}</h2>
    ```
 
-### 3.2. Layout y Responsive Grid
+### 3.2. Layout y Header Sticky Superior
 
-- **Estructura:** Definida en `src/layouts/Layout.astro` y `src/layouts/layout.css`.
-- **Desktop (>= 900px):**
-  - Barra de navegación (`Header.astro`) fija a la izquierda ocupando `100dvh` (Grid area: `header`).
-  - Contenido principal centrado (`main-wrapper`).
-  - Footer al pie del contenido principal (`footer`).
-- **Tablet / Mobile (< 900px y <= 600px):**
-  - El Header pasa a ser una barra superior horizontal fija (`position: fixed; width: 100%`) con efecto `backdrop-filter: blur(24px)`.
-  - En pantallas muy pequeñas (<= 600px), se activa el menú desplegable móvil (`#drop-drown-btn` y `#drop-down-nav-bar-container`).
+- **Estructura:** Definida en `src/layouts/Layout.astro` y `src/layouts/layout.css` con `flex-direction: column`.
+- **Header Superior Sticky (`src/components/header/Header.astro` + `header.css`):**
+  - Barra de navegación fija en la parte superior (`position: sticky; top: 0; width: 100%; z-index: 50;`) con efecto blur translúcido (`backdrop-filter: blur(16px)`).
+  - **Izquierda:** Componente `LanguagePicker.astro` mostrando el ícono de idioma y el nombre del idioma activo con selector desplegable en CSS puro.
+  - **Centro / Derecha (Desktop > 768px):** Enlaces horizontales directos a las secciones.
+  - **Móvil (<= 768px):** Botón hamburguesa (`#drop-drown-btn`) que abre el menú overlay a pantalla completa (`#drop-down-nav-bar-container`).
 
 ### 3.3. Detección de Sección Activa (Scroll Spy)
 
 En `src/pages/[lang]/index.astro`, un script del cliente con `IntersectionObserver` monitorea la visibilidad de cada `<section>`. Al hacer scroll:
-- Agrega la clase `current-section-focused`, `bg-blue-500` y `scale-110` al ícono del menú correspondiente.
-- Resalta el texto del enlace de navegación activo.
+- Asigna la clase `current-section-focused` al enlace de navegación correspondiente, aplicando un subrayado indicador y resaltado de color.
 - Maneja `document.onvisibilitychange` para pausar y reanudar el observador cuando la pestaña pierde foco.
 
 ### 3.4. Catálogo Centralizado de Íconos (`src/utils/icons.js`)
@@ -171,7 +168,7 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
      description: t("project.<id>.description"),
      technologies: [ICONS.NextJS, ICONS.Tailwind],
      image: {
-       src: "../projects/<nombre_proyecto>/preview.png",
+       src: "/projects/<nombre_proyecto>/preview.png",
        alt: t("project.<id>.img.alt"),
      },
      links: [

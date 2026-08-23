@@ -59,19 +59,7 @@ const EXPERIENCES = [
 ];
 ---
 
-<style>
-  section {
-    padding-top: 7rem;
-
-    .experience-wrapper {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
-      gap: 2rem;
-    }
-  }
-</style>
-
-<section id="experience">
+<section id="experience" class="experience-section">
   <TitleSection>{t("experience.section.title")}</TitleSection>
   <div class="experience-wrapper">
     {
@@ -81,3 +69,21 @@ const EXPERIENCES = [
     }
   </div>
 </section>
+
+<style>
+  .experience-section {
+    display: flex;
+    flex-direction: column;
+    padding-top: 7rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .experience-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+</style>

@@ -8,6 +8,7 @@ html {
   background: #1a202c;
   color: #efeded;
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 @media (prefers-reduced-motion) {

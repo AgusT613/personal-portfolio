@@ -104,7 +104,7 @@ const es = {
             Me considero una persona [curiosa, responsable y centrada.] Considero firmemente que los detalles en un proyecto marcan la diferencia, de esa forma destacamos el sello personal de nuestro producto y/o servicio.
         */
   // First Paragraph
-  "about.me.fp.s1": "Mi nombre es Agustin y tengo 21 años. Me gradué como",
+  "about.me.fp.s1": "Mi nombre es Agustin y tengo 22 años. Me gradué como",
   "about.me.fp.kw1": "técnico electromecánico",
   "about.me.fp.s2":
     "en la secundaria y actualmente estoy cursando mis estudios universitarios para",

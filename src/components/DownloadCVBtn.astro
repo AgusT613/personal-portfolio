@@ -9,17 +9,42 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 <a
   href={t("hero.download.cv.file.href")}
   download={t("hero.download.cv.file.name")}
+  class="download-cv-anchor"
+  title={t("hero.download.cv")}
+  aria-label={t("hero.download.cv")}
 >
-  <CustomActionBtn className="rounded">
-    {t("hero.download.cv")}
-    <DownloadIcon />
+  <CustomActionBtn className="download-cv-btn-inner">
+    <span>{t("hero.download.cv")}</span>
+    <DownloadIcon class="download-svg" />
   </CustomActionBtn>
 </a>
 
 <style>
-  @media (width <= 330px) {
-    a {
-      font-size: 0.85rem;
+  .download-cv-anchor {
+    display: inline-flex;
+    height: 2.6rem;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  :global(.download-cv-btn-inner) {
+    height: 100% !important;
+    padding: 0 1.25rem !important;
+  }
+
+  :global(.download-svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 570px) {
+    .download-cv-anchor {
+      width: 100%;
+    }
+
+    :global(.download-cv-btn-inner) {
+      width: 100% !important;
     }
   }
 </style>
