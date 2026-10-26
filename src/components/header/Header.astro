@@ -3,35 +3,35 @@ import "./header.css";
 import DropDownIcon from "../../components/icons/DropDownIcon.astro";
 import CloseIcon from "../../components/icons/CloseIcon.astro";
 import LanguagePicker from "../LanguagePicker.astro";
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/utils";
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const t = useTranslations(Astro.currentLocale);
 
 const navItems = [
   {
-    id: t("header.nav.items.top.id"),
-    label: t("header.nav.items.top.label"),
-    title: t("header.nav.items.top.title"),
+    id: "#top",
+    label: "top",
+    title: t("header.nav.top"),
   },
   {
-    id: t("header.nav.items.experience.id"),
-    label: t("header.nav.items.experience.label"),
-    title: t("header.nav.items.experience.title"),
+    id: "#experience",
+    label: "experience",
+    title: t("header.nav.experience"),
   },
   {
-    id: t("header.nav.items.projects.id"),
-    label: t("header.nav.items.projects.label"),
-    title: t("header.nav.items.projects.title"),
+    id: "#projects",
+    label: "projects",
+    title: t("header.nav.projects"),
   },
   {
-    id: t("header.nav.items.about.me.id"),
-    label: t("header.nav.items.about.me.label"),
-    title: t("header.nav.items.about.me.title"),
+    id: "#about-me",
+    label: "about-me",
+    title: t("header.nav.aboutMe"),
   },
   {
-    id: t("header.nav.items.contact.id"),
-    label: t("header.nav.items.contact.label"),
-    title: t("header.nav.items.contact.title"),
+    id: "#contact",
+    label: "contact",
+    title: t("header.nav.contact"),
   },
 ];
 ---

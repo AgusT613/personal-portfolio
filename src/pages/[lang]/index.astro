@@ -4,13 +4,14 @@ import Hero from "../../components/hero/Hero.astro";
 import ExperienceSection from "../../components/experience/ExperienceSection.astro";
 import ProjectSection from "../../components/project/ProjectSection.astro";
 import AboutMe from "../../components/about_me/AboutMe.astro";
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/utils";
+import { locales } from "../../i18n/ui";
 
 export function getStaticPaths() {
-  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+  return locales.map((lang) => ({ params: { lang } }));
 }
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <Layout title={t("head.title")}>

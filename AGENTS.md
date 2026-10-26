@@ -53,13 +53,14 @@ personal-portfolio/
 │   │   ├── MessageContainer.astro # Notificación flotante (toast) al copiar email
 │   │   ├── TechnologiesUsed.astro # Lista de badges de tecnologías con íconos
 │   │   ├── TitleSection.astro  # Título de sección h2 unificado
-│   │   └── ToggleMenu.astro    # Botones colapsar/expandir menú lateral
+│   │   ├── ToggleMenu.astro    # Botones colapsar/expandir menú lateral
+│   │   └── TransformString.astro # Parseador e inyector de tags semánticos (<kw>)
 │   ├── i18n/                   # Sistema de internacionalización
-│   │   ├── lang/
-│   │   │   ├── english.ts      # Diccionario de textos en inglés
-│   │   │   └── spanish.ts      # Diccionario de textos en español
-│   │   ├── ui.ts               # Configuración de lenguajes disponibles y ui map
-│   │   └── utils.ts            # Helpers getLangFromUrl() y useTranslations()
+│   │   ├── locales/
+│   │   │   ├── en.json         # Diccionario de textos en inglés (único JSON)
+│   │   │   └── es.json         # Diccionario de textos en español (único JSON)
+│   │   ├── ui.ts               # Idiomas disponibles, locale por defecto y chequeo de tipos
+│   │   └── utils.ts            # Helper useTranslations(), getLangFromUrl() y tipado profundo
 │   ├── layouts/
 │   │   ├── Layout.astro        # Layout principal HTML (Head, Header, Body, Footer)
 │   │   └── layout.css          # Estilos de la grilla principal (grid-wrapper)
@@ -86,7 +87,7 @@ personal-portfolio/
 
 ### 3.1. Sistema de Internacionalización (i18n)
 
-El proyecto utiliza un sistema de i18n basado en rutas (`/[lang]`):
+El proyecto utiliza un sistema de i18n basado en rutas (`/[lang]`) aprovechando las APIs nativas de Astro:
 
 1. **Configuración en `astro.config.mjs`:**
    ```javascript
@@ -99,17 +100,23 @@ El proyecto utiliza un sistema de i18n basado en rutas (`/[lang]`):
      },
    }
    ```
-2. **Diccionarios (`src/i18n/lang/`):**
-   - Todos los textos visibles en pantalla deben extraerse a `spanish.ts` y `english.ts`.
-   - Se utiliza una nomenclatura con notación de puntos: `categoria.seccion.elemento` (por ejemplo: `hero.greeting`, `experience.red.mascotera.title`).
-3. **Uso en Componentes:**
+2. **Diccionarios Únicos por Idioma (`src/i18n/locales/`):**
+   - Todos los textos se centralizan en un único archivo JSON por idioma (`es.json`, `en.json`) estructurado de forma jerárquica (`head`, `header`, `hero`, `experience`, `project`, `about`, `footer`).
+   - Soporte automático para la extensión de editor **i18n Ally** (configurado en `.vscode/settings.json`).
+3. **Tags Semánticos y `<TransformString />`:**
+   - En lugar de fragmentar oraciones en múltiples subclaves, los párrafos completos se escriben como una sola cadena natural usando etiquetas semánticas como `<kw>texto destacado</kw>`.
+   - El componente `TransformString.astro` procesa el texto e inyecta dinámicamente `KeyWord.astro`.
+4. **Uso en Componentes:**
    ```astro
    ---
-   import { getLangFromUrl, useTranslations } from "../../i18n/utils";
-   const t = useTranslations(getLangFromUrl(Astro.url));
+   import { useTranslations } from "../../i18n/utils";
+   const t = useTranslations(Astro.currentLocale);
    ---
-   <h2>{t("experience.section.title")}</h2>
+   <h2>{t("experience.sectionTitle")}</h2>
    ```
+5. **Generación de Rutas Seguras:**
+   - En `LanguagePicker.astro`, se utiliza `getRelativeLocaleUrl(lang)` de `astro:i18n`.
+   - En `src/pages/[lang]/index.astro`, `getStaticPaths()` mapea dinámicamente el array de `locales`.
 
 ### 3.2. Layout y Header Sticky Superior
 
@@ -149,15 +156,19 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
 1. **Guardar la imagen:**
    Colocar la imagen de vista previa en `public/projects/<nombre_proyecto>/preview.png`.
 2. **Agregar los textos traducidos:**
-   En `src/i18n/lang/spanish.ts` y `src/i18n/lang/english.ts`:
-   ```typescript
-   // Spanish
-   "project.<id>.description": "Descripción en español...",
-   "project.<id>.img.alt": "Texto alternativo...",
+   En `src/i18n/locales/es.json` y `src/i18n/locales/en.json` dentro de `"project"`:
+   ```json
+   // es.json
+   "miProyecto": {
+     "description": "Descripción en español...",
+     "imageAlt": "Texto alternativo..."
+   }
 
-   // English
-   "project.<id>.description": "Description in English...",
-   "project.<id>.img.alt": "Alt text...",
+   // en.json
+   "miProyecto": {
+     "description": "Description in English...",
+     "imageAlt": "Alt text..."
+   }
    ```
 3. **Registrar las tecnologías en `src/utils/icons.js`:**
    Si el proyecto usa una tecnología nueva, crear su componente SVG en `src/components/icons/<Tech>.astro` y agregarlo al objeto `ICONS`.
@@ -165,21 +176,21 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
    ```typescript
    {
      name: "Nombre del Proyecto",
-     description: t("project.<id>.description"),
+     description: t("project.miProyecto.description"),
      technologies: [ICONS.NextJS, ICONS.Tailwind],
      image: {
        src: "/projects/<nombre_proyecto>/preview.png",
-       alt: t("project.<id>.img.alt"),
+       alt: t("project.miProyecto.imageAlt"),
      },
      links: [
        {
          href: "https://github.com/...",
-         label: "GitHub Frontend",
+         label: "Frontend",
          icon: ICONS.GitHub,
        },
        {
          href: "https://demo.vercel.app/",
-         label: t("project.section.webpage.btn.label"),
+         label: t("project.webpageBtnLabel"),
          icon: ICONS.RedirectIcon,
        },
      ],
@@ -189,18 +200,20 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
 ### 4.2. Cómo agregar una nueva Experiencia Laboral / Formación
 
 1. **Agregar textos i18n:**
-   En `spanish.ts` y `english.ts`:
-   ```typescript
-   "experience.<id>.title": "...",
-   "experience.<id>.date": "...",
-   "experience.<id>.description": "...",
+   En `es.json` y `en.json` dentro de `"experience"`:
+   ```json
+   "miExperiencia": {
+     "title": "...",
+     "date": "...",
+     "description": "..."
+   }
    ```
 2. **Agregar entrada en `EXPERIENCES` en `src/components/experience/ExperienceSection.astro`:**
    ```typescript
    {
-     title: t("experience.<id>.title"),
-     date: t("experience.<id>.date"),
-     description: t("experience.<id>.description"),
+     title: t("experience.miExperiencia.title"),
+     date: t("experience.miExperiencia.date"),
+     description: t("experience.miExperiencia.description"),
      tags: ["React", "TypeScript", "TailwindCSS"],
      settings: {
        hasProjectUrls: true,
@@ -211,12 +224,12 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
 
 ### 4.3. Cómo agregar un nuevo Idioma
 
-1. Crear el archivo de traducciones `src/i18n/lang/<idioma>.ts`.
-2. Actualizar `src/i18n/ui.ts` agregando la clave del idioma y exportándolo en `ui`.
-3. Actualizar `astro.config.mjs` agregando el código de idioma a `i18n.locales`.
-4. Actualizar `getStaticPaths()` en `src/pages/[lang]/index.astro` agregando `{ params: { lang: "<nuevo_idioma>" } }`.
-5. Agregar el ícono de la bandera en `src/components/icons/languages/` e integrarlo en `src/components/LanguagePicker.astro`.
-6. Añadir el archivo PDF del CV correspondiente en `public/` y configurar su enlace en el diccionario.
+1. Crear el archivo `src/i18n/locales/<código_idioma>.json` copiando la estructura de `es.json`.
+2. Registrar el nuevo idioma en `src/i18n/ui.ts` (en `languages` y en el objeto `ui`).
+3. Añadir el código de idioma a `i18n.locales` en `astro.config.mjs`.
+4. Agregar el ícono de la bandera en `src/components/icons/languages/` e integrarlo en `src/components/LanguagePicker.astro`.
+5. Añadir el archivo PDF del CV correspondiente en `public/` y configurar su enlace en el JSON.
+6. (Opcional): `getStaticPaths()` en `src/pages/[lang]/index.astro` reconocerá el nuevo idioma automáticamente sin cambios manuales.
 
 ---
 

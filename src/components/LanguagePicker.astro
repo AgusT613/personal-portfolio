@@ -1,12 +1,12 @@
 ---
-import { languages } from "../i18n/ui";
-import { getLangFromUrl } from "../i18n/utils";
+import { languages, defaultLang, type Locale } from "../i18n/ui";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import LanguageIcon from "./icons/LanguageIcon.astro";
 import ESIcon from "./icons/languages/ESIcon.astro";
 import ENIcon from "./icons/languages/ENIcon.astro";
 
-const currentLang = getLangFromUrl(Astro.url);
-const currentLangName = (languages as Record<string, string>)[currentLang] ?? currentLang;
+const currentLang = (Astro.currentLocale ?? defaultLang) as Locale;
+const currentLangName = languages[currentLang] ?? currentLang;
 ---
 
 <div class="language-picker" id="language-picker">
@@ -41,7 +41,7 @@ const currentLangName = (languages as Record<string, string>)[currentLang] ?? cu
         const isCurrent = lang === currentLang;
         return (
           <a
-            href={`/${lang}`}
+            href={getRelativeLocaleUrl(lang)}
             class={`language-picker-item ${isCurrent ? "is-active" : ""}`}
             aria-label={name}
           >

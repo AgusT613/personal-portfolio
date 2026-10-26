@@ -2,41 +2,31 @@
 import "./about_me.css";
 import CustomParagraph from "../CustomParagraph.astro";
 import TitleSection from "../TitleSection.astro";
-import KeyWord from "../../components/KeyWord.astro";
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import TransformString from "../TransformString.astro";
+import { useTranslations } from "../../i18n/utils";
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <section id="about-me" class="flex flex-col justify-center py-28">
-  <TitleSection>{t("about.me.section.title")}</TitleSection>
+  <TitleSection>{t("about.sectionTitle")}</TitleSection>
   <article class="gap-6 grid grid-cols-[11rem_1fr]">
     <picture>
       <img
         src="/portrait.jpg"
-        alt={t("about.me.section.img.profile.alt")}
+        alt={t("about.profileImageAlt")}
         class="rounded-3xl object-cover object-top size-full"
       />
     </picture>
     <div class="flex flex-col gap-4">
       <CustomParagraph>
-        {t("about.me.fp.s1") + " "}
-        <KeyWord word={t("about.me.fp.kw1") + " "} />
-        {t("about.me.fp.s2") + " "}
-        <KeyWord word={t("about.me.fp.kw2") + " "} />
-        {t("about.me.fp.s3")}
+        <TransformString text={t("about.firstParagraph")} />
       </CustomParagraph>
       <CustomParagraph>
-        {t("about.me.sp.s1") + " "}
-        <KeyWord word={t("about.me.sp.kw1") + " "} />
-        {t("about.me.sp.s2") + " "}
-        <KeyWord word={t("about.me.sp.kw2") + " "} />
-        {t("about.me.sp.s3")}
+        <TransformString text={t("about.secondParagraph")} />
       </CustomParagraph>
       <CustomParagraph>
-        {t("about.me.tp.s1") + " "}
-        <KeyWord word={t("about.me.tp.kw1") + " "} />
-        {t("about.me.tp.s2")}
+        <TransformString text={t("about.thirdParagraph")} />
       </CustomParagraph>
     </div>
   </article>

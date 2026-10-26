@@ -1,22 +1,22 @@
 ---
 import ActionDoneIcon from "../components/icons/ActionDoneIcon.astro";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { useTranslations } from "../i18n/utils";
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <aside
   id="copy-to-clipboard-msg-container"
-  class="toast-container"
   role="status"
   aria-live="polite"
   aria-atomic="true"
+  class="toast-container"
 >
   <div class="toast-card">
     <span class="toast-icon-wrapper">
       <ActionDoneIcon class="toast-icon" />
     </span>
-    <span class="toast-text">{t("message.container")}</span>
+    <span class="toast-text">{t("message.copied")}</span>
   </div>
 </aside>
 

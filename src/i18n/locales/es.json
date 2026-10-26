@@ -1,0 +1,91 @@
+{
+  "head": {
+    "title": "Torres Agustin - Portafolio",
+    "description": "Mi portafolio personal de desarrollador web"
+  },
+  "message": {
+    "copied": "Email Copiado"
+  },
+  "header": {
+    "nav": {
+      "top": "Inicio",
+      "experience": "Experiencia",
+      "projects": "Proyectos",
+      "aboutMe": "Sobre Mí",
+      "contact": "Contacto"
+    }
+  },
+  "hero": {
+    "imageProfileAlt": "Una foto mia, Agustin Torres, vestido con una camisa azul.",
+    "badges": {
+      "webpages": "páginas web",
+      "apps": "aplicaciones",
+      "database": "bases de datos",
+      "design": "diseño"
+    },
+    "greeting": "Un gusto! Soy Agus",
+    "yearsOfExperience": "+1 año de experiencia.",
+    "description": "<kw>+1 año de experiencia.</kw> Estudiando desarrollo de software y colaborando en proyectos de terceros. Cuento con amplios conocimientos para la construcción de tu próximo proyecto web o aplicación.",
+    "downloadCv": "Descargar CV",
+    "cvFileName": "torres-agustin-cv",
+    "cvFileHref": "/torres-facundo-cv-es.pdf",
+    "emailInputAriaLabel": "Email de contacto",
+    "copyEmailAriaLabel": "Copiar email",
+    "sendEmailAriaLabel": "Enviar email"
+  },
+  "experience": {
+    "sectionTitle": "Experiencia",
+    "redMascotera": {
+      "title": "Red Mascotera - Proyecto Solidario",
+      "date": "noviembre 2023 - mayo 2024",
+      "description": "A cargo de la construcción de la página web junto a un equipo de desarrolladores frontend. Reuniones con equipos de otras áreas técnicas para evaluar el estado, la mejora, y el avance del proyecto. Uso de herramientas de gestion de proyectos para la transparencia del trabajo con otras áreas de desarrollo."
+    },
+    "itba": {
+      "title": "Escuela de Innovación ITBA - Programa de Capacitación Fullstack Developer",
+      "date": "agosto 2023 - noviembre 2023",
+      "description": "Diseño, maquetación, y desarrollo de un homebanking ficticio junto a un equipo de 3 compañeros. Proceso completo de construcción de la app desde la creación de la vista web hasta la implementación de una REST-API para la creación, modificación, y actualización de datos. A cargo del diseño, desarrollo de los endpoints de la API, y la conexión frontend-backend."
+    },
+    "donBoscoLabs": {
+      "title": "Instituto Web - Experiencia IT en Desarrollo de Software",
+      "date": "agosto 2023 - octubre 2023",
+      "description": "Maquetación y desarrollo de una plataforma para un sistema de laboratorio de análisis clínicos. A cargo de la construcción de la página de inicio o home-page. Participé en reuniones semanales para la evaluación de nuevas caracteristicas y el aprendizaje de otras áreas de desarrollo."
+    },
+    "femyp": {
+      "title": "Femyp SRL - Pasantia en Empresa de Ascensores",
+      "date": "octubre 2022 - noviembre 2022",
+      "description": "A cargo del diseño de piezas de ascensores, y de muebleria para la propuesta de la nueva oficina técnica de la empresa."
+    }
+  },
+  "project": {
+    "sectionTitle": "Proyectos",
+    "webpageBtnLabel": "Página Web",
+    "homebanking": {
+      "description": "Proyecto para un programa de capacitación en FullStack Developer, junto a un equipo de desarrollo. Aplicación web de homebanking, amigable al usuario y de facil navegación. API REST y autenticación desarrollada con django-rest-framework.",
+      "imageAlt": "Prevista de la aplicación de homebanking desarrollada para la web. La plataforma se llama ITBANK y allí se pueden realizar operaciones bancarias desde a comodidad de un celular."
+    },
+    "donBosco": {
+      "description": "Sistema de laboratorio de análisis clínicos desarrollada para una practica. Marco de trabajo Scrum. Encargado de desarrollar la página web del laboratorio.",
+      "imageAlt": "Prevista del sistema de laboratorio de análisis clínicos en donde lo primero que se muestra es la sección de inicio con una imagen de una mujer con vestimenta de laboratorio en brazos cruzados."
+    },
+    "techInterview": {
+      "title": "Entrevista Técnica - Liftun",
+      "description": "Interfaz que permite a los usuarios configurar distintos elementos fundamentales para crear una acción sostenible para el medio ambiente. API REST y base de datos para almacenar las acciones.",
+      "imageAlt": "Prevista de un formulario para la creación de tarjetas que indican una acción sostenible para el planeta."
+    },
+    "ecommerce": {
+      "description": "Proyecto basado en un diseño de figma creado por otro usuario. El diseño fue cambiado y se añadieron caracteristicas como una barra de busqueda funcional, un botón para el cambio de idioma y un carrousel de imágenes. Usa la API de Fake Store Api.",
+      "imageAlt": "Prevista del home de la página web de ecommerce, el cual muestra un carrousel de imagenes de productos para comprar"
+    }
+  },
+  "about": {
+    "sectionTitle": "Sobre Mí",
+    "profileImageAlt": "Una foto de mí, Torres Agustin",
+    "firstParagraph": "Mi nombre es Agustin y tengo 22 años. Me gradué como <kw>técnico electromecánico</kw> en la secundaria y actualmente estoy cursando mis estudios universitarios para <kw>Ingenieria Informática</kw> en la Universidad de Buenos Aires (UBA).",
+    "secondParagraph": "Estudio programación desde 2022, empezando por el <kw>desarrollo de páginas web.</kw> Durante mi último año de secundaria tuve la oportunidad de complementar mis conocimientos en un proyecto de <kw>electrónica, automatización, y programación.</kw> Tambien he colaborado en la construcción de proyectos de software de terceros.",
+    "thirdParagraph": "Me considero una persona <kw>curiosa, responsable y centrada.</kw> Considero firmemente que los detalles en un proyecto marcan la diferencia, de esa forma destacamos el sello personal de nuestro producto y/o servicio."
+  },
+  "footer": {
+    "contact": "Contacto",
+    "developedWith": "Desarrollado con Astro"
+  }
+}

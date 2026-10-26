@@ -3,20 +3,20 @@ import "./hero.css";
 import Badge from "../../components/Badge.astro";
 import CopyEmailBtn from "../../components/CopyEmailBtn.astro";
 import DownloadCVBtn from "../../components/DownloadCVBtn.astro";
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
-import KeyWord from "../KeyWord.astro";
+import TransformString from "../TransformString.astro";
+import { useTranslations } from "../../i18n/utils";
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <section id="top" class="hero-section">
   <div class="hero-container">
     <div class="hero-content">
       <div class="hero-badges">
-        <Badge label={t("hero.badge.webpages")} />
-        <Badge label={t("hero.badge.apps")} />
-        <Badge label={t("hero.badge.database")} />
-        <Badge label={t("hero.badge.design")} />
+        <Badge label={t("hero.badges.webpages")} />
+        <Badge label={t("hero.badges.apps")} />
+        <Badge label={t("hero.badges.database")} />
+        <Badge label={t("hero.badges.design")} />
       </div>
 
       <h1 class="greeting-title">
@@ -25,8 +25,7 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 
       <article class="hero-description">
         <p>
-          <KeyWord word={t("hero.years.of.experience") + " "} />
-          {t("hero.description")}
+          <TransformString text={t("hero.description")} />
         </p>
       </article>
 
@@ -40,7 +39,7 @@ const t = useTranslations(getLangFromUrl(Astro.url));
       <div class="avatar-glow"></div>
       <img
         src="/profile_image.png"
-        alt={t("hero.image.profile.alt")}
+        alt={t("hero.imageProfileAlt")}
         class="hero-avatar"
       />
     </div>

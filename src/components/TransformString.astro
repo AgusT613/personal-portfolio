@@ -1,0 +1,22 @@
+---
+import KeyWord from "./KeyWord.astro";
+
+interface Props {
+  text?: string;
+}
+
+const { text = "" } = Astro.props;
+
+// Split text by <kw>...</kw> tags while preserving matched groups
+const parts = text ? text.split(/(<kw>[\s\S]*?<\/kw>)/g) : [];
+---
+
+{
+  parts.map((part) => {
+    if (part.startsWith("<kw>") && part.endsWith("</kw>")) {
+      const keyword = part.slice(4, -5);
+      return <KeyWord word={keyword} />;
+    }
+    return part;
+  })
+}

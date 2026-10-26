@@ -1,0 +1,91 @@
+{
+  "head": {
+    "title": "Torres Agustin - Portfolio",
+    "description": "My personal web developer portfolio"
+  },
+  "message": {
+    "copied": "Email Copied"
+  },
+  "header": {
+    "nav": {
+      "top": "Home",
+      "experience": "Experience",
+      "projects": "Projects",
+      "aboutMe": "About Me",
+      "contact": "Contact"
+    }
+  },
+  "hero": {
+    "imageProfileAlt": "A picture of me, Agustin Torres, wearing a blue shirt.",
+    "badges": {
+      "webpages": "web pages",
+      "apps": "applications",
+      "database": "databases",
+      "design": "design"
+    },
+    "greeting": "Hey! I´m Agus",
+    "yearsOfExperience": "+1 year of experience.",
+    "description": "<kw>+1 year of experience.</kw> Studying software development and collaborating on third-party projects. I have extensive knowledge for building your next web project or application.",
+    "downloadCv": "Resume",
+    "cvFileName": "torres-agustin-resume",
+    "cvFileHref": "/torres-facundo-cv-en.pdf",
+    "emailInputAriaLabel": "Contact email",
+    "copyEmailAriaLabel": "Copy email",
+    "sendEmailAriaLabel": "Send email"
+  },
+  "experience": {
+    "sectionTitle": "Experience",
+    "redMascotera": {
+      "title": "Red Mascotera - Charitable Project",
+      "date": "november 2023 - may 2024",
+      "description": "Leading the construction of the webpage alongside a team of frontend developers. Conducting meetings with teams from other technical areas to assess project status, identify areas for improvement, and monitor progress. Utilizing project management tools to facilitate transparent collaboration across development teams."
+    },
+    "itba": {
+      "title": "Escuela de Innovación ITBA - Training Programme in FullStack Developer",
+      "date": "august 2023 - november 2023",
+      "description": "Designing, laying out, and developing a fictitious home banking platform with a team of three colleagues. Overseeing the entire app construction process, from creating the web interface to implementing a REST API for data creation, modification, and updates. Responsible for designing, developing API endpoints, and establishing frontend-backend connectivity."
+    },
+    "donBoscoLabs": {
+      "title": "Instituto Web - IT Experience in Software Development",
+      "date": "august 2023 - october 2023",
+      "description": "Laying out and developing a platform for a clinical analysis laboratory system. Responsible for constructing the homepage. Participated in weekly meetings to evaluate new features and gain insight into other areas of development."
+    },
+    "femyp": {
+      "title": "Femyp SRL - Internship in Elevator Company",
+      "date": "october 2022 - november 2022",
+      "description": "In charge of designing elevator components and furniture for the proposal of the company's new technical office."
+    }
+  },
+  "project": {
+    "sectionTitle": "Projects",
+    "webpageBtnLabel": "Web Page",
+    "homebanking": {
+      "description": "Project for a FullStack Developer training program, alongside a development team. User-friendly and easily navigable home banking web application. REST API and authentication developed using Django REST Framework.",
+      "imageAlt": "Preview of the web-developed home banking application. The platform is called ITBANK, where banking operations can be carried out conveniently from a mobile device."
+    },
+    "donBosco": {
+      "description": "Clinical analysis laboratory system developed for a practical project. Implemented within a Scrum framework. Responsible for developing the laboratory's website.",
+      "imageAlt": "Preview of the clinical analysis laboratory system, where the initial section features an image of a woman wearing laboratory attire with arms crossed."
+    },
+    "techInterview": {
+      "title": "Technical Interview - Liftun",
+      "description": "Interface that enables users to configure various fundamental elements to create a sustainable action for the environment. REST API and database for storing the actions.",
+      "imageAlt": "Preview of a form for creating cards that indicate a sustainable action for the planet."
+    },
+    "ecommerce": {
+      "description": "Project based on a figma design from another user. The design was changed in order to develope certain features like a functional searching navigation bar, a language toggler button and a carrousel of images. It uses the Fake Store API to fetch products.",
+      "imageAlt": "Preview of the ecommerce web home which shows a carrousel of products to purchase"
+    }
+  },
+  "about": {
+    "sectionTitle": "About Me",
+    "profileImageAlt": "A picture of me, Torres Agustin",
+    "firstParagraph": "My name is Agustin and I am 22 years old. I graduated as an <kw>electromechanical technician</kw> in high school, and I am currently studying <kw>Computer Engineering</kw> at the University of Buenos Aires (UBA).",
+    "secondParagraph": "I have been studying programming since 2022, starting with <kw>web development.</kw> During my last year of high school, I had the opportunity to complement my knowledge in a project involving <kw>electronics, automation, and programming.</kw> I have also collaborated in the construction of third-party software projects.",
+    "thirdParagraph": "I consider myself a <kw>curious, responsible, and focused individual.</kw> I firmly believe that the details in a project make a difference; in this way, we highlight the personal touch of our product and/or service."
+  },
+  "footer": {
+    "contact": "Contact",
+    "developedWith": "Developed with Astro"
+  }
+}

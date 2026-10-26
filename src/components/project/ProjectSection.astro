@@ -2,9 +2,9 @@
 import TitleSection from "../TitleSection.astro";
 import ProjectContainer from "./ProjectContainer.astro";
 import ICONS from "../../utils/icons.js";
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/utils";
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const t = useTranslations(Astro.currentLocale);
 
 const PROJECTS = [
   {
@@ -13,7 +13,7 @@ const PROJECTS = [
     technologies: [ICONS.NextJS, ICONS.Django, ICONS.SQLite, ICONS.CSS],
     image: {
       src: "/projects/itbank_homebanking/preview.png",
-      alt: t("project.homebanking.img.alt"),
+      alt: t("project.homebanking.imageAlt"),
     },
     links: [
       {
@@ -28,7 +28,7 @@ const PROJECTS = [
       },
       {
         href: "https://itba-full-stack-proyecto.vercel.app/",
-        label: t("project.section.webpage.btn.label"),
+        label: t("project.webpageBtnLabel"),
         icon: ICONS.RedirectIcon,
       },
     ],
@@ -39,7 +39,7 @@ const PROJECTS = [
     technologies: [ICONS.React, ICONS.CSS],
     image: {
       src: "/projects/ecommerce/preview.png",
-      alt: t("project.ecommerce.img.alt"),
+      alt: t("project.ecommerce.imageAlt"),
     },
     links: [
       {
@@ -49,18 +49,18 @@ const PROJECTS = [
       },
       {
         href: "https://eccomy-ecommerce-react.netlify.app/",
-        label: t("project.section.webpage.btn.label"),
+        label: t("project.webpageBtnLabel"),
         icon: ICONS.RedirectIcon,
       },
     ],
   },
   {
     name: "Don Bosco Labs",
-    description: t("project.don.bosco.description"),
+    description: t("project.donBosco.description"),
     technologies: [ICONS.React, ICONS.CSS, ICONS.Tailwind],
     image: {
       src: "/projects/don_bosco_labs/preview.png",
-      alt: t("project.don.bosco.img.alt"),
+      alt: t("project.donBosco.imageAlt"),
     },
     links: [
       {
@@ -75,14 +75,14 @@ const PROJECTS = [
       },
       {
         href: "https://kaleidoscopic-dieffenbachia-5d550d.netlify.app/",
-        label: t("project.section.webpage.btn.label"),
+        label: t("project.webpageBtnLabel"),
         icon: ICONS.RedirectIcon,
       },
     ],
   },
   {
-    name: t("project.tech.interview.title"),
-    description: t("project.tech.interview.description"),
+    name: t("project.techInterview.title"),
+    description: t("project.techInterview.description"),
     technologies: [
       ICONS.NextJS,
       ICONS.Django,
@@ -92,7 +92,7 @@ const PROJECTS = [
     ],
     image: {
       src: "/projects/entrevista_tecnica_uno/preview.png",
-      alt: t("project.tech.interview.img.alt"),
+      alt: t("project.techInterview.imageAlt"),
     },
     links: [
       {
@@ -107,7 +107,7 @@ const PROJECTS = [
       },
       {
         href: "https://liftun-entrevista-front.vercel.app/",
-        label: t("project.section.webpage.btn.label"),
+        label: t("project.webpageBtnLabel"),
         icon: ICONS.RedirectIcon,
       },
     ],
@@ -116,7 +116,7 @@ const PROJECTS = [
 ---
 
 <section id="projects" class="project-section">
-  <TitleSection>{t("project.section.title")}</TitleSection>
+  <TitleSection>{t("project.sectionTitle")}</TitleSection>
   <div class="project-grid">
     {PROJECTS.map((project) => <ProjectContainer project={project} />)}
   </div>
@@ -139,10 +139,9 @@ const PROJECTS = [
     box-sizing: border-box;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .project-grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
     }
   }
 </style>

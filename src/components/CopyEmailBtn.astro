@@ -2,6 +2,9 @@
 import CopyIcon from "./icons/CopyIcon.astro";
 import CustomActionBtn from "../components/CustomActionBtn.astro";
 import SendEmailIcon from "../components/icons/SendEmailIcon.astro";
+import { useTranslations } from "../i18n/utils";
+
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <div class="copy-email-btn">
@@ -11,12 +14,12 @@ import SendEmailIcon from "../components/icons/SendEmailIcon.astro";
     readonly
     value="torresagustin613@gmail.com"
     class="email-input"
-    aria-label="Email de contacto"
+    aria-label={t("hero.emailInputAriaLabel")}
   />
-  <CustomActionBtn id="copy-btn" className="copy-btn-action" aria-label="Copiar email">
+  <CustomActionBtn id="copy-btn" className="copy-btn-action" aria-label={t("hero.copyEmailAriaLabel")}>
     <CopyIcon class="action-svg" />
   </CustomActionBtn>
-  <a href="mailto:torresagustin613@gmail.com" class="send-mail-link" aria-label="Enviar email" title="Enviar email">
+  <a href="mailto:torresagustin613@gmail.com" class="send-mail-link" aria-label={t("hero.sendEmailAriaLabel")} title={t("hero.sendEmailAriaLabel")}>
     <CustomActionBtn className="send-btn-action">
       <SendEmailIcon class="action-svg" />
     </CustomActionBtn>

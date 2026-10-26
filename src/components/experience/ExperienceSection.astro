@@ -1,15 +1,15 @@
 ---
 import TitleSection from "../TitleSection.astro";
 import ExperienceContainer from "./ExperienceContainer.astro";
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/utils";
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const t = useTranslations(Astro.currentLocale);
 
 const EXPERIENCES = [
   {
-    title: t("experience.red.mascotera.title"),
-    date: t("experience.red.mascotera.date"),
-    description: t("experience.red.mascotera.description"),
+    title: t("experience.redMascotera.title"),
+    date: t("experience.redMascotera.date"),
+    description: t("experience.redMascotera.description"),
     tags: [
       "HTML - CSS",
       "TailwindCSS",
@@ -47,9 +47,9 @@ const EXPERIENCES = [
     },
   },
   {
-    title: t("experience.don.bosco.labs.title"),
-    date: t("experience.don.bosco.labs.date"),
-    description: t("experience.don.bosco.labs.description"),
+    title: t("experience.donBoscoLabs.title"),
+    date: t("experience.donBoscoLabs.date"),
+    description: t("experience.donBoscoLabs.description"),
     tags: ["HTML - CSS", "JavaScript", "ReactJS", "Netlify", "Slack", "Trello"],
     settings: {
       hasProjectUrls: true,
@@ -60,7 +60,7 @@ const EXPERIENCES = [
 ---
 
 <section id="experience" class="experience-section">
-  <TitleSection>{t("experience.section.title")}</TitleSection>
+  <TitleSection>{t("experience.sectionTitle")}</TitleSection>
   <div class="experience-wrapper">
     {
       EXPERIENCES.map((experience) => (
