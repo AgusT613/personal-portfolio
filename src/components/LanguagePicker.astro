@@ -7,6 +7,11 @@ import ENIcon from "./icons/languages/ENIcon.astro";
 
 const currentLang = (Astro.currentLocale ?? defaultLang) as Locale;
 const currentLangName = languages[currentLang] ?? currentLang;
+
+// Preserve current page path when toggling language (e.g. /es/resume -> /en/resume)
+const pathname = Astro.url.pathname;
+const segments = pathname.split("/").filter(Boolean);
+const currentPath = segments.length > 1 ? segments.slice(1).join("/") : "";
 ---
 
 <div class="language-picker" id="language-picker">
@@ -39,9 +44,12 @@ const currentLangName = languages[currentLang] ?? currentLang;
     {
       Object.entries(languages).map(([lang, name]) => {
         const isCurrent = lang === currentLang;
+        const targetUrl = currentPath
+          ? getRelativeLocaleUrl(lang, currentPath)
+          : getRelativeLocaleUrl(lang);
         return (
           <a
-            href={getRelativeLocaleUrl(lang)}
+            href={targetUrl}
             class={`language-picker-item ${isCurrent ? "is-active" : ""}`}
             aria-label={name}
           >

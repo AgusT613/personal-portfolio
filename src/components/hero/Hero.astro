@@ -2,7 +2,7 @@
 import "./hero.css";
 import Badge from "../../components/Badge.astro";
 import CopyEmailBtn from "../../components/CopyEmailBtn.astro";
-import DownloadCVBtn from "../../components/DownloadCVBtn.astro";
+import ViewCVBtn from "../../components/ViewCVBtn.astro";
 import TransformString from "../TransformString.astro";
 import { useTranslations } from "../../i18n/utils";
 
@@ -31,7 +31,7 @@ const t = useTranslations(Astro.currentLocale);
 
       <div class="actions-btn-container">
         <CopyEmailBtn />
-        <DownloadCVBtn />
+        <ViewCVBtn />
       </div>
     </div>
 

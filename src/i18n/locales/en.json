@@ -26,6 +26,7 @@
     "greeting": "Hey! I´m Agus",
     "yearsOfExperience": "+1 year of experience.",
     "description": "Software developer with strong expertise in web and desktop applications, Google Cloud environments, and integrating AI into systems. I'm ready to guide and provide solutions for your next project. Feel free to get in touch!",
+    "viewCv": "View Resume",
     "downloadCv": "Resume",
     "cvFileName": "torres-agustin-resume",
     "cvFileHref": "/torres-facundo-cv-en.pdf",
@@ -87,5 +88,17 @@
   "footer": {
     "contact": "Contact",
     "developedWith": "Developed with Astro"
+  },
+  "resume": {
+    "pageTitle": "Curriculum Vitae",
+    "backToHome": "Back to Home",
+    "downloadPdf": "Download PDF",
+    "loading": "Loading document...",
+    "errorLoading": "Could not load the PDF. You can download it directly using the button above.",
+    "pageIndicator": "Page {{current}} of {{total}}",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "fitWidth": "Fit to width",
+    "fitPage": "Fit page"
   }
 }

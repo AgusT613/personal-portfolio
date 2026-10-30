@@ -26,6 +26,7 @@
     "greeting": "Un gusto! Soy Agus",
     "yearsOfExperience": "+1 año de experiencia.",
     "description": "Desarrollador de software con sólidos conocimientos en aplicaciones web, escritorio, entornos en la nube de Google e implementación de IA en sistemas. Estoy capacitado para dar guía y solución a tu próximo proyecto. No dudes en escribirme!",
+    "viewCv": "Ver CV",
     "downloadCv": "Descargar CV",
     "cvFileName": "torres-agustin-cv",
     "cvFileHref": "/torres-facundo-cv-es.pdf",
@@ -87,5 +88,17 @@
   "footer": {
     "contact": "Contacto",
     "developedWith": "Desarrollado con Astro"
+  },
+  "resume": {
+    "pageTitle": "Curículum Vitae",
+    "backToHome": "Volver al Inicio",
+    "downloadPdf": "Descargar PDF",
+    "loading": "Cargando documento...",
+    "errorLoading": "No se pudo cargar el PDF. Puedes descargarlo directamente con el botón superior.",
+    "pageIndicator": "Página {{current}} de {{total}}",
+    "zoomIn": "Aumentar zoom",
+    "zoomOut": "Reducir zoom",
+    "fitWidth": "Ajustar al ancho",
+    "fitPage": "Ajustar página"
   }
 }

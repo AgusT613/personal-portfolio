@@ -30,10 +30,7 @@ const t = useTranslations(currentLocale);
   <body class="relative">
     <MessageContainer />
     <div class="grid-wrapper">
-      <Header />
-      <div class="main-wrapper">
-        <slot />
-      </div>
+      <slot />
       <Footer />
     </div>
   </body>
@@ -46,12 +43,5 @@ const t = useTranslations(currentLocale);
     min-height: 100vh;
     min-height: 100dvh;
     width: 100%;
-  }
-
-  .main-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    flex: 1;
   }
 </style>
