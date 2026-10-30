@@ -16,16 +16,16 @@
     }
   },
   "hero": {
-    "imageProfileAlt": "Una foto mia, Agustin Torres, vestido con una camisa azul.",
+    "imageProfileAlt": "Una foto mía, Agustín Torres, vestido con una camisa azul.",
     "badges": {
       "webpages": "páginas web",
-      "apps": "aplicaciones",
-      "database": "bases de datos",
-      "design": "diseño"
+      "desktopApps": "aplicaciones escritorio",
+      "cloud": "google cloud",
+      "ai": "AI"
     },
     "greeting": "Un gusto! Soy Agus",
     "yearsOfExperience": "+1 año de experiencia.",
-    "description": "<kw>+1 año de experiencia.</kw> Estudiando desarrollo de software y colaborando en proyectos de terceros. Cuento con amplios conocimientos para la construcción de tu próximo proyecto web o aplicación.",
+    "description": "Desarrollador de software con sólidos conocimientos en aplicaciones web, escritorio, entornos en la nube de Google e implementación de IA en sistemas. Estoy capacitado para dar guía y solución a tu próximo proyecto. No dudes en escribirme!",
     "downloadCv": "Descargar CV",
     "cvFileName": "torres-agustin-cv",
     "cvFileHref": "/torres-facundo-cv-es.pdf",
@@ -38,7 +38,7 @@
     "redMascotera": {
       "title": "Red Mascotera - Proyecto Solidario",
       "date": "noviembre 2023 - mayo 2024",
-      "description": "A cargo de la construcción de la página web junto a un equipo de desarrolladores frontend. Reuniones con equipos de otras áreas técnicas para evaluar el estado, la mejora, y el avance del proyecto. Uso de herramientas de gestion de proyectos para la transparencia del trabajo con otras áreas de desarrollo."
+      "description": "A cargo de la construcción de la página web junto a un equipo de desarrolladores frontend. Reuniones con equipos de otras áreas técnicas para evaluar el estado, la mejora, y el avance del proyecto. Uso de herramientas de gestión de proyectos para la transparencia del trabajo con otras áreas de desarrollo."
     },
     "itba": {
       "title": "Escuela de Innovación ITBA - Programa de Capacitación Fullstack Developer",
@@ -48,10 +48,10 @@
     "donBoscoLabs": {
       "title": "Instituto Web - Experiencia IT en Desarrollo de Software",
       "date": "agosto 2023 - octubre 2023",
-      "description": "Maquetación y desarrollo de una plataforma para un sistema de laboratorio de análisis clínicos. A cargo de la construcción de la página de inicio o home-page. Participé en reuniones semanales para la evaluación de nuevas caracteristicas y el aprendizaje de otras áreas de desarrollo."
+      "description": "Maquetación y desarrollo de una plataforma para un sistema de laboratorio de análisis clínicos. A cargo de la construcción de la página de inicio o home-page. Participé en reuniones semanales para la evaluación de nuevas características y el aprendizaje de otras áreas de desarrollo."
     },
     "femyp": {
-      "title": "Femyp SRL - Pasantia en Empresa de Ascensores",
+      "title": "Femyp SRL - Pasantía en Empresa de Ascensores",
       "date": "octubre 2022 - noviembre 2022",
       "description": "A cargo del diseño de piezas de ascensores, y de muebleria para la propuesta de la nueva oficina técnica de la empresa."
     }
@@ -60,11 +60,11 @@
     "sectionTitle": "Proyectos",
     "webpageBtnLabel": "Página Web",
     "homebanking": {
-      "description": "Proyecto para un programa de capacitación en FullStack Developer, junto a un equipo de desarrollo. Aplicación web de homebanking, amigable al usuario y de facil navegación. API REST y autenticación desarrollada con django-rest-framework.",
+      "description": "Proyecto para un programa de capacitación en FullStack Developer, junto a un equipo de desarrollo. Aplicación web de homebanking, amigable al usuario y de fácil navegación. API REST y autenticación desarrollada con django-rest-framework.",
       "imageAlt": "Prevista de la aplicación de homebanking desarrollada para la web. La plataforma se llama ITBANK y allí se pueden realizar operaciones bancarias desde a comodidad de un celular."
     },
     "donBosco": {
-      "description": "Sistema de laboratorio de análisis clínicos desarrollada para una practica. Marco de trabajo Scrum. Encargado de desarrollar la página web del laboratorio.",
+      "description": "Sistema de laboratorio de análisis clínicos desarrollada para una práctica. Marco de trabajo Scrum. Encargado de desarrollar la página web del laboratorio.",
       "imageAlt": "Prevista del sistema de laboratorio de análisis clínicos en donde lo primero que se muestra es la sección de inicio con una imagen de una mujer con vestimenta de laboratorio en brazos cruzados."
     },
     "techInterview": {
@@ -73,15 +73,15 @@
       "imageAlt": "Prevista de un formulario para la creación de tarjetas que indican una acción sostenible para el planeta."
     },
     "ecommerce": {
-      "description": "Proyecto basado en un diseño de figma creado por otro usuario. El diseño fue cambiado y se añadieron caracteristicas como una barra de busqueda funcional, un botón para el cambio de idioma y un carrousel de imágenes. Usa la API de Fake Store Api.",
-      "imageAlt": "Prevista del home de la página web de ecommerce, el cual muestra un carrousel de imagenes de productos para comprar"
+      "description": "Proyecto basado en un diseño de figma creado por otro usuario. El diseño fue cambiado y se añadieron características como una barra de búsqueda funcional, un botón para el cambio de idioma y un carrusel de imágenes. Usa la API de Fake Store Api.",
+      "imageAlt": "Prevista del home de la página web de ecommerce, el cual muestra un carrusel de imágenes de productos para comprar"
     }
   },
   "about": {
     "sectionTitle": "Sobre Mí",
-    "profileImageAlt": "Una foto de mí, Torres Agustin",
-    "firstParagraph": "Mi nombre es Agustin y tengo 22 años. Me gradué como <kw>técnico electromecánico</kw> en la secundaria y actualmente estoy cursando mis estudios universitarios para <kw>Ingenieria Informática</kw> en la Universidad de Buenos Aires (UBA).",
-    "secondParagraph": "Estudio programación desde 2022, empezando por el <kw>desarrollo de páginas web.</kw> Durante mi último año de secundaria tuve la oportunidad de complementar mis conocimientos en un proyecto de <kw>electrónica, automatización, y programación.</kw> Tambien he colaborado en la construcción de proyectos de software de terceros.",
+    "profileImageAlt": "Una foto de mí, Torres Agustín",
+    "firstParagraph": "Mi nombre es Agustín y tengo 22 años. Me gradué como <kw>técnico electromecánico</kw> en la secundaria y actualmente estoy cursando mis estudios universitarios para <kw>Ingeniería Informática</kw> en la Universidad de Buenos Aires (UBA).",
+    "secondParagraph": "Estudio programación desde 2022, empezando por el <kw>desarrollo de páginas web.</kw> Durante mi último año de secundaria tuve la oportunidad de complementar mis conocimientos en un proyecto de <kw>electrónica, automatización, y programación.</kw> También he colaborado en la construcción de proyectos de software de terceros.",
     "thirdParagraph": "Me considero una persona <kw>curiosa, responsable y centrada.</kw> Considero firmemente que los detalles en un proyecto marcan la diferencia, de esa forma destacamos el sello personal de nuestro producto y/o servicio."
   },
   "footer": {

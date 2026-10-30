@@ -19,13 +19,13 @@
     "imageProfileAlt": "A picture of me, Agustin Torres, wearing a blue shirt.",
     "badges": {
       "webpages": "web pages",
-      "apps": "applications",
-      "database": "databases",
-      "design": "design"
+      "desktopApps": "desktop apps",
+      "cloud": "google cloud",
+      "ai": "AI"
     },
     "greeting": "Hey! I´m Agus",
     "yearsOfExperience": "+1 year of experience.",
-    "description": "<kw>+1 year of experience.</kw> Studying software development and collaborating on third-party projects. I have extensive knowledge for building your next web project or application.",
+    "description": "Software developer with strong expertise in web and desktop applications, Google Cloud environments, and integrating AI into systems. I'm ready to guide and provide solutions for your next project. Feel free to get in touch!",
     "downloadCv": "Resume",
     "cvFileName": "torres-agustin-resume",
     "cvFileHref": "/torres-facundo-cv-en.pdf",

@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import "./layout.css";
 import Header from "../components/header/Header.astro";
 import Footer from "../components/footer/Footer.astro";
 import MessageContainer from "../components/MessageContainer.astro";
@@ -39,3 +38,20 @@ const t = useTranslations(currentLocale);
     </div>
   </body>
 </html>
+
+<style>
+  .grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+  }
+
+  .main-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+  }
+</style>
