@@ -1,7 +1,7 @@
 ---
 import { useTranslations } from "../i18n/utils";
+import { Icon } from "astro-icon/components";
 import CustomActionBtn from "./CustomActionBtn.astro";
-import DownloadIcon from "./icons/DownloadIcon.astro";
 
 const t = useTranslations(Astro.currentLocale);
 ---
@@ -15,7 +15,7 @@ const t = useTranslations(Astro.currentLocale);
 >
   <CustomActionBtn className="download-cv-btn-inner">
     <span>{t("hero.downloadCv")}</span>
-    <DownloadIcon class="download-svg" />
+    <Icon name="tabler:download" class="download-svg" />
   </CustomActionBtn>
 </a>
 

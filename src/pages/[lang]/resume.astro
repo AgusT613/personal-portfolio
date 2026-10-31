@@ -3,8 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { useTranslations } from "../../i18n/utils";
 import { locales } from "../../i18n/ui";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import DownloadIcon from "../../components/icons/DownloadIcon.astro";
-import LanguagePicker from "../../components/LanguagePicker.astro";
+import { Icon } from "astro-icon/components";
 
 export function getStaticPaths() {
   return locales.map((lang) => ({ params: { lang } }));
@@ -49,7 +48,7 @@ const downloadName = t("hero.cvFileName");
           aria-label={t("resume.downloadPdf")}
         >
           <span>{t("resume.downloadPdf")}</span>
-          <DownloadIcon class="download-icon" />
+          <Icon name="tabler:download" class="download-icon" />
         </a>
       </div>
     </div>

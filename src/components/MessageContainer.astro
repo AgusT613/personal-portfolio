@@ -1,5 +1,5 @@
 ---
-import ActionDoneIcon from "../components/icons/ActionDoneIcon.astro";
+import { Icon } from "astro-icon/components";
 import { useTranslations } from "../i18n/utils";
 
 const t = useTranslations(Astro.currentLocale);
@@ -14,7 +14,7 @@ const t = useTranslations(Astro.currentLocale);
 >
   <div class="toast-card">
     <span class="toast-icon-wrapper">
-      <ActionDoneIcon class="toast-icon" />
+      <Icon name="tabler:circle-check" class="toast-icon" />
     </span>
     <span class="toast-text">{t("message.copied")}</span>
   </div>

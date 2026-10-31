@@ -1,5 +1,5 @@
 export interface ITechnologiesUsed {
-  icon: any;
+  icon: string;
   label: string;
 }
 
@@ -11,7 +11,7 @@ export interface IImage {
 export interface IProjectLinks {
   href: string;
   label: string;
-  icon: any;
+  icon: string;
 }
 
 export interface IProject {

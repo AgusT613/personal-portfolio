@@ -1,7 +1,6 @@
 ---
 import TitleSection from "../TitleSection.astro";
 import ProjectContainer from "./ProjectContainer.astro";
-import ICONS from "../../utils/icons.js";
 import { PROJECTS_DATA } from "../../data/projects";
 import { useTranslations } from "../../i18n/utils";
 import type { IProject, IProjectLinks } from "../../types";
@@ -11,14 +10,14 @@ const t = useTranslations(Astro.currentLocale);
 const projects: IProject[] = PROJECTS_DATA.map((project) => {
   const links: IProjectLinks[] = project.links.map((link) => {
     let label = t("project.webpageBtnLabel");
-    let icon = ICONS.RedirectIcon;
+    let icon = "tabler:external-link";
 
     if (link.type === "github-front") {
       label = "Frontend";
-      icon = ICONS.GitHub;
+      icon = "tabler:brand-github";
     } else if (link.type === "github-back") {
       label = "Backend";
-      icon = ICONS.GitHub;
+      icon = "tabler:brand-github";
     }
 
     return {

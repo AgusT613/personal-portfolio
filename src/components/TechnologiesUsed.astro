@@ -1,5 +1,6 @@
 ---
 import type { ITechnologiesUsed } from "../types/index.ts";
+import { Icon } from "astro-icon/components";
 import Badge from "./Badge.astro";
 
 interface Props {
@@ -13,7 +14,7 @@ const { technologies } = Astro.props;
   {
     technologies.map((technology) => (
       <Badge label={technology.label}>
-        <technology.icon class="size-5" />
+        <Icon name={technology.icon} class="size-5 shrink-0" />
       </Badge>
     ))
   }

@@ -1,4 +1,3 @@
-import ICONS from "../utils/icons.js";
 import type { IProjectData } from "../types";
 
 export const PROJECTS_DATA: IProjectData[] = [
@@ -6,7 +5,12 @@ export const PROJECTS_DATA: IProjectData[] = [
     id: "homebanking",
     name: "ITBANK Homebanking",
     translationId: "homebanking",
-    technologies: [ICONS.NextJS, ICONS.Django, ICONS.SQLite, ICONS.CSS],
+    technologies: [
+      { icon: "logos:nextjs-icon", label: "NextJS" },
+      { icon: "logos:django-icon", label: "Django" },
+      { icon: "logos:sqlite", label: "SQLite3" },
+      { icon: "logos:css-3", label: "CSS Modules" },
+    ],
     image: "/projects/itbank_homebanking/preview.png",
     links: [
       {
@@ -27,7 +31,10 @@ export const PROJECTS_DATA: IProjectData[] = [
     id: "ecommerce",
     name: "ECommy",
     translationId: "ecommerce",
-    technologies: [ICONS.React, ICONS.CSS],
+    technologies: [
+      { icon: "logos:react", label: "ReactJS" },
+      { icon: "logos:css-3", label: "CSS Modules" },
+    ],
     image: "/projects/ecommerce/preview.png",
     links: [
       {
@@ -44,7 +51,11 @@ export const PROJECTS_DATA: IProjectData[] = [
     id: "donBosco",
     name: "Don Bosco Labs",
     translationId: "donBosco",
-    technologies: [ICONS.React, ICONS.CSS, ICONS.Tailwind],
+    technologies: [
+      { icon: "logos:react", label: "ReactJS" },
+      { icon: "logos:css-3", label: "CSS Modules" },
+      { icon: "logos:tailwindcss-icon", label: "TailwindCSS" },
+    ],
     image: "/projects/don_bosco_labs/preview.png",
     links: [
       {
@@ -66,11 +77,11 @@ export const PROJECTS_DATA: IProjectData[] = [
     nameKey: "project.techInterview.title",
     translationId: "techInterview",
     technologies: [
-      ICONS.NextJS,
-      ICONS.Django,
-      ICONS.SQLite,
-      ICONS.PostgreSQL,
-      ICONS.Tailwind,
+      { icon: "logos:nextjs-icon", label: "NextJS" },
+      { icon: "logos:django-icon", label: "Django" },
+      { icon: "logos:sqlite", label: "SQLite3" },
+      { icon: "logos:postgresql", label: "PostgreSQL" },
+      { icon: "logos:tailwindcss-icon", label: "TailwindCSS" },
     ],
     image: "/projects/entrevista_tecnica_uno/preview.png",
     links: [

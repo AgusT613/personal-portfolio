@@ -1,9 +1,8 @@
 ---
 import "./header.css";
-import DropDownIcon from "../../components/icons/DropDownIcon.astro";
-import CloseIcon from "../../components/icons/CloseIcon.astro";
 import LanguagePicker from "../LanguagePicker.astro";
 import { useTranslations } from "../../i18n/utils";
+import { Icon } from "astro-icon/components";
 
 const t = useTranslations(Astro.currentLocale);
 
@@ -63,8 +62,8 @@ const navItems = [
         type="button"
         aria-label="Abrir menú"
       >
-        <DropDownIcon class="mobile-icon" id="drop-down-icon" />
-        <CloseIcon class="mobile-icon hidden" id="close-icon" />
+        <Icon name="tabler:menu-2" class="mobile-icon" id="drop-down-icon" />
+        <Icon name="tabler:x" class="mobile-icon hidden" id="close-icon" />
       </button>
     </div>
   </div>
