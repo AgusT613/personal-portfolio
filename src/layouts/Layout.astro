@@ -1,10 +1,10 @@
 ---
 import "../styles/global.css";
-import "./layout.css";
 import Header from "../components/header/Header.astro";
 import Footer from "../components/footer/Footer.astro";
 import MessageContainer from "../components/MessageContainer.astro";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { useTranslations } from "../i18n/utils";
+import { defaultLang } from "../i18n/ui";
 import { Font } from "astro:assets";
 
 interface Props {
@@ -12,12 +12,12 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const currentLocale = Astro.currentLocale ?? defaultLang;
+const t = useTranslations(currentLocale);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={currentLocale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={t("head.description")} />
@@ -30,11 +30,18 @@ const t = useTranslations(lang);
   <body class="relative">
     <MessageContainer />
     <div class="grid-wrapper">
-      <Header />
-      <div class="main-wrapper">
-        <slot />
-      </div>
+      <slot />
       <Footer />
     </div>
   </body>
 </html>
+
+<style>
+  .grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+  }
+</style>

@@ -1,21 +1,21 @@
 ---
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { useTranslations } from "../i18n/utils";
+import { Icon } from "astro-icon/components";
 import CustomActionBtn from "./CustomActionBtn.astro";
-import DownloadIcon from "./icons/DownloadIcon.astro";
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <a
-  href={t("hero.download.cv.file.href")}
-  download={t("hero.download.cv.file.name")}
+  href={t("hero.cvFileHref")}
+  download={t("hero.cvFileName")}
   class="download-cv-anchor"
-  title={t("hero.download.cv")}
-  aria-label={t("hero.download.cv")}
+  title={t("hero.downloadCv")}
+  aria-label={t("hero.downloadCv")}
 >
   <CustomActionBtn className="download-cv-btn-inner">
-    <span>{t("hero.download.cv")}</span>
-    <DownloadIcon class="download-svg" />
+    <span>{t("hero.downloadCv")}</span>
+    <Icon name="tabler:download" class="download-svg" />
   </CustomActionBtn>
 </a>
 

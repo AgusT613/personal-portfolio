@@ -8,8 +8,11 @@ Este documento es una guía exhaustiva para agentes de Inteligencia Artificial y
 
 - **Propósito:** Portafolio personal y profesional de desarrollo de software de Agustín (Facundo) Torres.
 - **Tecnologías Principales:**
-  - **Framework:** [Astro](https://astro.build/) v7.2.4 (SSG - Static Site Generation).
+  - **Entorno de Ejecución:** Node.js v26.13.0 (LTS actual especificado en `.nvmrc`).
+  - **Framework:** [Astro](https://astro.build/) v7.4.4 (SSG - Static Site Generation).
+  - **Íconos:** [astro-icon](https://github.com/natemoo-re/astro-icon) v1.2.0 con `@iconify-json/logos` y `@iconify-json/tabler` (inlining estático en tiempo de compilación con 0 JS en el cliente).
   - **Estilos:** [Tailwind CSS](https://tailwindcss.com/) v4.3.3 vía `@tailwindcss/vite` + CSS Modular y Scoped.
+  - **Renderizado de Documentos:** [PDF.js](https://mozilla.github.io/pdf.js/) (`pdfjs-dist` v4.10.38) con worker local para visor de CV integrado y responsive.
   - **Lenguaje:** TypeScript / JavaScript (ESM).
   - **Tipografía:** *Roboto Slab* gestionada mediante `fontProviders.fontsource()` en `astro.config.mjs`.
   - **Internacionalización (i18n):** Sistema bilingüe nativo (Español `es` por defecto, Inglés `en`).
@@ -28,6 +31,8 @@ personal-portfolio/
 │   ├── profile_image.png       # Avatar principal del Hero
 │   ├── torres-facundo-cv-en.pdf # CV descargable en inglés
 │   ├── torres-facundo-cv-es.pdf # CV descargable en español
+│   ├── pdfjs/                  # Assets de soporte para PDF.js
+│   │   └── pdf.worker.min.mjs  # Worker local de PDF.js con polyfill integrado
 │   └── projects/               # Capturas y vistas previas de proyectos
 │       ├── don_bosco_labs/
 │       ├── ecommerce/
@@ -37,10 +42,9 @@ personal-portfolio/
 │   ├── components/             # Componentes reutilizables y secciones
 │   │   ├── about_me/           # Sección "Sobre Mí" (AboutMe.astro + about_me.css)
 │   │   ├── experience/         # Sección de experiencia laboral / formación
-│   │   ├── footer/             # Pie de página y enlaces de contacto
-│   │   ├── header/             # Navegación lateral/superior fija y responsive
+│   │   ├── footer/             # Pie de página y enlaces de contacto (Footer.astro + footerLinks.ts)
+│   │   ├── header/             # Navegación superior fija y responsive
 │   │   ├── hero/               # Banner principal de presentación
-│   │   ├── icons/              # Componentes SVG de íconos y banderas de idiomas
 │   │   ├── project/            # Sección y tarjetas de proyectos
 │   │   ├── Badge.astro         # Etiqueta visual para skills / tags
 │   │   ├── CopyEmailBtn.astro  # Botón interactivo para copiar email al portapapeles
@@ -53,27 +57,32 @@ personal-portfolio/
 │   │   ├── MessageContainer.astro # Notificación flotante (toast) al copiar email
 │   │   ├── TechnologiesUsed.astro # Lista de badges de tecnologías con íconos
 │   │   ├── TitleSection.astro  # Título de sección h2 unificado
-│   │   └── ToggleMenu.astro    # Botones colapsar/expandir menú lateral
+│   │   ├── TransformString.astro # Parseador e inyector de tags semánticos (<kw>)
+│   │   └── ViewCVBtn.astro     # Botón para navegar a la página dedicada del visor de CV
+│   ├── data/                   # Módulos de datos desacoplados
+│   │   ├── experience.ts       # Datos técnicos de experiencias laborales (tags, URLs)
+│   │   └── projects.ts         # Datos estructurales de proyectos (links, imagen, identificadores de íconos)
 │   ├── i18n/                   # Sistema de internacionalización
-│   │   ├── lang/
-│   │   │   ├── english.ts      # Diccionario de textos en inglés
-│   │   │   └── spanish.ts      # Diccionario de textos en español
-│   │   ├── ui.ts               # Configuración de lenguajes disponibles y ui map
-│   │   └── utils.ts            # Helpers getLangFromUrl() y useTranslations()
+│   │   ├── locales/
+│   │   │   ├── en.json         # Diccionario de textos en inglés (único JSON)
+│   │   │   └── es.json         # Diccionario de textos en español (único JSON)
+│   │   ├── ui.ts               # Idiomas disponibles, locale por defecto y chequeo de tipos
+│   │   └── utils.ts            # Helper useTranslations(), getLangFromUrl() y tipado profundo
+│   ├── icons/                  # Directorio para SVGs locales en astro-icon (con .gitkeep para evitar advertencias de build)
 │   ├── layouts/
 │   │   ├── Layout.astro        # Layout principal HTML (Head, Header, Body, Footer)
 │   │   └── layout.css          # Estilos de la grilla principal (grid-wrapper)
 │   ├── pages/
 │   │   ├── [lang]/
-│   │   │   └── index.astro     # Página principal dinámica según idioma (/es, /en)
+│   │   │   ├── index.astro     # Página principal dinámica según idioma (/es, /en)
+│   │   │   └── resume.astro    # Visor interactivo de CV con PDF.js (/es/resume, /en/resume)
 │   │   └── index.astro         # Página raíz (manejada por redirección i18n de Astro)
 │   ├── styles/
 │   │   └── global.css          # Import de Tailwind v4, fuentes y variables globales
 │   ├── types/
 │   │   └── index.ts            # Interfaces TypeScript del dominio (IProject, IExperience, etc.)
-│   ├── utils/
-│   │   └── icons.js            # Registro centralizado de íconos tecnológicos
 │   └── env.d.ts                # Declaraciones de tipos para el entorno Astro
+├── .nvmrc                      # Versión de Node.js fijada (LTS v26.13.0)
 ├── astro.config.mjs            # Configuración de Astro, i18n, Tailwind Vite y Fuentes
 ├── package.json                # Dependencias y scripts del proyecto
 ├── tailwind.config.mjs         # Configuración de animaciones y keyframes de Tailwind
@@ -86,7 +95,7 @@ personal-portfolio/
 
 ### 3.1. Sistema de Internacionalización (i18n)
 
-El proyecto utiliza un sistema de i18n basado en rutas (`/[lang]`):
+El proyecto utiliza un sistema de i18n basado en rutas (`/[lang]`) aprovechando las APIs nativas de Astro:
 
 1. **Configuración en `astro.config.mjs`:**
    ```javascript
@@ -99,17 +108,23 @@ El proyecto utiliza un sistema de i18n basado en rutas (`/[lang]`):
      },
    }
    ```
-2. **Diccionarios (`src/i18n/lang/`):**
-   - Todos los textos visibles en pantalla deben extraerse a `spanish.ts` y `english.ts`.
-   - Se utiliza una nomenclatura con notación de puntos: `categoria.seccion.elemento` (por ejemplo: `hero.greeting`, `experience.red.mascotera.title`).
-3. **Uso en Componentes:**
+2. **Diccionarios Únicos por Idioma (`src/i18n/locales/`):**
+   - Todos los textos se centralizan en un único archivo JSON por idioma (`es.json`, `en.json`) estructurado de forma jerárquica (`head`, `header`, `hero`, `experience`, `project`, `about`, `footer`).
+   - Soporte automático para la extensión de editor **i18n Ally** (configurado en `.vscode/settings.json`).
+3. **Tags Semánticos y `<TransformString />`:**
+   - En lugar de fragmentar oraciones en múltiples subclaves, los párrafos completos se escriben como una sola cadena natural usando etiquetas semánticas como `<kw>texto destacado</kw>`.
+   - El componente `TransformString.astro` procesa el texto e inyecta dinámicamente `KeyWord.astro`.
+4. **Uso en Componentes:**
    ```astro
    ---
-   import { getLangFromUrl, useTranslations } from "../../i18n/utils";
-   const t = useTranslations(getLangFromUrl(Astro.url));
+   import { useTranslations } from "../../i18n/utils";
+   const t = useTranslations(Astro.currentLocale);
    ---
-   <h2>{t("experience.section.title")}</h2>
+   <h2>{t("experience.sectionTitle")}</h2>
    ```
+5. **Generación de Rutas Seguras:**
+   - En `LanguagePicker.astro`, se utiliza `getRelativeLocaleUrl(lang)` de `astro:i18n`.
+   - En `src/pages/[lang]/index.astro`, `getStaticPaths()` mapea dinámicamente el array de `locales`.
 
 ### 3.2. Layout y Header Sticky Superior
 
@@ -126,19 +141,31 @@ En `src/pages/[lang]/index.astro`, un script del cliente con `IntersectionObserv
 - Asigna la clase `current-section-focused` al enlace de navegación correspondiente, aplicando un subrayado indicador y resaltado de color.
 - Maneja `document.onvisibilitychange` para pausar y reanudar el observador cuando la pestaña pierde foco.
 
-### 3.4. Catálogo Centralizado de Íconos (`src/utils/icons.js`)
+### 3.4. Sistema de Íconos con `astro-icon`
 
-Los componentes de íconos SVG residen en `src/components/icons/`. Cada ícono propaga `{...Astro.props}` para aceptar clases Tailwind personalizadas.
-
-Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` exporta un objeto `ICONS` con objetos de tecnología (`{ icon, label }`) y referencias directas a componentes de íconos.
+El proyecto utiliza [`astro-icon`](https://github.com/natemoo-re/astro-icon) para la gestión e inyección de íconos vectoriales:
+- **Zero Runtime JavaScript:** Los íconos se resuelven y compilan como elementos `<svg>` puros directamente en el HTML estático en tiempo de build.
+- **Colecciones Offline (Iconify):**
+  - `@iconify-json/logos`: Logotipos oficiales coloreados de tecnologías (`logos:nextjs-icon`, `logos:react`, `logos:django-icon`, etc.).
+  - `@iconify-json/tabler`: Íconos de interfaz modernos y consistentes (`tabler:download`, `tabler:copy`, `tabler:external-link`, `tabler:menu-2`, `tabler:language`, `tabler:check`, etc.).
+- **Directorio de Íconos Locales (`src/icons/`):**
+  - Por defecto, `astro-icon` espera encontrar una carpeta `src/icons/` para escanear íconos SVG propios.
+  - Se mantiene esta carpeta con un archivo `.gitkeep` para **evitar la advertencia `[WARN] [astro-icon] Failed to load icons from "src/icons": ENOENT...`** durante la compilación.
+  - Sirve como punto de extensión: cualquier archivo SVG colocado en `src/icons/<nombre>.svg` puede consumirse directamente con `<Icon name="<nombre>" />` sin configuraciones adicionales.
 
 ### 3.5. Modelos de Datos (`src/types/index.ts`)
 
-- `ITechnologiesUsed`: `{ icon: any; label: string; }`
+- `ITechnologiesUsed`: `{ icon: string; label: string; }`
 - `IImage`: `{ src: string; alt: string; }`
-- `IProjectLinks`: `{ href: string; label: string; icon: any; }`
+- `IProjectLinks`: `{ href: string; label: string; icon: string; }`
 - `IProject`: `{ name: string; description: string; technologies: ITechnologiesUsed[]; image: IImage; links: IProjectLinks[]; }`
 - `IExperience`: `{ title: string; date: string; description: string; tags: string[]; settings: IExperienceSettings; }`
+
+### 3.6. Visor de CV con PDF.js (`src/pages/[lang]/resume.astro`)
+
+- **Rutas dedicadas:** `/es/resume` y `/en/resume`, sincronizadas con la selección de idioma en `LanguagePicker.astro` (preserva la ruta al cambiar idioma).
+- **Worker Local y Polyfill:** Utiliza `pdfjs-dist` (v4.10.38) con su worker servido desde `/pdfjs/pdf.worker.min.mjs` y polyfill de `Promise.withResolvers` para compatibilidad completa en navegadores móviles (iOS Safari < 17.4, WebViews de LinkedIn, Instagram, etc.).
+- **Ajuste Responsive y Rendimiento:** El canvas adapta su escala dinámicamente (`fitToWidth`), con protección de memoria en móviles (capando `devicePixelRatio` a un máximo de `2.0` para evitar saturación del búfer gráfico en pantallas Retina/OLED). Incluye toolbar con controles de zoom, ajuste y descarga directa.
 
 ---
 
@@ -149,38 +176,41 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
 1. **Guardar la imagen:**
    Colocar la imagen de vista previa en `public/projects/<nombre_proyecto>/preview.png`.
 2. **Agregar los textos traducidos:**
-   En `src/i18n/lang/spanish.ts` y `src/i18n/lang/english.ts`:
-   ```typescript
-   // Spanish
-   "project.<id>.description": "Descripción en español...",
-   "project.<id>.img.alt": "Texto alternativo...",
+   En `src/i18n/locales/es.json` y `src/i18n/locales/en.json` dentro de `"project"`:
+   ```json
+   // es.json
+   "miProyecto": {
+     "description": "Descripción en español...",
+     "imageAlt": "Texto alternativo..."
+   }
 
-   // English
-   "project.<id>.description": "Description in English...",
-   "project.<id>.img.alt": "Alt text...",
+   // en.json
+   "miProyecto": {
+     "description": "Description in English...",
+     "imageAlt": "Alt text..."
+   }
    ```
-3. **Registrar las tecnologías en `src/utils/icons.js`:**
-   Si el proyecto usa una tecnología nueva, crear su componente SVG en `src/components/icons/<Tech>.astro` y agregarlo al objeto `ICONS`.
-4. **Agregar el objeto a la lista `PROJECTS` en `src/components/project/ProjectSection.astro`:**
+3. **Seleccionar el ícono de tecnología:**
+   Utilizar cualquier identificador de Iconify de `@iconify-json/logos` (p. ej. `"logos:vue"`, `"logos:python"`, `"logos:docker-icon"`) o colocar un SVG local en `src/icons/` si es personalizado.
+4. **Agregar el objeto a `PROJECTS_DATA` en `src/data/projects.ts`:**
    ```typescript
    {
+     id: "miProyecto",
      name: "Nombre del Proyecto",
-     description: t("project.<id>.description"),
-     technologies: [ICONS.NextJS, ICONS.Tailwind],
-     image: {
-       src: "/projects/<nombre_proyecto>/preview.png",
-       alt: t("project.<id>.img.alt"),
-     },
+     translationId: "miProyecto",
+     technologies: [
+       { icon: "logos:nextjs-icon", label: "Next.js" },
+       { icon: "logos:tailwindcss-icon", label: "Tailwind CSS" },
+     ],
+     image: "/projects/<nombre_proyecto>/preview.png",
      links: [
        {
          href: "https://github.com/...",
-         label: "GitHub Frontend",
-         icon: ICONS.GitHub,
+         type: "github-front",
        },
        {
          href: "https://demo.vercel.app/",
-         label: t("project.section.webpage.btn.label"),
-         icon: ICONS.RedirectIcon,
+         type: "live",
        },
      ],
    }
@@ -189,34 +219,30 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
 ### 4.2. Cómo agregar una nueva Experiencia Laboral / Formación
 
 1. **Agregar textos i18n:**
-   En `spanish.ts` y `english.ts`:
-   ```typescript
-   "experience.<id>.title": "...",
-   "experience.<id>.date": "...",
-   "experience.<id>.description": "...",
+   En `es.json` y `en.json` dentro de `"experience"`:
+   ```json
+   "miExperiencia": {
+     "title": "...",
+     "date": "...",
+     "description": "..."
+   }
    ```
-2. **Agregar entrada en `EXPERIENCES` en `src/components/experience/ExperienceSection.astro`:**
+2. **Agregar entrada en `EXPERIENCES_DATA` en `src/data/experience.ts`:**
    ```typescript
    {
-     title: t("experience.<id>.title"),
-     date: t("experience.<id>.date"),
-     description: t("experience.<id>.description"),
+     id: "miExperiencia",
      tags: ["React", "TypeScript", "TailwindCSS"],
-     settings: {
-       hasProjectUrls: true,
-       projectUrl: "https://...",
-     },
+     projectUrl: "https://...",
    }
    ```
 
 ### 4.3. Cómo agregar un nuevo Idioma
 
-1. Crear el archivo de traducciones `src/i18n/lang/<idioma>.ts`.
-2. Actualizar `src/i18n/ui.ts` agregando la clave del idioma y exportándolo en `ui`.
-3. Actualizar `astro.config.mjs` agregando el código de idioma a `i18n.locales`.
-4. Actualizar `getStaticPaths()` en `src/pages/[lang]/index.astro` agregando `{ params: { lang: "<nuevo_idioma>" } }`.
-5. Agregar el ícono de la bandera en `src/components/icons/languages/` e integrarlo en `src/components/LanguagePicker.astro`.
-6. Añadir el archivo PDF del CV correspondiente en `public/` y configurar su enlace en el diccionario.
+1. Crear el archivo `src/i18n/locales/<código_idioma>.json` copiando la estructura de `es.json`.
+2. Registrar el nuevo idioma en `src/i18n/ui.ts` (en `languages` y en el objeto `ui`). `LanguagePicker.astro` lo renderiza automáticamente sin requerir banderas.
+3. Añadir el código de idioma a `i18n.locales` en `astro.config.mjs`.
+4. Añadir el archivo PDF del CV correspondiente en `public/` y configurar su enlace en el JSON.
+5. (Opcional): `getStaticPaths()` en `src/pages/[lang]/index.astro` reconocerá el nuevo idioma automáticamente sin cambios manuales.
 
 ---
 
@@ -247,7 +273,5 @@ Para agentes o desarrolladores que realicen mejoras en la base de código:
    Actualmente varias imágenes se cargan con `<img>` directo desde `/public`. Se recomienda migrar a `<Image />` o `<Picture />` de `astro:assets` en `src/assets/` para optimización automática de formatos (WebP/AVIF), lazy-loading y prevención de CLS.
 2. **Migración a Astro Content Collections:**
    Para proyectos y experiencias, migrar de arrays estáticos en componentes a colecciones tipadas (`src/content/projects/` y `src/content/experience/`) con esquemas Zod en `src/content.config.ts`.
-3. **Tipado Estricto de Íconos:**
-   Refactorizar `src/utils/icons.js` a TypeScript (`icons.ts`) y sustituir los tipos `any` en `src/types/index.ts` por `astro.HTMLAttributes<'svg'>` o `Component` de Astro.
-4. **Toast / Message Container State:**
+3. **Toast / Message Container State:**
    El botón de copiado de email manipula clases CSS directamente. Se podría encapsular como un Web Component autónomo (`<copy-email-button>`) o usar un custom event desacoplado.

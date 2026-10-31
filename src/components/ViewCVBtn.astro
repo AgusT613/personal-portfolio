@@ -1,0 +1,63 @@
+---
+import { useTranslations } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import CustomActionBtn from "./CustomActionBtn.astro";
+
+const locale = Astro.currentLocale ?? "es";
+const t = useTranslations(locale);
+const resumeUrl = getRelativeLocaleUrl(locale, "resume");
+---
+
+<a
+  href={resumeUrl}
+  class="view-cv-anchor"
+  title={t("hero.viewCv")}
+  aria-label={t("hero.viewCv")}
+>
+  <CustomActionBtn className="view-cv-btn-inner">
+    <span>{t("hero.viewCv")}</span>
+    <svg
+      class="view-cv-svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+      <circle cx="12" cy="12" r="3"></circle>
+    </svg>
+  </CustomActionBtn>
+</a>
+
+<style>
+  .view-cv-anchor {
+    display: inline-flex;
+    height: 2.6rem;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  :global(.view-cv-btn-inner) {
+    height: 100% !important;
+    padding: 0 1.25rem !important;
+  }
+
+  .view-cv-svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 570px) {
+    .view-cv-anchor {
+      width: 100%;
+    }
+
+    :global(.view-cv-btn-inner) {
+      width: 100% !important;
+    }
+  }
+</style>

@@ -4,25 +4,37 @@ import Hero from "../../components/hero/Hero.astro";
 import ExperienceSection from "../../components/experience/ExperienceSection.astro";
 import ProjectSection from "../../components/project/ProjectSection.astro";
 import AboutMe from "../../components/about_me/AboutMe.astro";
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/utils";
+import { locales } from "../../i18n/ui";
+import Header from "../../components/header/Header.astro";
 
 export function getStaticPaths() {
-  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+  return locales.map((lang) => ({ params: { lang } }));
 }
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <Layout title={t("head.title")}>
-  <main class="main-content">
-    <Hero />
-    <ExperienceSection />
-    <ProjectSection />
-    <AboutMe />
-  </main>
+  <Header />
+  <div class="main-wrapper">
+    <main class="main-content">
+      <Hero />
+      <ExperienceSection />
+      <ProjectSection />
+      <AboutMe />
+    </main>
+  </div>
 </Layout>
 
 <style>
+  .main-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+  }
+
   .main-content {
     width: 100%;
     max-width: 1080px;

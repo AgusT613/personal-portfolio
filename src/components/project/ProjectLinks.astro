@@ -1,5 +1,6 @@
 ---
 import type { IProjectLinks } from "../../types";
+import { Icon } from "astro-icon/components";
 import CustomActionBtn from "../CustomActionBtn.astro";
 
 interface Props {
@@ -15,7 +16,7 @@ const { links } = Astro.props;
       <a href={link.href} target="_blank" rel="noopener noreferrer" class="project-link-item">
         <CustomActionBtn>
           <span>{link.label}</span>
-          <link.icon class="size-4" />
+          <Icon name={link.icon} class="size-4 shrink-0" />
         </CustomActionBtn>
       </a>
     ))
@@ -48,9 +49,6 @@ const { links } = Astro.props;
 
     .project-link-item :global(.custom-action-btn) {
       width: 100%;
-      padding: 0 0.6rem;
-      font-size: 0.8rem;
-      height: 2.35rem;
     }
   }
 </style>

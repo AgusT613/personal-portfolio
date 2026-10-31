@@ -33,25 +33,6 @@ const { label } = Astro.props;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .badge:hover {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(20, 184, 166, 0.28));
-    border-color: rgba(52, 211, 153, 0.6);
-    color: #a7f3d0;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
-
-  .badge :global(svg) {
-    flex-shrink: 0;
-    color: #34d399;
-    transition: transform 0.2s ease, color 0.2s ease;
-  }
-
-  .badge:hover :global(svg) {
-    color: #6ee7b7;
-    transform: scale(1.08);
-  }
-
   .badge-label {
     overflow-wrap: break-word;
     word-break: break-word;
