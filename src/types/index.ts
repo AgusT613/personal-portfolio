@@ -34,3 +34,28 @@ export interface IExperience {
   tags: string[];
   settings: IExperienceSettings;
 }
+
+// Data models for decoupled content (src/data/)
+export type ProjectLinkType = "github-front" | "github-back" | "live";
+
+export interface IProjectLinkData {
+  href: string;
+  type: ProjectLinkType;
+  labelKey?: string;
+}
+
+export interface IProjectData {
+  id: string;
+  name?: string;
+  nameKey?: string;
+  translationId: string;
+  technologies: ITechnologiesUsed[];
+  image: string;
+  links: IProjectLinkData[];
+}
+
+export interface IExperienceData {
+  id: string;
+  tags: string[];
+  projectUrl?: string;
+}

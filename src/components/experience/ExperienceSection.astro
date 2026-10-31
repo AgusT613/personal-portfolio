@@ -1,69 +1,29 @@
 ---
 import TitleSection from "../TitleSection.astro";
 import ExperienceContainer from "./ExperienceContainer.astro";
+import { EXPERIENCES_DATA } from "../../data/experience";
 import { useTranslations } from "../../i18n/utils";
+import type { IExperience } from "../../types";
 
 const t = useTranslations(Astro.currentLocale);
 
-const EXPERIENCES = [
-  {
-    title: t("experience.redMascotera.title"),
-    date: t("experience.redMascotera.date"),
-    description: t("experience.redMascotera.description"),
-    tags: [
-      "HTML - CSS",
-      "TailwindCSS",
-      "TypeScript",
-      "NextJS",
-      "Docker",
-      "Trello",
-      "Git - GitHub",
-    ],
-    settings: {
-      hasProjectUrls: true,
-      projectUrl: "https://github.com/redmascotera/redmascotera-front",
-    },
+const experiences: IExperience[] = EXPERIENCES_DATA.map((exp) => ({
+  title: t(`experience.${exp.id}.title` as any),
+  date: t(`experience.${exp.id}.date` as any),
+  description: t(`experience.${exp.id}.description` as any),
+  tags: exp.tags,
+  settings: {
+    hasProjectUrls: Boolean(exp.projectUrl),
+    projectUrl: exp.projectUrl ?? "",
   },
-  {
-    title: t("experience.itba.title"),
-    date: t("experience.itba.date"),
-    description: t("experience.itba.description"),
-    tags: [
-      "HTML - CSS",
-      "TailwindCSS",
-      "JavaScript",
-      "NextJS",
-      "Vercel",
-      "Python",
-      "Django",
-      "SQLite3",
-      "Slack",
-      "Scrum",
-      "Excalidraw",
-    ],
-    settings: {
-      hasProjectUrls: true,
-      projectUrl: "https://itba-full-stack-proyecto.vercel.app/",
-    },
-  },
-  {
-    title: t("experience.donBoscoLabs.title"),
-    date: t("experience.donBoscoLabs.date"),
-    description: t("experience.donBoscoLabs.description"),
-    tags: ["HTML - CSS", "JavaScript", "ReactJS", "Netlify", "Slack", "Trello"],
-    settings: {
-      hasProjectUrls: true,
-      projectUrl: "https://kaleidoscopic-dieffenbachia-5d550d.netlify.app/",
-    },
-  },
-];
+}));
 ---
 
 <section id="experience" class="experience-section">
   <TitleSection>{t("experience.sectionTitle")}</TitleSection>
   <div class="experience-wrapper">
     {
-      EXPERIENCES.map((experience) => (
+      experiences.map((experience) => (
         <ExperienceContainer experience={experience} />
       ))
     }

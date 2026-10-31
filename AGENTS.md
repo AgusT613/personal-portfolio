@@ -60,6 +60,9 @@ personal-portfolio/
 │   │   ├── ToggleMenu.astro    # Botones colapsar/expandir menú lateral
 │   │   ├── TransformString.astro # Parseador e inyector de tags semánticos (<kw>)
 │   │   └── ViewCVBtn.astro     # Botón para navegar a la página dedicada del visor de CV
+│   ├── data/                   # Módulos de datos desacoplados
+│   │   ├── experience.ts       # Datos técnicos de experiencias laborales (tags, URLs)
+│   │   └── projects.ts         # Datos estructurales de proyectos (links, imagen, iconos)
 │   ├── i18n/                   # Sistema de internacionalización
 │   │   ├── locales/
 │   │   │   ├── en.json         # Diccionario de textos en inglés (único JSON)
@@ -185,26 +188,22 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
    ```
 3. **Registrar las tecnologías en `src/utils/icons.js`:**
    Si el proyecto usa una tecnología nueva, crear su componente SVG en `src/components/icons/<Tech>.astro` y agregarlo al objeto `ICONS`.
-4. **Agregar el objeto a la lista `PROJECTS` en `src/components/project/ProjectSection.astro`:**
+4. **Agregar el objeto a `PROJECTS_DATA` en `src/data/projects.ts`:**
    ```typescript
    {
+     id: "miProyecto",
      name: "Nombre del Proyecto",
-     description: t("project.miProyecto.description"),
+     translationId: "miProyecto",
      technologies: [ICONS.NextJS, ICONS.Tailwind],
-     image: {
-       src: "/projects/<nombre_proyecto>/preview.png",
-       alt: t("project.miProyecto.imageAlt"),
-     },
+     image: "/projects/<nombre_proyecto>/preview.png",
      links: [
        {
          href: "https://github.com/...",
-         label: "Frontend",
-         icon: ICONS.GitHub,
+         type: "github-front",
        },
        {
          href: "https://demo.vercel.app/",
-         label: t("project.webpageBtnLabel"),
-         icon: ICONS.RedirectIcon,
+         type: "live",
        },
      ],
    }
@@ -221,17 +220,12 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
      "description": "..."
    }
    ```
-2. **Agregar entrada en `EXPERIENCES` en `src/components/experience/ExperienceSection.astro`:**
+2. **Agregar entrada en `EXPERIENCES_DATA` en `src/data/experience.ts`:**
    ```typescript
    {
-     title: t("experience.miExperiencia.title"),
-     date: t("experience.miExperiencia.date"),
-     description: t("experience.miExperiencia.description"),
+     id: "miExperiencia",
      tags: ["React", "TypeScript", "TailwindCSS"],
-     settings: {
-       hasProjectUrls: true,
-       projectUrl: "https://...",
-     },
+     projectUrl: "https://...",
    }
    ```
 

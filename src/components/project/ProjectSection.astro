@@ -2,123 +2,49 @@
 import TitleSection from "../TitleSection.astro";
 import ProjectContainer from "./ProjectContainer.astro";
 import ICONS from "../../utils/icons.js";
+import { PROJECTS_DATA } from "../../data/projects";
 import { useTranslations } from "../../i18n/utils";
+import type { IProject, IProjectLinks } from "../../types";
 
 const t = useTranslations(Astro.currentLocale);
 
-const PROJECTS = [
-  {
-    name: "ITBANK Homebanking",
-    description: t("project.homebanking.description"),
-    technologies: [ICONS.NextJS, ICONS.Django, ICONS.SQLite, ICONS.CSS],
+const projects: IProject[] = PROJECTS_DATA.map((project) => {
+  const links: IProjectLinks[] = project.links.map((link) => {
+    let label = t("project.webpageBtnLabel");
+    let icon = ICONS.RedirectIcon;
+
+    if (link.type === "github-front") {
+      label = "Frontend";
+      icon = ICONS.GitHub;
+    } else if (link.type === "github-back") {
+      label = "Backend";
+      icon = ICONS.GitHub;
+    }
+
+    return {
+      href: link.href,
+      label,
+      icon,
+    };
+  });
+
+  return {
+    name: project.nameKey ? t(project.nameKey as any) : project.name!,
+    description: t(`project.${project.translationId}.description` as any),
+    technologies: project.technologies,
     image: {
-      src: "/projects/itbank_homebanking/preview.png",
-      alt: t("project.homebanking.imageAlt"),
+      src: project.image,
+      alt: t(`project.${project.translationId}.imageAlt` as any),
     },
-    links: [
-      {
-        href: "https://github.com/AgusT613/itba_full_stack_front/tree/develop",
-        label: "Frontend",
-        icon: ICONS.GitHub,
-      },
-      {
-        href: "https://github.com/AgusT613/itba_full_stack_back/tree/develop",
-        label: "Backend",
-        icon: ICONS.GitHub,
-      },
-      {
-        href: "https://itba-full-stack-proyecto.vercel.app/",
-        label: t("project.webpageBtnLabel"),
-        icon: ICONS.RedirectIcon,
-      },
-    ],
-  },
-  {
-    name: "ECommy",
-    description: t("project.ecommerce.description"),
-    technologies: [ICONS.React, ICONS.CSS],
-    image: {
-      src: "/projects/ecommerce/preview.png",
-      alt: t("project.ecommerce.imageAlt"),
-    },
-    links: [
-      {
-        href: "https://github.com/AgusT613/ecommerce-react",
-        label: "Frontend",
-        icon: ICONS.GitHub,
-      },
-      {
-        href: "https://eccomy-ecommerce-react.netlify.app/",
-        label: t("project.webpageBtnLabel"),
-        icon: ICONS.RedirectIcon,
-      },
-    ],
-  },
-  {
-    name: "Don Bosco Labs",
-    description: t("project.donBosco.description"),
-    technologies: [ICONS.React, ICONS.CSS, ICONS.Tailwind],
-    image: {
-      src: "/projects/don_bosco_labs/preview.png",
-      alt: t("project.donBosco.imageAlt"),
-    },
-    links: [
-      {
-        href: "https://github.com/AgusT613/don_bosco_labs_front",
-        label: "Frontend",
-        icon: ICONS.GitHub,
-      },
-      {
-        href: "https://github.com/AgusT613/don_bosco_labs_back",
-        label: "Backend",
-        icon: ICONS.GitHub,
-      },
-      {
-        href: "https://kaleidoscopic-dieffenbachia-5d550d.netlify.app/",
-        label: t("project.webpageBtnLabel"),
-        icon: ICONS.RedirectIcon,
-      },
-    ],
-  },
-  {
-    name: t("project.techInterview.title"),
-    description: t("project.techInterview.description"),
-    technologies: [
-      ICONS.NextJS,
-      ICONS.Django,
-      ICONS.SQLite,
-      ICONS.PostgreSQL,
-      ICONS.Tailwind,
-    ],
-    image: {
-      src: "/projects/entrevista_tecnica_uno/preview.png",
-      alt: t("project.techInterview.imageAlt"),
-    },
-    links: [
-      {
-        href: "https://github.com/AgusT613/liftun_entrevista_front",
-        label: "Frontend",
-        icon: ICONS.GitHub,
-      },
-      {
-        href: "https://github.com/AgusT613/liftun_entrevista_back",
-        label: "Backend",
-        icon: ICONS.GitHub,
-      },
-      {
-        href: "https://liftun-entrevista-front.vercel.app/",
-        label: t("project.webpageBtnLabel"),
-        icon: ICONS.RedirectIcon,
-      },
-    ],
-  },
-];
+    links,
+  };
+});
 ---
 
 <section id="projects" class="project-section">
   <TitleSection>{t("project.sectionTitle")}</TitleSection>
   <div class="project-grid">
-    {PROJECTS.map((project) => <ProjectContainer project={project} />)}
+    {projects.map((project) => <ProjectContainer project={project} />)}
   </div>
 </section>
 
