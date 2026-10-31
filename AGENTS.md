@@ -8,8 +8,10 @@ Este documento es una guía exhaustiva para agentes de Inteligencia Artificial y
 
 - **Propósito:** Portafolio personal y profesional de desarrollo de software de Agustín (Facundo) Torres.
 - **Tecnologías Principales:**
-  - **Framework:** [Astro](https://astro.build/) v7.2.4 (SSG - Static Site Generation).
+  - **Entorno de Ejecución:** Node.js v26.13.0 (LTS actual especificado en `.nvmrc`).
+  - **Framework:** [Astro](https://astro.build/) v7.4.4 (SSG - Static Site Generation).
   - **Estilos:** [Tailwind CSS](https://tailwindcss.com/) v4.3.3 vía `@tailwindcss/vite` + CSS Modular y Scoped.
+  - **Renderizado de Documentos:** [PDF.js](https://mozilla.github.io/pdf.js/) (`pdfjs-dist` v4.10.38) con worker local para visor de CV integrado y responsive.
   - **Lenguaje:** TypeScript / JavaScript (ESM).
   - **Tipografía:** *Roboto Slab* gestionada mediante `fontProviders.fontsource()` en `astro.config.mjs`.
   - **Internacionalización (i18n):** Sistema bilingüe nativo (Español `es` por defecto, Inglés `en`).
@@ -28,6 +30,8 @@ personal-portfolio/
 │   ├── profile_image.png       # Avatar principal del Hero
 │   ├── torres-facundo-cv-en.pdf # CV descargable en inglés
 │   ├── torres-facundo-cv-es.pdf # CV descargable en español
+│   ├── pdfjs/                  # Assets de soporte para PDF.js
+│   │   └── pdf.worker.min.mjs  # Worker local de PDF.js con polyfill integrado
 │   └── projects/               # Capturas y vistas previas de proyectos
 │       ├── don_bosco_labs/
 │       ├── ecommerce/
@@ -54,7 +58,8 @@ personal-portfolio/
 │   │   ├── TechnologiesUsed.astro # Lista de badges de tecnologías con íconos
 │   │   ├── TitleSection.astro  # Título de sección h2 unificado
 │   │   ├── ToggleMenu.astro    # Botones colapsar/expandir menú lateral
-│   │   └── TransformString.astro # Parseador e inyector de tags semánticos (<kw>)
+│   │   ├── TransformString.astro # Parseador e inyector de tags semánticos (<kw>)
+│   │   └── ViewCVBtn.astro     # Botón para navegar a la página dedicada del visor de CV
 │   ├── i18n/                   # Sistema de internacionalización
 │   │   ├── locales/
 │   │   │   ├── en.json         # Diccionario de textos en inglés (único JSON)
@@ -66,7 +71,8 @@ personal-portfolio/
 │   │   └── layout.css          # Estilos de la grilla principal (grid-wrapper)
 │   ├── pages/
 │   │   ├── [lang]/
-│   │   │   └── index.astro     # Página principal dinámica según idioma (/es, /en)
+│   │   │   ├── index.astro     # Página principal dinámica según idioma (/es, /en)
+│   │   │   └── resume.astro    # Visor interactivo de CV con PDF.js (/es/resume, /en/resume)
 │   │   └── index.astro         # Página raíz (manejada por redirección i18n de Astro)
 │   ├── styles/
 │   │   └── global.css          # Import de Tailwind v4, fuentes y variables globales
@@ -75,6 +81,7 @@ personal-portfolio/
 │   ├── utils/
 │   │   └── icons.js            # Registro centralizado de íconos tecnológicos
 │   └── env.d.ts                # Declaraciones de tipos para el entorno Astro
+├── .nvmrc                      # Versión de Node.js fijada (LTS v26.13.0)
 ├── astro.config.mjs            # Configuración de Astro, i18n, Tailwind Vite y Fuentes
 ├── package.json                # Dependencias y scripts del proyecto
 ├── tailwind.config.mjs         # Configuración de animaciones y keyframes de Tailwind
@@ -146,6 +153,12 @@ Para evitar imports redundantes en múltiples componentes, `src/utils/icons.js` 
 - `IProjectLinks`: `{ href: string; label: string; icon: any; }`
 - `IProject`: `{ name: string; description: string; technologies: ITechnologiesUsed[]; image: IImage; links: IProjectLinks[]; }`
 - `IExperience`: `{ title: string; date: string; description: string; tags: string[]; settings: IExperienceSettings; }`
+
+### 3.6. Visor de CV con PDF.js (`src/pages/[lang]/resume.astro`)
+
+- **Rutas dedicadas:** `/es/resume` y `/en/resume`, sincronizadas con la selección de idioma en `LanguagePicker.astro` (preserva la ruta al cambiar idioma).
+- **Worker Local y Polyfill:** Utiliza `pdfjs-dist` (v4.10.38) con su worker servido desde `/pdfjs/pdf.worker.min.mjs` y polyfill de `Promise.withResolvers` para compatibilidad completa en navegadores móviles (iOS Safari < 17.4, WebViews de LinkedIn, Instagram, etc.).
+- **Ajuste Responsive y Rendimiento:** El canvas adapta su escala dinámicamente (`fitToWidth`), con protección de memoria en móviles (capando `devicePixelRatio` a un máximo de `2.0` para evitar saturación del búfer gráfico en pantallas Retina/OLED). Incluye toolbar con controles de zoom, ajuste y descarga directa.
 
 ---
 
