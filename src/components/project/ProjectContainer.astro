@@ -126,4 +126,59 @@ const { description, image, links, name, technologies } = project;
       margin-bottom: 1rem;
     }
   }
+
+  /* Featured first project on desktop */
+  @media (min-width: 901px) {
+    .project-card:first-child {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.45) 0%, rgba(30, 41, 59, 0.25) 100%);
+      border-color: rgba(168, 85, 247, 0.2);
+    }
+
+    .project-card:first-child:hover {
+      border-color: rgba(168, 85, 247, 0.45);
+      box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-card:first-child .project-image-wrapper {
+      margin-bottom: 0;
+      height: 100%;
+      max-height: none;
+      aspect-ratio: auto;
+      min-height: 280px;
+    }
+
+    .project-card:first-child .project-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .project-card:first-child .project-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      gap: 1.25rem;
+    }
+
+    .project-card:first-child .project-title {
+      font-size: 1.5rem;
+    }
+
+    .project-card:first-child .project-techs {
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    .project-card:first-child .project-links-wrapper {
+      margin-top: 0.5rem;
+    }
+  }
 </style>

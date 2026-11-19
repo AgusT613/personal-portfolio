@@ -36,7 +36,7 @@ export interface IExperience {
 }
 
 // Data models for decoupled content (src/data/)
-export type ProjectLinkType = "github-front" | "github-back" | "live";
+export type ProjectLinkType = "github-front" | "github-back" | "live" | "github-repo" | "demo";
 
 export interface IProjectLinkData {
   href: string;

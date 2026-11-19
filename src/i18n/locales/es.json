@@ -76,6 +76,25 @@
     "ecommerce": {
       "description": "Proyecto basado en un diseño de figma creado por otro usuario. El diseño fue cambiado y se añadieron características como una barra de búsqueda funcional, un botón para el cambio de idioma y un carrusel de imágenes. Usa la API de Fake Store Api.",
       "imageAlt": "Prevista del home de la página web de ecommerce, el cual muestra un carrusel de imágenes de productos para comprar"
+    },
+    "bancoPotencia": {
+      "title": "Banco de Potencia por Volante de Inercia",
+      "description": "Aplicación de escritorio que mide el torque y la potencia de un motor acelerando una masa giratoria de inercia conocida y renderiza gráficas de medición en tiempo real. Útil para pruebas de motores antes de su uso en condiciones de manejo reales. Se utilizan sensores electronicos que se conectan a un placa de desarrollo ESP32 para realizar diferentes mediciones, calculos, y mandar los resultados a una gráfica.",
+      "imageAlt": "Prevista de la aplicación de escritorio para la visualización de gráficas de medición en tiempo real"
+    },
+    "pokedex": {
+      "description": "Sistema de gestión y visualización que permite filtrar, buscar, y crear pokemones. También puedes crear tu propio equipo de pokemones, gestionarlos y fusionar dos especies diferentes para obtener nuevos poderes.",
+      "imageAlt": "Prevista de la aplicacíon web de pokemones"
+    },
+    "animeSearch": {
+      "title": "Buscador de Series de Anime",
+      "description": "Interfaz web que permite buscar, leer y filtrar información de series de anime japonesas.",
+      "imageAlt": "Prevista de la aplicación web de busqueda y filtrado de series de anime"
+    },
+    "contadorBobinador": {
+      "title": "Contador Digital para Bobinadores Electromagnéticos",
+      "description": "Programa que cuenta las vueltas que da un eje tanto incrementando el valor si se avanza como también decrementandolo al retroceder. Útil para saber cuantas vueltas tienen un enrollado de hilo de cobre y usarlo para armar transformadores electromagnéticos con la cantidad de vueltas exactas. El sistema consiste en el uso de sensores electrónicos y armado de la lógica de conteo tanto en avanza como retroceso.",
+      "imageAlt": "Prevista de una portada de video que explica como funciona el contador de vueltas de un bobinador de transformadores electromagnéticos"
     }
   },
   "about": {
@@ -100,5 +119,8 @@
     "zoomOut": "Reducir zoom",
     "fitWidth": "Ajustar al ancho",
     "fitPage": "Ajustar página"
+  },
+  "images": {
+    "projectImageFallbackUrl": "/project-under-development-fallback-spanish.jpeg"
   }
 }
