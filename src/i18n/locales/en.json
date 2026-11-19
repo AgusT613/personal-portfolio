@@ -76,6 +76,25 @@
     "ecommerce": {
       "description": "Project based on a figma design from another user. The design was changed in order to develope certain features like a functional searching navigation bar, a language toggler button and a carrousel of images. It uses the Fake Store API to fetch products.",
       "imageAlt": "Preview of the ecommerce web home which shows a carrousel of products to purchase"
+    },
+    "bancoPotencia": {
+      "description": "Desktop application that measures the torque and power of a motor accelerating a rotating mass of known inertia and renders measurement graphs in real time. \nUseful for testing engines before use in real driving conditions. \nElectronic sensors are used that connect to an ESP32 development board to perform different measurements, calculations, and send the results to a graph.",
+      "imageAlt": "Preview of desktop application for viewing measurement graphs in real time",
+      "title": "Flywheel Dynamometer"
+    },
+    "animeSearch": {
+      "description": "Web interface that allows you to search, read and filter information about Japanese anime series.",
+      "imageAlt": "Preview of the web application for searching and filtering anime series",
+      "title": "Anime Series Search"
+    },
+    "pokedex": {
+      "description": "Management and visualization system that allows you to filter, search, and create Pokémon. \nYou can also create your own team of Pokémon, manage them and fuse two different species to obtain new powers.",
+      "imageAlt": "Preview of the pokemon web application"
+    },
+    "contadorBobinador": {
+      "description": "Program that counts the turns that an axis makes, both increasing the value if it moves forward and also decreasing it when going backwards. \nUseful to know how many turns a coil of copper wire has and use it to assemble electromagnetic transformers with the exact number of turns. \nThe system consists of the use of electronic sensors and assembly of the counting logic in both forward and reverse.",
+      "imageAlt": "Preview of a video cover that explains how the turns counter of an electromagnetic transformer winder works",
+      "title": "Digital Counter for Coil Winders"
     }
   },
   "about": {
@@ -100,5 +119,8 @@
     "zoomOut": "Zoom Out",
     "fitWidth": "Fit to width",
     "fitPage": "Fit page"
+  },
+  "images": {
+    "projectImageFallbackUrl": "/project-under-development-fallback-english.jpeg"
   }
 }

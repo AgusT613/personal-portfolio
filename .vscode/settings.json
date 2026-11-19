@@ -25,5 +25,18 @@
         ]
       }
     }
-  ]
+  ],
+  "i18n-ally.extract.ignoredByFiles": {
+    "src/data/projects.ts": [
+      "ITBANK Homebanking",
+      "ECommy",
+      "CSS Modules",
+      "Don Bosco Labs",
+      "Python",
+      "Pokedex",
+      "Svelte",
+      "SQLite",
+      "Arduino"
+    ]
+  }
 }

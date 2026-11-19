@@ -18,6 +18,12 @@ const projects: IProject[] = PROJECTS_DATA.map((project) => {
     } else if (link.type === "github-back") {
       label = "Backend";
       icon = "tabler:brand-github";
+    } else if (link.type === "github-repo") {
+      label = "Repo";
+      icon = "tabler:brand-github";
+    } else if (link.type === "demo") {
+      label = "Demo"
+      icon = "tabler:brand-youtube"
     }
 
     return {
@@ -27,12 +33,17 @@ const projects: IProject[] = PROJECTS_DATA.map((project) => {
     };
   });
 
+  let imageSrc = project.image
+  if (imageSrc === "fallback") {
+    imageSrc = t("images.projectImageFallbackUrl")
+  }
+
   return {
     name: project.nameKey ? t(project.nameKey as any) : project.name!,
     description: t(`project.${project.translationId}.description` as any),
     technologies: project.technologies,
     image: {
-      src: project.image,
+      src: imageSrc,
       alt: t(`project.${project.translationId}.imageAlt` as any),
     },
     links,
