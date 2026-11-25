@@ -11,6 +11,7 @@ export const PROJECTS_DATA: IProjectData[] = [
       { icon: "logos:sqlite", label: "SQLite3" },
       { icon: "logos:postgresql", label: "PostgreSQL" },
       { icon: "logos:tailwindcss", label: "TailwindCSS" },
+      { icon: "logos:docker", label: "Docker" },
     ],
     image: "/projects/itbank_homebanking/preview.png",
     links: [
@@ -26,6 +27,34 @@ export const PROJECTS_DATA: IProjectData[] = [
         href: "https://itba-full-stack-proyecto.vercel.app/",
         type: "live",
       },
+    ],
+  },
+  {
+    id: "pokedex",
+    name: "Pokedex",
+    translationId: "pokedex",
+    technologies: [
+      { icon: "logos:svelte", label: "Svelte" },
+      { icon: "logos:tailwindcss", label: "TailwindCSS" },
+      { icon: "logos:python", label: "Python" },
+      { icon: "logos:fastapi", label: "FastAPI" },
+      { icon: "logos:postgresql", label: "PostgreSQL" },
+      { icon: "logos:docker", label: "Docker" },
+    ],
+    image: "/projects/pokedex/preview.png",
+    links: [
+      {
+        href: "https://github.com/AgusT613/fiuba-ids-tp2-frontend",
+        type: "github-front",
+      },
+      {
+        href: "https://github.com/AgusT613/fiuba-ids-tp2-backend",
+        type: "github-back",
+      },
+      {
+        href: "https://fiuba-ids-tp2-frontend-phi.vercel.app/", 
+        type: "live",
+      }
     ],
   },
   {
@@ -91,34 +120,6 @@ export const PROJECTS_DATA: IProjectData[] = [
       // {
       //   href: "",
       //   type: "demo", 
-      // }
-    ],
-  },
-  {
-    id: "pokedex",
-    name: "Pokedex",
-    translationId: "pokedex",
-    technologies: [
-      { icon: "logos:svelte", label: "Svelte" },
-      { icon: "logos:tailwindcss", label: "TailwindCSS" },
-      { icon: "logos:python", label: "Python" },
-      { icon: "logos:fastapi", label: "FastAPI" },
-      { icon: "logos:sqlite", label: "SQLite" },
-    ],
-    image: "fallback",
-    links: [
-      {
-        href: "https://github.com/AgusT613/fiuba-ids-tp2-frontend",
-        type: "github-front",
-      },
-      {
-        href: "https://github.com/AgusT613/fiuba-ids-tp2-backend",
-        type: "github-back",
-      },
-      // TODO: Add link to deployed web app
-      // {
-      //   href: "", 
-      //   type: "live",
       // }
     ],
   },
