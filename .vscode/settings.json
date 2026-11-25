@@ -36,7 +36,8 @@
       "Pokedex",
       "Svelte",
       "SQLite",
-      "Arduino"
+      "Arduino",
+      "Docker"
     ]
   }
 }

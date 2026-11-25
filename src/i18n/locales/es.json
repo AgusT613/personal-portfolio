@@ -83,7 +83,7 @@
       "imageAlt": "Prevista de la aplicación de escritorio para la visualización de gráficas de medición en tiempo real"
     },
     "pokedex": {
-      "description": "Sistema de gestión y visualización que permite filtrar, buscar, y crear pokemones. También puedes crear tu propio equipo de pokemones, gestionarlos y fusionar dos especies diferentes para obtener nuevos poderes.",
+      "description": "Aplicación web de pokemones que permite buscar y filtrar su información, y también crear equipos de hasta 6 integrantes a los cuales se les puede asignar apodos y movimientos especiales.",
       "imageAlt": "Prevista de la aplicacíon web de pokemones"
     },
     "animeSearch": {

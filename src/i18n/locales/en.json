@@ -88,7 +88,7 @@
       "title": "Anime Series Search"
     },
     "pokedex": {
-      "description": "Management and visualization system that allows you to filter, search, and create Pokémon. \nYou can also create your own team of Pokémon, manage them and fuse two different species to obtain new powers.",
+      "description": "Pokemon web application that allows you to search and filter your information, and also create teams of up to 6 members to which you can assign nicknames and special moves.",
       "imageAlt": "Preview of the pokemon web application"
     },
     "contadorBobinador": {
