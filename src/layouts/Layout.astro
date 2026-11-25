@@ -8,23 +8,76 @@ import { defaultLang } from "../i18n/ui";
 import { Font } from "astro:assets";
 
 interface Props {
-  title: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description,
+  image = "/personal-portfolio-preview.png",
+  type = "website",
+} = Astro.props;
+
 const currentLocale = Astro.currentLocale ?? defaultLang;
 const t = useTranslations(currentLocale);
+
+const pageTitle = title ?? t("head.title");
+const pageDescription = description ?? t("head.description");
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const previewImageURL = new URL(image, Astro.site ?? Astro.url);
+const ogLocale = currentLocale === "es" ? "es_AR" : "en_US";
+const alternateLocale = currentLocale === "es" ? "en_US" : "es_AR";
 ---
 
 <!doctype html>
 <html lang={currentLocale}>
   <head>
+    <!-- Configuración básica y Codificación -->
     <meta charset="UTF-8" />
-    <meta name="description" content={t("head.description")} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    <meta name="author" content="Agustín Torres" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Íconos y Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="icon" type="image/jpeg" href="/favicon.jpeg" />
+
+    <!-- Enlace Canónico -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook / WhatsApp / Instagram / TikTok -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={previewImageURL} />
+    <meta property="og:image:secure_url" content={previewImageURL} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content={pageTitle} />
+    <meta property="og:site_name" content={t("head.title")} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={alternateLocale} />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={previewImageURL} />
+    <meta name="twitter:image:alt" content={pageTitle} />
+
     <Font cssVariable="--font-roboto-slab" />
   </head>
   <body class="relative">
