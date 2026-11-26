@@ -59,3 +59,14 @@ export interface IExperienceData {
   tags: string[];
   projectUrl?: string;
 }
+
+export interface ITechnologyItem {
+  name: string;
+  icon: string;
+}
+
+export interface ITechnologyCategory {
+  id: string;
+  titleKey: string;
+  items: ITechnologyItem[];
+}

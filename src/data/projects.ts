@@ -16,11 +16,11 @@ export const PROJECTS_DATA: IProjectData[] = [
     image: "/projects/itbank_homebanking/preview.png",
     links: [
       {
-        href: "https://github.com/AgusT613/itba_full_stack_front/tree/develop",
+        href: "https://github.com/AgusT613/itba_full_stack_front",
         type: "github-front",
       },
       {
-        href: "https://github.com/AgusT613/itba_full_stack_back/tree/develop",
+        href: "https://github.com/AgusT613/itba-full-stack-back-fastapi",
         type: "github-back",
       },
       {
@@ -62,6 +62,7 @@ export const PROJECTS_DATA: IProjectData[] = [
     name: "ECommy",
     translationId: "ecommerce",
     technologies: [
+      { icon: "logos:typescript", label: "TypeScript" },
       { icon: "logos:react", label: "ReactJS" },
       { icon: "logos:css-3", label: "CSS Modules" },
     ],
@@ -82,8 +83,12 @@ export const PROJECTS_DATA: IProjectData[] = [
     name: "Don Bosco Labs",
     translationId: "donBosco",
     technologies: [
+      { icon: "logos:typescript", label: "TypeScript" },
       { icon: "logos:react", label: "ReactJS" },
       { icon: "logos:tailwindcss-icon", label: "TailwindCSS" },
+      { icon: "logos:express", label: "ExpressJS" },
+      { icon: "logos:docker", label: "Docker" },
+      { icon: "logos:postgresql", label: "PostgreSQL" },
     ],
     image: "/projects/don_bosco_labs/preview.png",
     links: [
@@ -96,7 +101,7 @@ export const PROJECTS_DATA: IProjectData[] = [
         type: "github-back",
       },
       {
-        href: "https://kaleidoscopic-dieffenbachia-5d550d.netlify.app/",
+        href: "https://don-bosco-labs-front.netlify.app/",
         type: "live",
       },
     ],

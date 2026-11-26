@@ -11,9 +11,10 @@ interface Props {
 
 const { project } = Astro.props;
 const { description, image, links, name, technologies } = project;
+const techDataAttr = technologies.map((t) => t.label.toLowerCase()).join("|");
 ---
 
-<article class="project-card">
+<article class="project-card" data-technologies={techDataAttr}>
   <div class="project-image-wrapper">
     <img
       class="project-image"
@@ -127,9 +128,14 @@ const { description, image, links, name, technologies } = project;
     }
   }
 
+  .project-card[data-hidden="true"] {
+    display: none !important;
+  }
+
   /* Featured first project on desktop */
   @media (min-width: 901px) {
-    .project-card:first-child {
+    :global(.project-grid:not(.is-filtered)) .project-card:first-child,
+    .project-card.is-featured {
       grid-column: span 2;
       display: grid;
       grid-template-columns: 1.15fr 1fr;
@@ -140,12 +146,14 @@ const { description, image, links, name, technologies } = project;
       border-color: rgba(168, 85, 247, 0.2);
     }
 
-    .project-card:first-child:hover {
+    :global(.project-grid:not(.is-filtered)) .project-card:first-child:hover,
+    .project-card.is-featured:hover {
       border-color: rgba(168, 85, 247, 0.45);
       box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.4);
     }
 
-    .project-card:first-child .project-image-wrapper {
+    :global(.project-grid:not(.is-filtered)) .project-card:first-child .project-image-wrapper,
+    .project-card.is-featured .project-image-wrapper {
       margin-bottom: 0;
       height: 100%;
       max-height: none;
@@ -153,14 +161,16 @@ const { description, image, links, name, technologies } = project;
       min-height: 280px;
     }
 
-    .project-card:first-child .project-image {
+    :global(.project-grid:not(.is-filtered)) .project-card:first-child .project-image,
+    .project-card.is-featured .project-image {
       height: 100%;
       width: 100%;
       object-fit: cover;
       object-position: top center;
     }
 
-    .project-card:first-child .project-content {
+    :global(.project-grid:not(.is-filtered)) .project-card:first-child .project-content,
+    .project-card.is-featured .project-content {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -168,16 +178,19 @@ const { description, image, links, name, technologies } = project;
       gap: 1.25rem;
     }
 
-    .project-card:first-child .project-title {
+    :global(.project-grid:not(.is-filtered)) .project-card:first-child .project-title,
+    .project-card.is-featured .project-title {
       font-size: 1.5rem;
     }
 
-    .project-card:first-child .project-techs {
+    :global(.project-grid:not(.is-filtered)) .project-card:first-child .project-techs,
+    .project-card.is-featured .project-techs {
       margin-top: auto;
       padding-top: 0.5rem;
     }
 
-    .project-card:first-child .project-links-wrapper {
+    :global(.project-grid:not(.is-filtered)) .project-card:first-child .project-links-wrapper,
+    .project-card.is-featured .project-links-wrapper {
       margin-top: 0.5rem;
     }
   }
