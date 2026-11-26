@@ -3,31 +3,244 @@ import "./about_me.css";
 import CustomParagraph from "../CustomParagraph.astro";
 import TitleSection from "../TitleSection.astro";
 import TransformString from "../TransformString.astro";
+import { Icon } from "astro-icon/components";
 import { useTranslations } from "../../i18n/utils";
 
 const t = useTranslations(Astro.currentLocale);
+
+const certs = [
+  { icon: "tabler:sparkles", text: t("about.education.certGear") },
+  { icon: "tabler:cloud", text: t("about.education.certGcp") },
+  { icon: "tabler:code", text: t("about.education.certItba") },
+  { icon: "tabler:language", text: t("about.education.certEnglish") },
+];
 ---
 
 <section id="about-me" class="flex flex-col justify-center py-28">
   <TitleSection>{t("about.sectionTitle")}</TitleSection>
-  <article class="gap-6 grid grid-cols-[11rem_1fr]">
-    <picture>
-      <img
-        src="/portrait.jpg"
-        alt={t("about.profileImageAlt")}
-        class="rounded-3xl object-cover object-top size-full"
-      />
-    </picture>
-    <div class="flex flex-col gap-4">
-      <CustomParagraph>
-        <TransformString text={t("about.firstParagraph")} />
-      </CustomParagraph>
-      <CustomParagraph>
-        <TransformString text={t("about.secondParagraph")} />
-      </CustomParagraph>
-      <CustomParagraph>
-        <TransformString text={t("about.thirdParagraph")} />
-      </CustomParagraph>
+
+  <!-- Sub-section Tab Navigation -->
+  <div class="about-tabs-container mb-8">
+    <div
+      class="about-tabs-nav flex flex-wrap gap-1.5 p-1.5 rounded-2xl bg-[rgba(30,41,59,0.45)] border border-[rgba(255,255,255,0.08)] backdrop-blur-md w-fit"
+      role="tablist"
+      aria-label="About sub-sections"
+    >
+      <button
+        type="button"
+        role="tab"
+        id="tab-btn-me"
+        aria-selected="true"
+        aria-controls="panel-me"
+        data-tab-target="me"
+        class="about-tab-btn active flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300"
+      >
+        <Icon name="tabler:user" class="size-4" />
+        <span>{t("about.tabs.me")}</span>
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        id="tab-btn-education"
+        aria-selected="false"
+        aria-controls="panel-education"
+        data-tab-target="education"
+        class="about-tab-btn flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300"
+      >
+        <Icon name="tabler:school" class="size-4" />
+        <span>{t("about.tabs.education")}</span>
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        id="tab-btn-interests"
+        aria-selected="false"
+        aria-controls="panel-interests"
+        data-tab-target="interests"
+        class="about-tab-btn flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300"
+      >
+        <Icon name="tabler:sparkles" class="size-4" />
+        <span>{t("about.tabs.interests")}</span>
+      </button>
     </div>
-  </article>
+  </div>
+
+  <!-- Panels container -->
+  <div class="about-panels-wrapper">
+    <!-- Panel 1: Original Biography -->
+    <article
+      id="panel-me"
+      role="tabpanel"
+      aria-labelledby="tab-btn-me"
+      class="about-panel active gap-6 grid grid-cols-[11rem_1fr]"
+    >
+      <picture>
+        <img
+          src="/portrait.jpg"
+          alt={t("about.profileImageAlt")}
+          class="rounded-3xl object-cover object-top size-full"
+        />
+      </picture>
+      <div class="flex flex-col gap-4">
+        <CustomParagraph>
+          <TransformString text={t("about.firstParagraph")} />
+        </CustomParagraph>
+        <CustomParagraph>
+          <TransformString text={t("about.secondParagraph")} />
+        </CustomParagraph>
+        <CustomParagraph>
+          <TransformString text={t("about.thirdParagraph")} />
+        </CustomParagraph>
+      </div>
+    </article>
+
+    <!-- Panel 2: Education -->
+    <div
+      id="panel-education"
+      role="tabpanel"
+      aria-labelledby="tab-btn-education"
+      class="about-panel hidden flex-col gap-6"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- College Studies -->
+        <div class="education-card p-5 rounded-2xl bg-[rgba(30,41,59,0.45)] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(168,85,247,0.4)] transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <div class="p-2.5 rounded-xl bg-[rgba(168,85,247,0.15)] text-[#d8b4fe] border border-[rgba(168,85,247,0.25)]">
+                <Icon name="tabler:school" class="size-5" />
+              </div>
+              <div>
+                <h3 class="text-base font-semibold text-[#efeded]">{t("about.education.collegeTitle")}</h3>
+                <p class="text-xs text-[#94a3b8]">{t("about.education.collegeInstitution")}</p>
+              </div>
+            </div>
+            <p class="text-sm text-[#cbd5e1] leading-relaxed mt-3">
+              {t("about.education.collegeDescription")}
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs text-[#c084fc] font-medium">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[rgba(168,85,247,0.12)] border border-[rgba(168,85,247,0.28)]">
+              <Icon name="tabler:calendar" class="size-3.5" />
+              <span>{t("about.education.collegeDate")}</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Technical High School -->
+        <div class="education-card p-5 rounded-2xl bg-[rgba(30,41,59,0.45)] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(168,85,247,0.4)] transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <div class="p-2.5 rounded-xl bg-[rgba(168,85,247,0.15)] text-[#d8b4fe] border border-[rgba(168,85,247,0.25)]">
+                <Icon name="tabler:tool" class="size-5" />
+              </div>
+              <div>
+                <h3 class="text-base font-semibold text-[#efeded]">{t("about.education.highschoolTitle")}</h3>
+                <p class="text-xs text-[#94a3b8]">{t("about.education.highschoolInstitution")}</p>
+              </div>
+            </div>
+            <p class="text-sm text-[#cbd5e1] leading-relaxed mt-3">
+              {t("about.education.highschoolDescription")}
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs text-[#c084fc] font-medium">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[rgba(168,85,247,0.12)] border border-[rgba(168,85,247,0.28)]">
+              <Icon name="tabler:calendar" class="size-3.5" />
+              <span>{t("about.education.highschoolDate")}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Courses & Certifications -->
+      <div class="education-card p-5 rounded-2xl bg-[rgba(30,41,59,0.45)] border border-[rgba(255,255,255,0.08)]">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2.5 rounded-xl bg-[rgba(168,85,247,0.15)] text-[#d8b4fe] border border-[rgba(168,85,247,0.25)]">
+            <Icon name="tabler:certificate" class="size-5" />
+          </div>
+          <h3 class="text-base font-semibold text-[#efeded]">{t("about.education.coursesTitle")}</h3>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+          {certs.map((c) => (
+            <li class="flex items-start gap-3 p-3 rounded-xl bg-[rgba(15,23,42,0.55)] border border-[rgba(255,255,255,0.05)] hover:border-[rgba(168,85,247,0.35)] transition-colors">
+              <Icon name={c.icon} class="size-4 shrink-0 mt-0.5 text-[#c084fc]" />
+              <span class="text-[#cbd5e1] leading-snug">{c.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Panel 3: Interests & Vision -->
+    <div
+      id="panel-interests"
+      role="tabpanel"
+      aria-labelledby="tab-btn-interests"
+      class="about-panel hidden grid-cols-1 md:grid-cols-3 gap-4"
+    >
+      <div class="interest-card p-5 rounded-2xl bg-[rgba(30,41,59,0.45)] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(168,85,247,0.4)] transition-all duration-300">
+        <div class="p-2.5 rounded-xl bg-[rgba(168,85,247,0.15)] text-[#d8b4fe] border border-[rgba(168,85,247,0.25)] w-fit mb-3">
+          <Icon name="tabler:bulb" class="size-5" />
+        </div>
+        <h3 class="text-base font-semibold text-[#efeded] mb-2">{t("about.interests.philosophyTitle")}</h3>
+        <p class="text-sm text-[#cbd5e1] leading-relaxed">{t("about.interests.philosophyText")}</p>
+      </div>
+
+      <div class="interest-card p-5 rounded-2xl bg-[rgba(30,41,59,0.45)] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(168,85,247,0.4)] transition-all duration-300">
+        <div class="p-2.5 rounded-xl bg-[rgba(168,85,247,0.15)] text-[#d8b4fe] border border-[rgba(168,85,247,0.25)] w-fit mb-3">
+          <Icon name="tabler:cpu" class="size-5" />
+        </div>
+        <h3 class="text-base font-semibold text-[#efeded] mb-2">{t("about.interests.passionsTitle")}</h3>
+        <p class="text-sm text-[#cbd5e1] leading-relaxed">{t("about.interests.passionsText")}</p>
+      </div>
+
+      <div class="interest-card p-5 rounded-2xl bg-[rgba(30,41,59,0.45)] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(168,85,247,0.4)] transition-all duration-300">
+        <div class="p-2.5 rounded-xl bg-[rgba(168,85,247,0.15)] text-[#d8b4fe] border border-[rgba(168,85,247,0.25)] w-fit mb-3">
+          <Icon name="tabler:heart-handshake" class="size-5" />
+        </div>
+        <h3 class="text-base font-semibold text-[#efeded] mb-2">{t("about.interests.valuesTitle")}</h3>
+        <p class="text-sm text-[#cbd5e1] leading-relaxed">{t("about.interests.valuesText")}</p>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script>
+  function setupAboutTabs() {
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>(".about-tab-btn");
+    const panels = document.querySelectorAll<HTMLElement>(".about-panel");
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.tabTarget;
+        if (!target) return;
+
+        tabBtns.forEach((b) => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+        });
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
+
+        panels.forEach((p) => {
+          if (p.id === `panel-${target}`) {
+            p.classList.remove("hidden");
+            if (target === "me" || target === "interests") {
+              p.classList.add("grid");
+            } else {
+              p.classList.add("flex");
+            }
+            p.classList.add("active");
+          } else {
+            p.classList.add("hidden");
+            p.classList.remove("grid", "flex", "active");
+          }
+        });
+      });
+    });
+  }
+
+  setupAboutTabs();
+  document.addEventListener("astro:page-load", setupAboutTabs);
+</script>
