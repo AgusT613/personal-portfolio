@@ -41,11 +41,12 @@ personal-portfolio/
 ├── src/
 │   ├── components/             # Componentes reutilizables y secciones
 │   │   ├── about_me/           # Sección "Sobre Mí" (AboutMe.astro + about_me.css)
-│   │   ├── experience/         # Sección de experiencia laboral / formación
+│   │   ├── experience/         # Sección de experiencia laboral en formato timeline
 │   │   ├── footer/             # Pie de página y enlaces de contacto (Footer.astro + footerLinks.ts)
 │   │   ├── header/             # Navegación superior fija y responsive
 │   │   ├── hero/               # Banner principal de presentación
-│   │   ├── project/            # Sección y tarjetas de proyectos
+│   │   ├── project/            # Sección y tarjetas de proyectos con filtrado interactivo por tecnología
+│   │   ├── technologies/       # Sección de tecnologías categorizadas que domina el desarrollador
 │   │   ├── Badge.astro         # Etiqueta visual para skills / tags
 │   │   ├── CopyEmailBtn.astro  # Botón interactivo para copiar email al portapapeles
 │   │   ├── CustomActionBtn.astro # Botón base reutilizable con estilos comunes
@@ -61,7 +62,8 @@ personal-portfolio/
 │   │   └── ViewCVBtn.astro     # Botón para navegar a la página dedicada del visor de CV
 │   ├── data/                   # Módulos de datos desacoplados
 │   │   ├── experience.ts       # Datos técnicos de experiencias laborales (tags, URLs)
-│   │   └── projects.ts         # Datos estructurales de proyectos (links, imagen, identificadores de íconos)
+│   │   ├── projects.ts         # Datos estructurales de proyectos (links, imagen, identificadores de íconos)
+│   │   └── technologies.ts     # Catálogo de tecnologías categorizadas (Frontend, Backend, Cloud, etc.)
 │   ├── i18n/                   # Sistema de internacionalización
 │   │   ├── locales/
 │   │   │   ├── en.json         # Diccionario de textos en inglés (único JSON)
