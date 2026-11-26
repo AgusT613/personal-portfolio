@@ -21,12 +21,17 @@ const experiences: IExperience[] = EXPERIENCES_DATA.map((exp) => ({
 
 <section id="experience" class="experience-section">
   <TitleSection>{t("experience.sectionTitle")}</TitleSection>
-  <div class="experience-wrapper">
-    {
-      experiences.map((experience) => (
-        <ExperienceContainer experience={experience} />
-      ))
-    }
+  <div class="timeline-container">
+    <ol class="timeline-list">
+      {
+        experiences.map((experience, index) => (
+          <ExperienceContainer
+            experience={experience}
+            isLast={index === experiences.length - 1}
+          />
+        ))
+      }
+    </ol>
   </div>
 </section>
 
@@ -39,11 +44,24 @@ const experiences: IExperience[] = EXPERIENCES_DATA.map((exp) => ({
     box-sizing: border-box;
   }
 
-  .experience-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  .timeline-container {
     width: 100%;
     box-sizing: border-box;
+    padding-left: 0.5rem;
+  }
+
+  .timeline-list {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 640px) {
+    .timeline-container {
+      padding-left: 0;
+    }
   }
 </style>
