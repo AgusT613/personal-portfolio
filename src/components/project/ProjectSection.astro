@@ -4,6 +4,7 @@ import ProjectContainer from "./ProjectContainer.astro";
 import { PROJECTS_DATA } from "../../data/projects";
 import { useTranslations } from "../../i18n/utils";
 import type { IProject, IProjectLinks } from "../../types";
+import { Icon } from "astro-icon/components";
 
 const t = useTranslations(Astro.currentLocale);
 
@@ -49,12 +50,79 @@ const projects: IProject[] = PROJECTS_DATA.map((project) => {
     links,
   };
 });
+
+// Compute unique technologies and their project counts
+const techCountsMap = new Map<string, { label: string; icon: string; count: number }>();
+projects.forEach((project) => {
+  project.technologies.forEach((tech) => {
+    const key = tech.label.toLowerCase();
+    const existing = techCountsMap.get(key);
+    if (existing) {
+      existing.count += 1;
+    } else {
+      techCountsMap.set(key, {
+        label: tech.label,
+        icon: tech.icon,
+        count: 1,
+      });
+    }
+  });
+});
+const availableTechnologies = Array.from(techCountsMap.entries()).sort(
+  (a, b) => b[1].count - a[1].count
+);
 ---
 
 <section id="projects" class="project-section">
   <TitleSection>{t("project.sectionTitle")}</TitleSection>
-  <div class="project-grid">
+
+  <!-- Filter Controls -->
+  <div class="project-filter-container">
+    <div class="filter-header">
+      <span class="filter-title">{t("project.filterByTech")}</span>
+      <button type="button" class="clear-filters-btn hidden" id="clear-filters-btn">
+        <Icon name="tabler:x" class="size-3.5" />
+        <span>{t("project.clearFilters")}</span>
+      </button>
+    </div>
+
+    <div class="filter-pills" role="toolbar" aria-label={t("project.filterByTech")}>
+      <button
+        type="button"
+        class="filter-pill is-active"
+        id="filter-all-btn"
+        data-tech="all"
+        aria-pressed="true"
+      >
+        <Icon name="tabler:apps" class="size-4 shrink-0" />
+        <span>{t("project.filterAll")}</span>
+        <span class="pill-count">{projects.length}</span>
+      </button>
+
+      {
+        availableTechnologies.map(([key, tech]) => (
+          <button
+            type="button"
+            class="filter-pill"
+            data-tech={key}
+            aria-pressed="false"
+          >
+            <Icon name={tech.icon} class="size-4 shrink-0" />
+            <span>{tech.label}</span>
+            <span class="pill-count">{tech.count}</span>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="project-grid" id="project-grid">
     {projects.map((project) => <ProjectContainer project={project} />)}
+  </div>
+
+  <div class="no-projects-message hidden" id="no-projects-msg">
+    <Icon name="tabler:folder-off" class="no-projects-icon" />
+    <p>{t("project.noMatchingProjects")}</p>
   </div>
 </section>
 
@@ -65,6 +133,121 @@ const projects: IProject[] = PROJECTS_DATA.map((project) => {
     padding-top: 7rem;
     width: 100%;
     box-sizing: border-box;
+  }
+
+  .project-filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2.25rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .filter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .filter-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #94a3b8;
+    letter-spacing: 0.015em;
+  }
+
+  .clear-filters-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #c084fc;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .clear-filters-btn:hover {
+    color: #e9d5ff;
+    background: rgba(192, 132, 252, 0.1);
+  }
+
+  .filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+  }
+
+  .filter-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.38rem 0.8rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    background: rgba(30, 41, 59, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    box-sizing: border-box;
+  }
+
+  .filter-pill:hover {
+    background: rgba(30, 41, 59, 0.75);
+    border-color: rgba(168, 85, 247, 0.35);
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .filter-pill.is-active {
+    background: rgba(168, 85, 247, 0.22);
+    border-color: #a855f7;
+    color: #f3e8ff;
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+    font-weight: 600;
+  }
+
+  .pill-count {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.4rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: inherit;
+    opacity: 0.85;
+  }
+
+  .no-projects-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 3.5rem 1.5rem;
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+    color: #94a3b8;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  :global(.no-projects-icon) {
+    width: 2.75rem;
+    height: 2.75rem;
+    color: #a855f7;
+    opacity: 0.75;
   }
 
   .project-grid {
@@ -80,4 +263,114 @@ const projects: IProject[] = PROJECTS_DATA.map((project) => {
       grid-template-columns: 1fr;
     }
   }
+
+  .hidden {
+    display: none !important;
+  }
 </style>
+
+<script>
+  const filterPills = document.querySelectorAll<HTMLButtonElement>(".filter-pill");
+  const filterAllBtn = document.getElementById("filter-all-btn") as HTMLButtonElement | null;
+  const clearFiltersBtn = document.getElementById("clear-filters-btn") as HTMLButtonElement | null;
+  const projectGrid = document.getElementById("project-grid");
+  const projectCards = document.querySelectorAll<HTMLElement>(".project-card");
+  const noProjectsMsg = document.getElementById("no-projects-msg");
+
+  const activeTechs = new Set<string>();
+
+  const updateFilters = () => {
+    if (activeTechs.size === 0) {
+      filterAllBtn?.classList.add("is-active");
+      filterAllBtn?.setAttribute("aria-pressed", "true");
+      clearFiltersBtn?.classList.add("hidden");
+      projectGrid?.classList.remove("is-filtered");
+
+      projectCards.forEach((card) => {
+        card.removeAttribute("data-hidden");
+        card.classList.remove("is-featured");
+      });
+
+      noProjectsMsg?.classList.add("hidden");
+      projectGrid?.classList.remove("hidden");
+      return;
+    }
+
+    filterAllBtn?.classList.remove("is-active");
+    filterAllBtn?.setAttribute("aria-pressed", "false");
+    clearFiltersBtn?.classList.remove("hidden");
+    projectGrid?.classList.add("is-filtered");
+
+    let visibleCount = 0;
+    let firstVisibleCard: HTMLElement | null = null;
+
+    projectCards.forEach((card) => {
+      const cardTechs = (card.dataset.technologies || "").split("|");
+      const matches = Array.from(activeTechs).some((tech) => cardTechs.includes(tech));
+
+      if (matches) {
+        card.removeAttribute("data-hidden");
+        card.classList.remove("is-featured");
+        if (!firstVisibleCard) {
+          firstVisibleCard = card;
+        }
+        visibleCount++;
+      } else {
+        card.setAttribute("data-hidden", "true");
+        card.classList.remove("is-featured");
+      }
+    });
+
+    if (firstVisibleCard) {
+      firstVisibleCard.classList.add("is-featured");
+    }
+
+    if (visibleCount === 0) {
+      noProjectsMsg?.classList.remove("hidden");
+      projectGrid?.classList.add("hidden");
+    } else {
+      noProjectsMsg?.classList.add("hidden");
+      projectGrid?.classList.remove("hidden");
+    }
+  };
+
+  filterPills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const tech = pill.dataset.tech;
+      if (!tech) return;
+
+      if (tech === "all") {
+        activeTechs.clear();
+        filterPills.forEach((p) => {
+          if (p !== filterAllBtn) {
+            p.classList.remove("is-active");
+            p.setAttribute("aria-pressed", "false");
+          }
+        });
+      } else {
+        if (activeTechs.has(tech)) {
+          activeTechs.delete(tech);
+          pill.classList.remove("is-active");
+          pill.setAttribute("aria-pressed", "false");
+        } else {
+          activeTechs.add(tech);
+          pill.classList.add("is-active");
+          pill.setAttribute("aria-pressed", "true");
+        }
+      }
+
+      updateFilters();
+    });
+  });
+
+  clearFiltersBtn?.addEventListener("click", () => {
+    activeTechs.clear();
+    filterPills.forEach((p) => {
+      if (p !== filterAllBtn) {
+        p.classList.remove("is-active");
+        p.setAttribute("aria-pressed", "false");
+      }
+    });
+    updateFilters();
+  });
+</script>

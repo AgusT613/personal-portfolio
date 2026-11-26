@@ -61,6 +61,10 @@
   "project": {
     "sectionTitle": "Projects",
     "webpageBtnLabel": "Web Page",
+    "filterAll": "All",
+    "filterByTech": "Filter by technology:",
+    "noMatchingProjects": "No projects found matching the selected technologies.",
+    "clearFilters": "Clear filters",
     "homebanking": {
       "description": "Project for a FullStack Developer training program, alongside a development team. User-friendly and easily navigable home banking web application. REST API and authentication developed using Django REST Framework.",
       "imageAlt": "Preview of the web-developed home banking application. The platform is called ITBANK, where banking operations can be carried out conveniently from a mobile device."
