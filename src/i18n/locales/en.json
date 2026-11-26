@@ -114,9 +114,37 @@
   "about": {
     "sectionTitle": "About Me",
     "profileImageAlt": "A picture of me, Torres Agustin",
+    "tabs": {
+      "me": "Biography",
+      "education": "Education",
+      "interests": "Interests & Vision"
+    },
     "firstParagraph": "My name is Agustin and I am 23 years old. I graduated as an <kw>electromechanical technician</kw> in high school, and I am currently studying <kw>Computer Engineering</kw> at the University of Buenos Aires (UBA).",
     "secondParagraph": "I have been studying programming since 2022, starting with <kw>web development.</kw> During my last year of high school, I had the opportunity to complement my knowledge in a project involving <kw>electronics, automation, and programming.</kw> I have also collaborated in the construction of third-party software projects.",
-    "thirdParagraph": "I consider myself a <kw>curious, responsible, and focused individual.</kw> I firmly believe that the details in a project make a difference; in this way, we highlight the personal touch of our product and/or service."
+    "thirdParagraph": "I consider myself a <kw>curious, responsible, and focused individual.</kw> I firmly believe that the details in a project make a difference; in this way, we highlight the personal touch of our product and/or service.",
+    "education": {
+      "collegeTitle": "Computer Engineering",
+      "collegeInstitution": "University of Buenos Aires (UBA)",
+      "collegeDate": "2022 - Present",
+      "collegeDescription": "Academic education in computer science, algorithms, data structures, distributed systems, and software engineering.",
+      "highschoolTitle": "Electromechanical Technician",
+      "highschoolInstitution": "Technical Secondary Education School",
+      "highschoolDate": "Graduated with technical degree",
+      "highschoolDescription": "Hands-on foundation in electronics, system automation, control circuits, and multidisciplinary projects.",
+      "coursesTitle": "Courses & Certifications",
+      "certGear": "Gemini Enterprise Agent Ready (GEAR) — Talento Tech (Specialization in AI & Agents)",
+      "certGcp": "Google Cloud Foundations / Cloud Engineering — Talento Tech",
+      "certItba": "Full Stack Developer — Buenos Aires Institute of Technology (ITBA)",
+      "certEnglish": "First Certificate in English (B2) — Liceo Cultural Británico"
+    },
+    "interests": {
+      "philosophyTitle": "Work Philosophy",
+      "philosophyText": "I believe in iterative development with an uncompromising focus on quality, clean code, and simplicity. Every solution should solve real problems in a maintainable, scalable way.",
+      "passionsTitle": "Tech Passions",
+      "passionsText": "Enthusiastic about artificial intelligence, cloud-native architectures, and bridging software with embedded hardware (IoT & microcontrollers).",
+      "valuesTitle": "Core Values",
+      "valuesText": "Constant curiosity to master emerging tools, attention to detail in every delivery, and transparent communication to elevate teamwork."
+    }
   },
   "footer": {
     "contact": "Contact",
