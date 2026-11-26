@@ -96,7 +96,7 @@ export const PROJECTS_DATA: IProjectData[] = [
         type: "github-back",
       },
       {
-        href: "https://kaleidoscopic-dieffenbachia-5d550d.netlify.app/",
+        href: "https://don-bosco-labs-front.netlify.app/",
         type: "live",
       },
     ],
