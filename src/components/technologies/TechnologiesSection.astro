@@ -1,0 +1,173 @@
+---
+import TitleSection from "../TitleSection.astro";
+import { TECHNOLOGIES_DATA } from "../../data/technologies";
+import { useTranslations } from "../../i18n/utils";
+import { Icon } from "astro-icon/components";
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section id="technologies" class="technologies-section">
+  <TitleSection>{t("technologies.sectionTitle")}</TitleSection>
+
+  <div class="categories-grid">
+    {
+      TECHNOLOGIES_DATA.map((category) => (
+        <article class="category-card">
+          <header class="category-header">
+            <h3 class="category-title">{t(category.titleKey as any)}</h3>
+            <span class="category-badge">{category.items.length}</span>
+          </header>
+
+          <div class="tech-items-grid">
+            {category.items.map((tech) => (
+              <div class="tech-item" title={tech.name}>
+                <span class="tech-icon-wrapper">
+                  <Icon name={tech.icon} class="tech-icon" />
+                </span>
+                <span class="tech-label">{tech.name}</span>
+              </div>
+            ))}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .technologies-section {
+    display: flex;
+    flex-direction: column;
+    padding-top: 7rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem;
+    background: rgba(30, 41, 59, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .category-card:hover {
+    border-color: rgba(168, 85, 247, 0.35);
+    background: rgba(30, 41, 59, 0.65);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .category-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #d8b4fe;
+    letter-spacing: 0.015em;
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #c084fc;
+    background: rgba(192, 132, 252, 0.12);
+    border: 1px solid rgba(192, 132, 252, 0.25);
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+  }
+
+  .tech-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .tech-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.6rem 0.85rem;
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.65rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+  }
+
+  .tech-item:hover {
+    transform: translateY(-2px);
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .tech-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .tech-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .tech-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 800px) {
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .category-card {
+      padding: 1.25rem 1rem;
+    }
+
+    .tech-items-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .tech-item {
+      padding: 0.5rem 0.65rem;
+      gap: 0.5rem;
+    }
+
+    .tech-label {
+      font-size: 0.8rem;
+    }
+  }
+</style>

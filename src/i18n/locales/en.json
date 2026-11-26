@@ -9,8 +9,9 @@
   "header": {
     "nav": {
       "top": "Home",
-      "experience": "Experience",
       "projects": "Projects",
+      "experience": "Experience",
+      "technologies": "Technologies",
       "aboutMe": "About Me",
       "contact": "Contact"
     }
@@ -95,6 +96,15 @@
       "description": "Program that counts the turns that an axis makes, both increasing the value if it moves forward and also decreasing it when going backwards. \nUseful to know how many turns a coil of copper wire has and use it to assemble electromagnetic transformers with the exact number of turns. \nThe system consists of the use of electronic sensors and assembly of the counting logic in both forward and reverse.",
       "imageAlt": "Preview of a video cover that explains how the turns counter of an electromagnetic transformer winder works",
       "title": "Digital Counter for Coil Winders"
+    }
+  },
+  "technologies": {
+    "sectionTitle": "Technologies",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "databaseAndCloud": "Databases & Cloud",
+      "hardwareAndDesktop": "Desktop & Hardware"
     }
   },
   "about": {
