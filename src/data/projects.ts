@@ -16,11 +16,11 @@ export const PROJECTS_DATA: IProjectData[] = [
     image: "/projects/itbank_homebanking/preview.png",
     links: [
       {
-        href: "https://github.com/AgusT613/itba_full_stack_front/tree/develop",
+        href: "https://github.com/AgusT613/itba_full_stack_front",
         type: "github-front",
       },
       {
-        href: "https://github.com/AgusT613/itba_full_stack_back/tree/develop",
+        href: "https://github.com/AgusT613/itba-full-stack-back-fastapi",
         type: "github-back",
       },
       {
